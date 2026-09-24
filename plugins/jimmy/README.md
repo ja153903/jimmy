@@ -8,6 +8,8 @@ The original skill was written for Claude Code. Some playbooks still name Claude
 
 The scripts under `skills/jimmy/scripts` include Bun and GitHub CLI based workflows. Install those tools before using the associated playbooks.
 
+Selected workflows, playbooks, and principles are adapted from [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). See [LICENSE.pstack](LICENSE.pstack) for the preserved MIT notice.
+
 ## Agents in Codex
 
 The Markdown definitions in `agents/` are not loaded as Codex custom agents. Install converted TOML files in a project's `.codex/agents/` directory with:

@@ -20,3 +20,7 @@ Start a new Codex task after installing so it loads the plugin. For a published 
 - `plugins/jimmy/skills/jimmy/playbooks` and `scripts` contain the workflow material.
 
 Jimmy was written for Claude Code. Some playbooks still refer to Claude Code tools, model roles, and commands such as `/loop`. Codex can discover the skills, but those steps need adaptation to the active host. The Claude prompt hook depends on `CLAUDE_PLUGIN_ROOT`.
+
+## Credit
+
+Selected workflows, playbooks, and principles are adapted from [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). The original work is MIT licensed. Its copyright and permission notice are preserved in [plugins/jimmy/LICENSE.pstack](plugins/jimmy/LICENSE.pstack).
