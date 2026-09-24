@@ -1,0 +1,20 @@
+{
+  "name": "jimmy-mode",
+  "interface": {
+    "displayName": "Jimmy Mode"
+  },
+  "plugins": [
+    {
+      "name": "jimmy-mode",
+      "source": {
+        "source": "local",
+        "path": "./plugins/jimmy-mode"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
