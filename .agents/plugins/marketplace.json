@@ -1,14 +1,14 @@
 {
-  "name": "jimmy-mode",
+  "name": "jimmy",
   "interface": {
-    "displayName": "Jimmy Mode"
+    "displayName": "Jimmy"
   },
   "plugins": [
     {
-      "name": "jimmy-mode",
+      "name": "jimmy",
       "source": {
         "source": "local",
-        "path": "./plugins/jimmy-mode"
+        "path": "./plugins/jimmy"
       },
       "policy": {
         "installation": "AVAILABLE",

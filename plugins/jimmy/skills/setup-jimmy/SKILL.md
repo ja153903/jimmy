@@ -5,7 +5,7 @@ description: Configure which role agent each jimmy role uses. Writes a config fi
 
 # Setup
 
-Write `~/.claude/jimmy-models.md`, a config file that sets the role agent used
+Write `~/.claude/jimmyls.md`, a config file that sets the role agent used
 for each role. The skills read it when present and fall back to their inline
 defaults when a line is absent, so this is an override layer, not a requirement.
 
@@ -32,7 +32,7 @@ session's model with no subagent model override.
 ### 2. Load current state
 
 The default role mapping is the file shape shown in step 4. If
-`~/.claude/jimmy-models.md` already exists, read it and treat its values as the
+`~/.claude/jimmyls.md` already exists, read it and treat its values as the
 current choices. Otherwise start from those defaults.
 
 ### 3. Map and confirm
@@ -54,7 +54,7 @@ role per arm.
 
 ### 4. Write the config
 
-Write `~/.claude/jimmy-models.md`, overwriting the whole file so re-runs stay
+Write `~/.claude/jimmyls.md`, overwriting the whole file so re-runs stay
 idempotent. Shape:
 
 ```

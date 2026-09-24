@@ -1,24 +1,24 @@
 ---
-name: jimmy-mode
-description: An agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /jimmy-mode or requests to work in this style.
+name: jimmy
+description: An agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /jimmy or requests to work in this style.
 disable-model-invocation: true
 hooks:
   UserPromptSubmit:
     - hooks:
         - type: command
-          command: "${CLAUDE_PLUGIN_ROOT}/skills/jimmy-mode/scripts/mode-reminder.sh"
+          command: "${CLAUDE_PLUGIN_ROOT}/skills/jimmy/scripts/mode-reminder.sh"
 ---
 
-# Jimmy mode
+# Jimmy
 
 ## Non-negotiables
 
 **Start every multi-step task with a todolist whose first item is to read the Principles section below in full.** The principles ground every trigger here. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means you skipped its leaf skill; it must trace to a real choice the leaf's rule drove.
 
-**Activate the mode.** Run `mkdir -p .claude && touch .claude/jimmy-mode.state`
+**Activate the mode.** Run `mkdir -p .claude && touch .claude/jimmy.state`
 once at the start. While that file exists, a reminder is re-injected on each
 turn so the mode survives across turns. Delete it when the user opts out or the
-Pause Safely playbook runs. Add `.claude/jimmy-mode.state` to the project's
+Pause Safely playbook runs. Add `.claude/jimmy.state` to the project's
 `.gitignore` if it is not already ignored.
 
 Remaining triggers:
@@ -93,7 +93,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Subagents
 
-**Use `subagent_type: "jimmy-agent"` for any subagent you spawn inside a playbook step** (code-writing delegates, ad-hoc helpers). `/jimmy-mode` and `jimmy-agent` route through the same wrapper. Routed workflow skills (`how`, `why`, `interrogate`, `reflect`, `swarm`) set their own `subagent_type` for diverse-model review; respect what the skill prescribes, don't override to `jimmy-agent`.
+**Use `subagent_type: "jimmy-agent"` for any subagent you spawn inside a playbook step** (code-writing delegates, ad-hoc helpers). `/jimmy` and `jimmy-agent` route through the same wrapper. Routed workflow skills (`how`, `why`, `interrogate`, `reflect`, `swarm`) set their own `subagent_type` for diverse-model review; respect what the skill prescribes, don't override to `jimmy-agent`.
 
 **Defaults for every `Agent` call.** Spawn in the background, file pointers not inlined context, explicit model per role (configurable via `/setup-jimmy`; defaults `jimmy:worker-fast` for code, `jimmy:worker-deep` for prose and judgment). Code delegates tier by difficulty. The hardest changes (cross-cutting design, gnarly concurrency, subtle algorithms) go to your strongest judgment model (`jimmy:worker-deep`) when the task needs judgment or the intent is vague, and to your strongest instruction-following model (`jimmy:worker-deep`) when the work is a precisely specified sequence of steps to execute to the letter; trivial mechanical edits go to your fast code model (`jimmy:worker-fast`). Per-role lines in the `/setup-jimmy` rule override these defaults and the model choices in the routed skills (`how`, `why`, `arena`, `swarm`, `architect`, `interrogate`, `reflect`); a role with no line keeps its default, and a role line of `inherit` runs that role on the parent chat model (omit Agent `model`).
 

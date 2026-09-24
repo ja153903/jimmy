@@ -1,0 +1,18 @@
+{
+  "name": "jimmy",
+  "version": "0.1.0",
+  "description": "Jimmy workflows, principles, and companion skills.",
+  "author": {
+    "name": "Jaime Abbariao"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Jimmy",
+    "shortDescription": "Deliberate workflows for coding agents.",
+    "longDescription": "Jimmy includes its playbooks, scripts, principles, and companion skills in one shareable package.",
+    "developerName": "Jaime Abbariao",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": ["Use jimmy for this task."]
+  }
+}

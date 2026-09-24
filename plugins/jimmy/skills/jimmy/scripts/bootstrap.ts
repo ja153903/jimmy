@@ -11,7 +11,7 @@ const commanderPackagePath = join(
 );
 const installKeyPath = join(
   nodeModulesDirectory,
-  ".jimmy-mode-tools-install-key"
+  ".jimmy-tools-install-key"
 );
 
 function currentInstallKey(): string {
