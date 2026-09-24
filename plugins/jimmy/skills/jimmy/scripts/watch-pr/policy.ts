@@ -50,7 +50,6 @@ async function mergeAssessment(
 // DEFAULT_REVIEW_BOTS: that list is matched as exact comment-author logins,
 // this one as substrings. Do not merge them.
 const AUTOMATION_TOKENS = [
-  "cursor",
   "claude",
   "security review",
   "pr review automation",

@@ -221,11 +221,11 @@ it("annotates review-bot threads with distinct review-pass counts", () => {
                 comments: {
                   nodes: [
                     {
-                      body: "CURSOR_AUTOMATION_ID: run-2 severity high",
+                      body: "RUN_ID: run-2 severity high",
                       createdAt: "now",
                       path: null,
                       line: null,
-                      author: { login: "cursor" },
+                      author: { login: "claude" },
                     },
                   ],
                 },
@@ -257,20 +257,20 @@ it("annotates review-bot threads with distinct review-pass counts", () => {
   expect(threads.map((thread) => thread.reviewBotPasses)).toEqual([3, 3]);
 });
 
-it("recognizes a configured review bot other than cursor", () => {
-  expect(isReviewBotComment({ authorLogin: "claude" }, ["claude", "cursor"])).toBe(
+it("recognizes a configured review bot from the configured list", () => {
+  expect(isReviewBotComment({ authorLogin: "claude" }, ["claude"])).toBe(
     true
   );
 });
 
 it("does not treat a human comment as bot review", () => {
-  expect(isReviewBotComment({ authorLogin: "someone" }, ["claude", "cursor"])).toBe(
+  expect(isReviewBotComment({ authorLogin: "someone" }, ["claude"])).toBe(
     false
   );
 });
 
 it("does not treat a login merely containing a bot name as a bot", () => {
-  expect(isReviewBotComment({ authorLogin: "cursorfan" }, ["cursor"])).toBe(
+  expect(isReviewBotComment({ authorLogin: "claudefan" }, ["claude"])).toBe(
     false
   );
 });
@@ -281,13 +281,13 @@ it("recognizes a GitHub App account posting under a [bot] suffix", () => {
   );
 });
 
-it("recognizes an automation marker under an unconfigured login", () => {
+it("does not trust a marker under an unconfigured login", () => {
   expect(
     isReviewBotComment(
-      { authorLogin: "some-app", body: "CURSOR_AUTOMATION_ID: run-9" },
+      { authorLogin: "some-app", body: "RUN_ID: run-9" },
       ["claude"]
     )
-  ).toBe(true);
+  ).toBe(false);
 });
 
 it("threads a custom bot list through parseReviewThreads", () => {

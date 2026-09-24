@@ -1,0 +1,3 @@
+name = "jimmy-agent"
+description = "Jimmy workflow specialist. Use when a delegated task should follow the installed jimmy skill."
+developer_instructions = "Read the installed jimmy skill in full before doing any work, including its Principles section. Follow its applicable playbook and leaf principles.\n"

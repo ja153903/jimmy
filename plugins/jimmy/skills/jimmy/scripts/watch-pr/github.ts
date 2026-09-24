@@ -330,7 +330,7 @@ function parseComment(value: unknown): T.ReviewComment {
     createdAt: string(object.createdAt, "review comment.createdAt"),
   };
 }
-export const DEFAULT_REVIEW_BOTS = ["cursor", "claude"] as const;
+export const DEFAULT_REVIEW_BOTS = ["claude"] as const;
 export function isReviewBotComment(
   comment: {
     readonly authorLogin?: string | null;
@@ -340,25 +340,13 @@ export function isReviewBotComment(
 ): boolean {
   if (comment === null) return false;
   const login = (comment.authorLogin ?? "").toLowerCase();
-  // Either signal is sufficient: a known bot login, or the automation marker a
-  // review bot stamps into its comment body (which identifies a bot posting
-  // under a login this repo has not configured).
   return (
-    (login !== "" &&
-      bots.some((bot) => login === bot || login === `${bot}[bot]`)) ||
-    /CURSOR_AUTOMATION_ID:/i.test(comment.body ?? "")
+    login !== "" && bots.some((bot) => login === bot || login === `${bot}[bot]`)
   );
 }
 function passKey(comment: T.ReviewComment | null): string | null {
   if (comment === null) return null;
-  for (const pattern of [
-    /RUN_ID:\s*([a-zA-Z0-9_.:-]+)/,
-    /CURSOR_AUTOMATION_ID:\s*([a-zA-Z0-9_.:-]+)/,
-  ]) {
-    const match = pattern.exec(comment.body);
-    if (match?.[1]) return match[1];
-  }
-  return null;
+  return /RUN_ID:\s*([a-zA-Z0-9_.:-]+)/.exec(comment.body)?.[1] ?? null;
 }
 export function parseReviewThreads(
   value: unknown,

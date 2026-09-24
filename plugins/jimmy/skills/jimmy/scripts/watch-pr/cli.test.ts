@@ -49,7 +49,7 @@ describe("parseArgs", () => {
         timeout: 0,
         maxQueryErrors: 5,
         allowDraft: false,
-        reviewBots: ["cursor", "claude"],
+        reviewBots: ["claude"],
       },
     });
   });
@@ -81,7 +81,7 @@ describe("parseArgs", () => {
       timeout: 0,
       maxQueryErrors: 3,
       allowDraft: true,
-      reviewBots: ["cursor", "claude"],
+      reviewBots: ["claude"],
     });
     expect(parsed.pretty).toBe(true);
   });

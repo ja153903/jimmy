@@ -7,3 +7,13 @@ The package has manifests for Codex and Claude Code. Install this plugin through
 The original skill was written for Claude Code. Some playbooks still name Claude Code tools, model roles, and commands such as `/loop`. Codex can discover the skills through the Codex manifest, but those Claude-specific steps require adaptation to equivalent tools in the active environment. The prompt hook uses `CLAUDE_PLUGIN_ROOT` and only runs in a host that supports the Claude hook frontmatter.
 
 The scripts under `skills/jimmy/scripts` include Bun and GitHub CLI based workflows. Install those tools before using the associated playbooks.
+
+## Agents in Codex
+
+The Markdown definitions in `agents/` are not loaded as Codex custom agents. Install converted TOML files in a project's `.codex/agents/` directory with:
+
+```sh
+python3 plugins/jimmy/scripts/install-codex-agents.py .codex/agents
+```
+
+For personal use across projects, pass `~/.codex/agents` as the destination. The script converts all nine roles, maps their model settings to Codex models, and marks review roles as read-only. Run it again after editing a Markdown source. Ask Codex to delegate a bounded task to a role by name, such as `worker-fast` or `critic-risk`.
