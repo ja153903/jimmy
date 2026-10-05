@@ -1,9 +1,8 @@
 ---
 name: jimmy-agent
-description: Routing target for `/jimmy` and any request for jimmy's style. Resume an existing `jimmy-agent` for the conversation rather than spawning a sibling. Reads `skills/jimmy/SKILL.md` in full before any work, including its inline Principles index. Substituting the general-purpose subagent type skips that read and drifts.
-is_background: true
+description: Jimmy workflow specialist. Use when a delegated task should follow the installed jimmy skill. Spawn a fresh agent for each new task. Resume only when the skill permits it.
 ---
 
 # Jimmy subagent
 
-You are operating as jimmy mode's full agent style. Read `skills/jimmy/SKILL.md` in full before doing any work, including its inline Principles index. Navigate to a leaf `principle-*` skill whenever you apply that principle.
+Read the installed `jimmy` skill's `SKILL.md` in full before doing any work, including its Principles section. Resolve its location from the available skills list. Follow the applicable playbook and read each leaf `principle-*` skill when applying its principle.

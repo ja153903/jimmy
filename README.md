@@ -1,6 +1,6 @@
 # Jimmy
 
-Jimmy packages agent workflows for implementation, review, writing, and verification. This repository contains a Codex marketplace with one installable plugin.
+Jimmy ports pstack's engineering workflows to Codex. This repository contains a Codex marketplace with one installable plugin.
 
 ## Install in Codex
 
@@ -16,10 +16,18 @@ Start a new Codex task after installing so it loads the plugin. For a published 
 ## Contents
 
 - `plugins/jimmy/skills` contains Jimmy and its companion skills.
-- `plugins/jimmy/agents` contains Claude Code agent definitions.
+- `plugins/jimmy/agents` contains role definitions and an installer for Codex custom agents.
 - `plugins/jimmy/skills/jimmy/playbooks` and `scripts` contain the workflow material.
 
-Jimmy was written for Claude Code. Some playbooks still refer to Claude Code tools, model roles, and commands such as `/loop`. Codex can discover the skills, but those steps need adaptation to the active host. The Claude prompt hook depends on `CLAUDE_PLUGIN_ROOT`.
+The port covers all 50 skills in pstack 0.15.9, pinned to commit `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`, plus 14 Jimmy-specific skills. Existing skills, playbooks, references, and supporting scripts are included. Codex tools replace the upstream host's agent calls, model rules, transcript paths, and recurring audit commands. See the [runtime adapter](plugins/jimmy/skills/jimmy/references/codex-runtime.md).
+
+The [upstream inventory](plugins/jimmy/pstack-upstream.json) records the source and reviewed port hashes. Check resource coverage, frontmatter, links, and drift with:
+
+```sh
+python3 plugins/jimmy/scripts/check-pstack-parity.py
+```
+
+Pass `--source /path/to/pstack` to also compare an extracted upstream snapshot. Hash checks detect changes since review; they do not prove workflow behavior. See the [plugin README](plugins/jimmy/README.md) for tool and agent setup.
 
 ## Credit
 

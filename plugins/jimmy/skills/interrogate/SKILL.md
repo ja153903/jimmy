@@ -1,12 +1,11 @@
 ---
 name: interrogate
 description: "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles."
-disable-model-invocation: true
 ---
 
 # Interrogate
 
-Spawn one reviewer per configured model to adversarially review code changes. Each model gets the same prompt and rubric. The adversarial signal comes from model diversity, not assigned personas. Models differ in blind spots, priors, and reasoning patterns. Agreement across models is high-confidence signal; lone-model findings are worth reading but lower confidence.
+Spawn independent reviewers to adversarially review code changes. Every reviewer gets the same intent and rubric. Preserve distinct correctness, operational risk, design, and mechanical lenses. Use configured model diversity when available.
 
 The deliverable is a synthesized verdict. Do NOT auto-apply changes.
 
@@ -22,32 +21,29 @@ Package the diff (or file contents) plus any surrounding context files the revie
 
 ## Step 2, State the Intent
 
-Before spawning reviewers, state the intent explicitly. What is this code trying to accomplish? Derive this from:
+Before spawning reviewers, state the intent explicitly. Derive this from:
 
 - The user's message
 - Commit messages
 - PR description if one exists
 - The code itself
 
-Write one clear paragraph. Reviewers challenge whether the work achieves the intent well, not whether the intent itself is correct. If you're unsure about the intent, ask the user before proceeding.
+Write one clear paragraph. If you're unsure about the intent, ask the user before proceeding.
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message using the Agent tool. Use the `interrogate reviewers` list from `~/.claude/jimmyls.md` when present, one reviewer per entry, extending or shrinking the Reviewer A/B/C/D labels below to the configured entry count; otherwise use the table defaults.
+Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
 
-| Subagent | Default role agent |
-|----------|--------------------|
-| Reviewer A | `jimmy:critic-risk` |
-| Reviewer B | `jimmy:critic-deep` |
-| Reviewer C | `jimmy:critic-broad` |
-| Reviewer D | `jimmy:critic-fast` |
+Use the `interrogate reviewers` configuration line, one seat per entry. The default panel uses these `agent_type` roles:
 
-For each reviewer:
-- `subagent_type`: the configured `interrogate reviewers` entry, or the table default
+| Role | Lens |
+|---|---|
+| `critic-risk` | Operational failure, retries, rollback |
+| `critic-deep` | Correctness and invariants |
+| `critic-broad` | Design and blast radius |
+| `critic-fast` | Mechanical issues and missing tests |
 
-Each role agent carries its own model, effort level, and review lens. The filled
-prompt template goes to all reviewers, so every lens is applied to the same
-evidence.
+Launch with `collaboration.spawn_agent` within the available concurrency limit. Reviewers must not edit files. A configured model override uses a compatible configurable agent as described in the runtime reference. If an entry is rejected, retry that seat once using its default role and report the fallback.
 
 Read `references/reviewer-prompt.md` and fill in the template with:
 1. The stated intent
@@ -56,8 +52,6 @@ Read `references/reviewer-prompt.md` and fill in the template with:
 4. The code-quality lens from `references/code-quality-review.md`
 
 The same filled template goes to all reviewers, so every model applies the code-quality lens.
-
-Each reviewer produces structured findings as described in the prompt template.
 
 ## Step 4, Synthesize
 
@@ -73,7 +67,7 @@ As results come back, build a unified picture:
 
 You are the lead reviewer, a pragmatic senior engineer, not a neutral aggregator.
 
-Read `references/lead-judgment.md` for the full framework. Reviewers only see a slice of the codebase. You have the full context (the goal, the constraints, the timeline, which tradeoffs were already considered). Use that context aggressively.
+Read `references/lead-judgment.md` for the full framework.
 
 Categorize every finding using these buckets:
 
@@ -107,7 +101,7 @@ Present the verdict in this structure:
 [Valid but low-priority. Brief list.]
 
 ### Dismissed
-[Rejected findings with brief rationale. This shows the user what was filtered out and why, so they can override your judgment if they disagree.]
+[Rejected findings with brief rationale.]
 
 ### Agreement Map
 [Where did models agree, where did they diverge, and what does the pattern of agreement/disagreement tell us?]
