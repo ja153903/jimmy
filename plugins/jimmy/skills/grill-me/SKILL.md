@@ -1,8 +1,7 @@
 ---
 name: grill-me
-description: A relentless interview to sharpen a plan or design.
-disable-model-invocation: true
+description: Start an explicit design interview that sharpens a plan one decision at a time.
 ---
 
-Run a `/grilling` session.
+Read [grilling](../grilling/SKILL.md) and run that interview for the user's plan or design.
 

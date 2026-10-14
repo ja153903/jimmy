@@ -15,6 +15,7 @@ PLUGIN = Path(__file__).resolve().parents[1]
 MANIFEST = PLUGIN / "pstack-upstream.json"
 RENAMES = {
     "poteto-mode": "jimmy",
+    "poteto-help": "jimmy-help",
     "setup-pstack": "setup-jimmy",
     "bugbot-triage.md": "review-bot-triage.md",
     "poteto-agent.md": "jimmy-agent.md",
@@ -55,18 +56,14 @@ def record(source, version, commit):
         })
     if not files:
         raise ValueError(f"No upstream skill resources in {source}")
+    adaptations = json.loads(MANIFEST.read_text())["adaptations"]
     manifest = {
         "repository": "https://github.com/cursor/plugins",
         "path": "pstack",
         "version": version,
         "commit": commit,
         "scope": "All upstream skills, supporting resources, and agent definitions; Jimmy-only skills and roles are preserved.",
-        "adaptations": [
-            "Jimmy names, Codex role agents, and capability-aware runtime tools.",
-            "Codex preferences, chat history, and hourly thread heartbeats.",
-            "Generic configurable review bots and existing Jimmy tooling improvements.",
-            "Portable benchmark commands and corrected behavioral-test examples.",
-        ],
+        "adaptations": adaptations,
         "files": files,
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n")
@@ -116,12 +113,19 @@ def check(source):
     return bool(problems)
 
 
+def local_skills():
+    manifest = json.loads(MANIFEST.read_text())
+    shared = {Path(item["jimmy"]).parent.name for item in manifest["files"] if Path(item["jimmy"]).name == "SKILL.md"}
+    return sorted(path.parent.name for path in (PLUGIN / "skills").glob("*/SKILL.md") if path.parent.name not in shared)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, help="Extracted pstack directory for upstream coverage and hash checks")
     parser.add_argument("--record", action="store_true", help="Record reviewed files after inspecting the port")
     parser.add_argument("--version")
     parser.add_argument("--commit")
+    parser.add_argument("--list-local-skills", action="store_true", help="List skills absent from the pinned upstream inventory")
     args = parser.parse_args()
     if args.record:
         if not args.source or not args.version or not args.commit:
@@ -129,6 +133,9 @@ def main():
         if not re.fullmatch(r"[0-9a-f]{40}", args.commit):
             parser.error("--commit must be a full Git commit hash")
         record(args.source, args.version, args.commit)
+    if args.list_local_skills:
+        print("\n".join(local_skills()))
+        return 0
     return check(args.source)
 
 

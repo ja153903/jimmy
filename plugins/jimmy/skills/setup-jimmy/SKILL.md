@@ -89,11 +89,11 @@ reflect tooling: critic-fast
 reflect judgment: critic-deep
 reflect divergent: critic-broad
 reflect synthesizer: judge
-arena runners: worker-deep, worker-fast, worker-deep, worker-fast
+arena runners: worker-deep, worker-fast
 arena cross-judge pool: judge, critic-deep
 swarm workers: worker-fast
 architect runners: critic-deep, critic-broad
-interrogate reviewers: critic-risk, critic-deep, critic-broad, critic-fast
+interrogate reviewers: critic-deep, critic-fast
 ```
 
 Replace the budget line with the selected budget and actual target, for example `# budget: medium (high)`. Read back the written file and check all entries. A missing preference file leaves workflow defaults in effect.

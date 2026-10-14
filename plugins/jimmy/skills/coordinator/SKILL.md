@@ -1,7 +1,6 @@
 ---
 name: coordinator
 description: Orchestrate multiple worktree agents. Spawn, monitor, communicate, and merge.
-disable-model-invocation: true
 ---
 
 # Worktree Agent Coordinator
@@ -10,7 +9,7 @@ You are a coordinator agent. You orchestrate multiple worktree agents using
 `workmux` CLI commands. You do NOT implement tasks yourself. You spawn agents,
 monitor them, send instructions, and trigger merges.
 
-Use this optional workflow only when an observed `workmux` installation is configured to launch Codex. Otherwise coordinate through the available Codex subagent and worktree tools per the [runtime adapter](../jimmy/references/codex-runtime.md). Do not launch a different coding agent by assuming a CLI default. Messaging a separate app chat requires the user's authorization.
+Use this optional workflow only when `workmux` and `codex` are installed, the effective pane layout launches `<agent>` or `codex`, and `workmux add --dry-run -a codex <branch>` shows the intended worktree. A dry run alone does not prove that an agent pane will launch; workmux opens a shell by default in projects without agent configuration. Pass `-a codex` on each launch when the pane uses `<agent>`. Confirm status tracking before relying on `workmux wait`. Otherwise coordinate through the available Codex subagent and worktree tools per the [runtime adapter](../jimmy/references/codex-runtime.md). Do not target agents in another project unless the user included that project in the task.
 
 ## Core Concepts
 
@@ -32,7 +31,7 @@ Use this optional workflow only when an observed `workmux` installation is confi
 ### Spawn Agents
 
 For each task, write a prompt file then run `workmux add`. You are a dispatcher.
-Do NOT read source files, edit code, or implement tasks yourself.
+Read source files to frame tasks and review results. Do not edit code or implement delegated tasks yourself.
 
 **Prompt file rules:**
 
@@ -60,8 +59,8 @@ Write API tests...
 EOF
 
 # Step 2: Spawn all agents (in parallel, after ALL files exist)
-workmux add auth-module -b -P "$tmpfile_a"
-workmux add api-tests -b -P "$tmpfile_b"
+workmux add auth-module -a codex -b -P "$tmpfile_a"
+workmux add api-tests -a codex -b -P "$tmpfile_b"
 ```
 
 Flags:
@@ -120,7 +119,7 @@ Output is ANSI-stripped plain text.
 workmux send agent-a "fix the failing tests"
 
 # Send a skill command
-workmux send agent-a "/commit"
+workmux send agent-a "Commit your verified changes and report the commit SHA."
 
 # Send from file (for long prompts)
 workmux send agent-a -f followup.md
@@ -128,7 +127,7 @@ workmux send agent-a -f followup.md
 # Send to an agent in another project (global fallback)
 workmux send other-worktree "run the tests"
 
-# Disambiguate with project:handle when names collide
+# Only when the task includes that project, disambiguate with project:handle
 workmux send myproject:docs-update "also add the API reference"
 ```
 
@@ -147,20 +146,17 @@ workmux run agent-a -b -- npm run build
 # With timeout (seconds)
 workmux run agent-a --timeout 300 -- make test
 
-# Keep run artifacts for debugging
-workmux run agent-a --keep -- ./scripts/deploy.sh
 ```
 
 The command runs in a new split pane. Exit code is propagated (exits 124 on timeout).
 
 ### Merge & Cleanup
 
-Tell the agent to merge its own branch via `/merge`. This lets the agent handle
-rebasing and conflict resolution.
+After reviewing the agent's diff and verification, ask it to commit any final changes. Resolve each branch's intended local merge target from its saved base. Merge branches one at a time from the coordinator with `--into <observed-target>`; workmux otherwise defaults to its configured main branch. Stop and resolve a failed rebase or verification check before moving to the next branch.
 
 ```bash
-# Tell agent to commit, rebase, and merge
-workmux send agent-a "/merge"
+# Set AGENT_TARGET to this branch's observed local merge target first
+workmux merge --rebase --into "$AGENT_TARGET" agent-a
 
 # Remove a worktree without merging
 workmux remove agent-a
@@ -171,6 +167,7 @@ workmux remove agent-a
 Agent commands (`send`, `capture`, `status`, `wait`, `run`) automatically
 resolve handles across projects. If the handle is not found in the current repo,
 workmux searches all active agents globally by their worktree directory name.
+Use cross-project targeting only when the user included that project in the task.
 
 ```bash
 # Target an agent in another project (resolved globally)
@@ -192,12 +189,12 @@ Spawn multiple agents, wait for all, review, merge:
 ```bash
 # 1. Write ALL prompt files first (see "Spawn Agents" above)
 # 2. Spawn agents in background
-workmux add auth-module -b -P "$tmpfile_auth"
-workmux add api-tests -b -P "$tmpfile_tests"
-workmux add docs-update -b -P "$tmpfile_docs"
+workmux add auth-module -a codex -b -P "$tmpfile_auth"
+workmux add api-tests -a codex -b -P "$tmpfile_tests"
+workmux add docs-update -a codex -b -P "$tmpfile_docs"
 
-# 3. Confirm they started
-workmux wait auth-module api-tests docs-update --status working --timeout 120
+# 3. Confirm each launch in the status table; an agent may already be done
+workmux status
 
 # 4. Wait for completion
 workmux wait auth-module api-tests docs-update --timeout 7200
@@ -207,16 +204,16 @@ workmux status
 workmux capture auth-module -n 50
 workmux capture api-tests -n 50
 
-# 6. Merge successful agents (one at a time, wait between each)
-workmux send auth-module "/merge"
-workmux wait auth-module --timeout 120
-workmux send api-tests "/merge"
-workmux wait api-tests --timeout 120
+# 6. Set AUTH_TARGET, API_TARGET, and DOCS_TARGET to observed local targets, then merge one at a time
+workmux merge --rebase --into "$AUTH_TARGET" auth-module
+workmux merge --rebase --into "$API_TARGET" api-tests
 
 # 7. Send follow-up if needed
 workmux send docs-update "also add the API reference section"
 workmux wait docs-update
-workmux send docs-update "/merge"
+workmux send docs-update "Commit your verified changes and report the commit SHA."
+workmux wait docs-update
+workmux merge --rebase --into "$DOCS_TARGET" docs-update
 ```
 
 ## Rules
@@ -225,11 +222,9 @@ workmux send docs-update "/merge"
    self-contained with full context. Agents cannot see your conversation.
 2. **Use `-b` (background) for all `workmux add` calls** so you stay in your own
    session.
-3. **Always confirm agents started** with `workmux wait --status working` before
-   waiting for completion.
+3. **Confirm agents launched** with `workmux status`. An agent may finish before a wait for `working` begins.
 4. **Capture and review output** before merging. Do not blindly merge.
-5. **Merge one at a time** by sending `/merge` to each agent sequentially. Wait
-   for each merge to complete before starting the next to avoid conflicts.
+5. **Merge one at a time** from the coordinator after reviewing the committed branch. Resolve any conflict or failed check before starting the next merge.
 6. **Use `--timeout`** to avoid waiting forever. Handle timeout exits
    gracefully.
 7. **Prompt files should use relative paths** (each worktree has its own root).

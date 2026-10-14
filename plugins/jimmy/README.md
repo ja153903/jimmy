@@ -4,11 +4,11 @@ Jimmy is a set of agent workflows for deliberate implementation, concise writing
 
 The package has manifests for Codex and Claude Code. Install this plugin through the marketplace at the repository root. Invoke `jimmy` to activate the workflow.
 
-The shared workflows track pstack 0.15.9 at commit `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`. All 50 upstream skills and their supporting resources have counterparts, and Jimmy retains its 14 additional skills. The [Codex runtime adapter](skills/jimmy/references/codex-runtime.md) maps upstream agents, model preferences, chat history, control skills, and scheduled audits to the tools available in the current session.
+The shared workflows track pstack 0.15.23 at commit `837067b75aa20ab58d7b2a2f6c0531e37118c596`. All 53 upstream skills and their supporting resources have counterparts, and Jimmy retains its 14 additional skills. The [Codex runtime adapter](skills/jimmy/references/codex-runtime.md) maps upstream agents, model preferences, chat history, control skills, and scheduled audits to the tools available in the current session.
 
 The scripts under `skills/jimmy/scripts` use Bun, GitHub CLI, and Git. Install their dependencies with `bun install --frozen-lockfile` from that directory. The orchestration store's frontier command also requires Graphite. The PR watcher supports GitHub base-branch stacks without Graphite.
 
-New upstream skills include `correct`, `benchmark-checklist`, and `principle-explain-the-number`. The port also includes `principle-attack-the-premise` and `principle-test-behavior-not-implementation`, which were absent from the earlier import.
+New upstream helpers include `in-your-own-words`, `ketchup`, and `jimmy-help`, the Codex port of `poteto-help`. The update also includes simpler workflow instructions and fixes to PR watching, plan checks, and worktree merge-base selection. The [Jimmy-only skill audit](audits/jimmy-only-skills.md) records the purpose, overlap, and repairs for the 14 local additions.
 
 Selected workflows, playbooks, and principles are adapted from [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). See [LICENSE.pstack](LICENSE.pstack) for the preserved MIT notice.
 
@@ -33,3 +33,13 @@ python3 scripts/check-pstack-parity.py --record --source /path/to/pstack --versi
 ```
 
 Recording hashes does not prove semantic parity or authenticate the supplied commit. Obtain the source from that commit, review the upstream diff and Codex adaptations, then run the affected tools before recording a new snapshot.
+
+Preview an update against the pinned baseline without changing the plugin:
+
+```sh
+python3 scripts/merge-pstack.py --base /path/to/pinned/pstack --source /path/to/latest/pstack --output /tmp/jimmy-merge-preview
+```
+
+The output directory must be new. The preview maps renamed paths and reports conflicts and upstream removals. Review the merged files before copying them into the plugin. New files still need Codex adaptations.
+
+List the skills outside the pinned upstream inventory with `python3 scripts/check-pstack-parity.py --list-local-skills`. Run the merge tool's behavior checks with `python3 scripts/test-merge-pstack.py`.

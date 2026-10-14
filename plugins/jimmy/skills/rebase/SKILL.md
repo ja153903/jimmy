@@ -1,48 +1,19 @@
 ---
 name: rebase
-description: Rebase the current branch with smart conflict resolution.
-disable-model-invocation: true
-allowed-tools: Read, Bash, Glob, Grep
+description: Rebase the current branch onto its saved workmux base, a named local branch, or an explicitly requested remote branch.
 ---
 
-<!-- Customize conflict resolution strategy to match your preferences. -->
+# Rebase the current branch
 
-Rebase the current branch.
+Read the requested target from the user's invocation text.
 
-Arguments: $ARGUMENTS
+- With no target, use the current workmux worktree's saved base through `workmux rebase` when available. Otherwise inspect `branch.<current>.workmux-base` and the repository's local default branch. Do not assume the default branch is named `main`; stop if no target can be resolved.
+- With a local branch name, rebase onto that branch without fetching.
+- With a remote name alone, such as `origin`, fetch that remote and resolve its default branch from its HEAD. Do not assume `origin/main`.
+- With `remote/branch`, fetch that remote and rebase onto the named remote-tracking branch.
 
-Behavior:
+Check `git status` before starting. Preserve uncommitted work by resolving it before the rebase. Do not silently discard or stash it.
 
-- No arguments: rebase on the current branch's workmux base branch
-  (`git config branch.<current>.workmux-base`), falling back to local main when
-  none is configured
-- "origin": fetch origin, rebase on origin/main
-- "origin/branch": fetch origin, rebase on origin/branch
-- "branch": rebase on local branch (use "main" to force a rebase on local main)
+For a workmux default-base rebase, run `workmux rebase`. For other targets, run `git fetch <remote>` only when the request names a remote, then `git rebase <resolved-target>`.
 
-Steps:
-
-1. Parse arguments:
-   - No args → target is the current branch's workmux base branch
-     (`git config --get branch.$(git branch --show-current).workmux-base`); if
-     that is empty, target is "main". No fetch.
-   - Contains "/" (e.g., "origin/develop") → split into remote and branch, fetch
-     remote, target is remote/branch
-   - Just "origin" → fetch origin, target is "origin/main"
-   - Anything else → target is that branch name, no fetch
-2. If fetching, run: `git fetch <remote>`
-3. Run: `git rebase <target>`
-4. If conflicts occur, handle them carefully (see below)
-5. Continue until rebase is complete
-
-Handling conflicts:
-
-- BEFORE resolving any conflict, understand what changes were made to each
-  conflicting file in the target branch
-- For each conflicting file, run `git log -p -n 3 <target> -- <file>` to see
-  recent changes to that file in the target branch
-- The goal is to preserve BOTH the changes from the target branch AND our
-  branch's changes
-- After resolving each conflict, stage the file and continue with
-  `git rebase --continue`
-- If a conflict is too complex or unclear, ask for guidance before proceeding
+If conflicts occur, inspect the target's recent changes to each conflicting file with `git log -p -n 3 <target> -- <file>`. Resolve the intended behavior from both branches, stage the file, and run `git rebase --continue` until complete. Verify the resulting branch diff against the target.

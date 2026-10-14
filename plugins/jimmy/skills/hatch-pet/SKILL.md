@@ -232,7 +232,9 @@ Never use the time target to skip blind direction QA, labeled semantics, continu
 1. Prepare a pet run folder and imagegen job manifest:
 
 ```bash
-SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills/hatch-pet"
+HATCH_PET_SKILL_PATH="<absolute path of the hatch-pet/SKILL.md loaded for this task>"
+SKILL_DIR="$(dirname "$HATCH_PET_SKILL_PATH")"
+test -f "$SKILL_DIR/scripts/prepare_pet_run.py"
 "$PYTHON" "$SKILL_DIR/scripts/prepare_pet_run.py" \
   --pet-name "<Name>" \
   --description "<one sentence>" \

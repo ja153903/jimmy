@@ -1,13 +1,13 @@
 ---
 name: creating-course-lectures
-description: Use when creating a new lecture or educational content that fits into an existing course or content collection — before asking the user any questions.
+description: Create a lecture in an existing course or content collection. Read its stub and neighboring lessons before asking about unresolved scope.
 ---
 
 # Creating Course Lectures
 
 ## Overview
 
-Explore the surrounding content first to answer as many design decisions as possible from the code, then grill on what's left. Writing starts only after full consensus.
+Explore the surrounding content first to answer as many design decisions as possible from the course. Ask only about consequential choices the course and request leave open. If none remain, write the lecture.
 
 ## Workflow
 
@@ -72,7 +72,7 @@ Follow the patterns established by adjacent lectures exactly:
 
 ## Practice Problems Phase
 
-After writing the lecture body and exercises, append a `## Practice Problems` section at the very end with 2–4 relevant LeetCode problems.
+After writing the lecture body and exercises, append a `## Practice Problems` section at the very end with 2–4 relevant LeetCode problems, unless the user or existing course uses another practice format. Verify each problem title, URL, and difficulty before including it.
 
 **Format:**
 ```markdown

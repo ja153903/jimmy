@@ -4,7 +4,7 @@ import process from "node:process";
 
 const RULE =
 	"Tests alone are not sufficient verification. A PR is verified only when its unit, live, and perf boxes are all checked.";
-const LANES = "Ten lanes on `worker-fast` at the PR head";
+const LANES = /Ten lanes on `[^`<>]+` at the PR head/;
 const SUB_BLOCKS = [
 	"Depends on.",
 	"Files.",
@@ -44,13 +44,33 @@ if (raw[0] === "---") {
 }
 
 const lines = [];
-let fence = false;
+let fence = null;
+const openingFence = (text) => {
+	const match = text.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+	if (!match || (match[1][0] === "`" && match[2].includes("`"))) return null;
+	return { char: match[1][0], length: match[1].length };
+};
+const closingFence = (text, opening) => {
+	const match = text.match(/^ {0,3}(`+|~+)[ \t]*$/);
+	return Boolean(
+		match &&
+		match[1][0] === opening.char &&
+		match[1].length >= opening.length,
+	);
+};
 for (let i = start; i < raw.length; i++) {
 	const text = raw[i];
 	const n = i + 1;
-	if (/^```/.test(text)) fence = !fence;
-	lines.push({ n, text, code: fence });
-	if (fence) continue;
+	let code = Boolean(fence);
+	if (fence && closingFence(text, fence)) {
+		code = false;
+		fence = null;
+	} else if (!fence) {
+		fence = openingFence(text);
+		code = Boolean(fence);
+	}
+	lines.push({ n, text, code });
+	if (code) continue;
 	const prose = text
 		.replace(/`[^`]*`/g, "`")
 		.replace(/!\[[^\]]*\]\([^)]*\)/g, "")
@@ -136,7 +156,7 @@ for (const pr of prSections) {
 
 	const live = block("Verify, live.");
 	if (live) {
-		if (!live.rest.includes(LANES)) fail(live.n, `${pr.title}: Verify, live lacks "${LANES}"`);
+		if (!LANES.test(live.rest)) fail(live.n, `${pr.title}: Verify, live lacks ten lanes on a resolved worker at the PR head`);
 		const lanes = boxes(live.lines).map((b) => ({ ...b, m: b.text.match(/^Lane (\d+)\. /) }));
 		const numbers = lanes.filter((b) => b.m).map((b) => Number(b.m[1])).sort((a, b) => a - b);
 		if (numbers.join(",") !== "1,2,3,4,5,6,7,8,9,10") fail(live.n, `${pr.title}: lanes are [${numbers.join(",")}], expected 1 to 10`);

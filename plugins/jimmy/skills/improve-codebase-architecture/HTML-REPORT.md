@@ -1,6 +1,6 @@
 # HTML Report Format
 
-The architectural review is rendered as a single self-contained HTML file in the OS temp directory. Tailwind and Mermaid both come from CDNs. Mermaid handles graph-shaped diagrams reliably; hand-built divs and inline SVG handle the more editorial visuals (mass diagrams, cross-sections). Mix the two — don't lean on Mermaid for everything, it'll start to look generic.
+The architectural review is rendered as one HTML file in the OS temp directory. Tailwind and Mermaid load from CDNs, so their styling and diagrams require network access. Include enough plain HTML and local CSS for the findings to remain readable offline. Mermaid handles graph-shaped diagrams; hand-built divs and inline SVG handle mass diagrams and cross-sections.
 
 ## Scaffold
 
@@ -39,7 +39,7 @@ Repo name, date, and a compact legend: solid box = module, dashed line = seam, r
 
 ## Candidate card
 
-The diagrams carry the weight. Prose is sparse, plain, and uses the glossary terms (from the `/codebase-design` skill) without ceremony.
+The diagrams carry the weight. Prose is sparse, plain, and uses the glossary terms from [codebase-design](../codebase-design/SKILL.md) without ceremony.
 
 Each candidate is one `<article>`:
 
@@ -97,7 +97,7 @@ Before: a tree of function calls rendered as nested boxes. After: the same tree 
 - Colour sparingly: one accent (emerald or indigo) plus red for leakage and amber for warnings.
 - Keep diagrams ~320px tall so before/after sits comfortably side by side without scrolling.
 - Use `text-xs uppercase tracking-wider` for module labels inside diagrams — they should read as schematic, not as UI.
-- The only scripts are the Tailwind CDN and the Mermaid ESM import. The report is otherwise static — no app code, no interactivity beyond Mermaid's own rendering.
+- The only scripts are the Tailwind CDN and the Mermaid ESM import. The report is otherwise static.
 
 ## Top recommendation section
 
@@ -105,7 +105,7 @@ One larger card. Candidate name, one sentence on why, anchor link to its card. T
 
 ## Tone
 
-Plain English, concise — but the architectural nouns and verbs come straight from the `/codebase-design` skill. Concision is not an excuse to drift.
+Plain English, concise. Use the architectural nouns and verbs from [codebase-design](../codebase-design/SKILL.md).
 
 **Use exactly:** module, interface, implementation, depth, deep, shallow, seam, adapter, leverage, locality.
 
@@ -120,4 +120,4 @@ Plain English, concise — but the architectural nouns and verbs come straight f
 
 **Wins bullets** name the gain in glossary terms: *"locality: bugs concentrate in one module"*, *"leverage: one interface, N call sites"*, *"interface shrinks; implementation absorbs the wrappers"*. Don't write *"easier to maintain"* or *"cleaner code"* — those terms aren't in the glossary and don't earn their place.
 
-No hedging, no throat-clearing, no "it's worth noting that…". If a sentence could be a bullet, make it a bullet. If a bullet could be cut, cut it. If a term isn't in the `/codebase-design` glossary, reach for one that is before inventing a new one.
+No hedging or throat-clearing. If a sentence could be a bullet, make it a bullet. If a bullet could be cut, cut it. Prefer a relevant [codebase-design](../codebase-design/SKILL.md) term before inventing a new one.

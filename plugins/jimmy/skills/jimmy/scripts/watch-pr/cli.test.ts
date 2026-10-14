@@ -1,7 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { type CliRuntime, main, parseArgs } from "./cli.ts";
 import { fakeReader, passingCheck } from "./fakes.test-helper.ts";
-import { parseReviewThreads } from "./github.ts";
 import { renderJson, renderPretty } from "./render.ts";
 import type { GitHubReader, WatcherVerdict } from "./types.ts";
 import { parsePrNumber } from "./types.ts";
@@ -167,42 +166,24 @@ describe("main", () => {
   });
 
   it("passes --review-bots through to the review-thread detector", async () => {
-    const seen: (readonly string[] | undefined)[] = [];
     const base = fakeReader();
     const reader: GitHubReader = {
       ...base,
-      async reviewThreads(_context, bots) {
-        seen.push(bots);
-        return parseReviewThreads(
-          {
-            data: {
-              repository: {
-                pullRequest: {
-                  reviewThreads: {
-                    nodes: [
-                      {
-                        id: "one",
-                        isResolved: false,
-                        comments: {
-                          nodes: [
-                            {
-                              body: "found a bug",
-                              createdAt: "now",
-                              path: null,
-                              line: null,
-                              author: { login: "hubot" },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
+      async reviewThreadPage() {
+        return {
+          threads: [{
+            id: "one",
+            resolved: false,
+            firstComment: {
+              body: "found a bug",
+              createdAt: "now",
+              path: null,
+              line: null,
+              authorLogin: "hubot",
             },
-          },
-          bots
-        );
+          }],
+          endCursor: null,
+        };
       },
     };
     const harness = testRuntime(reader);
@@ -220,7 +201,6 @@ describe("main", () => {
       ],
       harness.runtime
     );
-    expect(seen).toEqual([["hubot"]]);
     expect(harness.stdout[0]).toContain('"isReviewBot":true');
   });
 

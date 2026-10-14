@@ -9,30 +9,24 @@ Explore the codebase to answer "how does X work?" questions. Produce architectur
 
 Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
 
-## Step 1. Assess Complexity
+## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): the lead explores and explains directly. Go to Step 2b.
-- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first, then synthesize their findings in the lead. Go to Step 2a.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): explore and explain directly. Go to Step 4.
+- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first. Go to Step 2.
 
 When in doubt, take the simple path.
 
-## Step 2a. Explore (complex questions only)
+## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Launch explorers within the available concurrency limit:
+Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Fill in `references/explorer-prompt.md` for each angle. Launch explorers within the available concurrency limit:
 
 - Tool: `collaboration.spawn_agent`.
 - Configuration role: `how explorer`, default `agent_type: "worker-fast"`.
 - The prompt forbids writes.
 
-Each explorer gets the prompt in `references/explorer-prompt.md` with its angle filled in. Then go to Step 3.
-
-## Step 2b. Direct Explain (simple questions)
-
-Explore and explain directly without spawning an agent. Follow the output structure in `references/explainer-prompt.md`. Keep the investigation read-only. Go to Step 4.
-
-## Step 3. Synthesize (complex questions only)
+## 3. Synthesize (complex questions only)
 
 Once all explorers have returned, synthesize their findings in the lead. Use `references/explainer-prompt.md` as the output guide. Delegate synthesis only when the findings need substantial reconciliation or an independent explanation is requested:
 
@@ -42,11 +36,11 @@ Once all explorers have returned, synthesize their findings in the lead. Use `re
 
 If delegating, build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
 
-## Step 4. Present
+## 4. Present
 
 Present the explanation to the user. If synthesis was delegated, check its evidence and edit for clarity or context.
 
-## Output Format
+## Output format
 
 The explanation uses the sections defined in `references/explainer-prompt.md`, dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.
 

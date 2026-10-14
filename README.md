@@ -19,7 +19,7 @@ Start a new Codex task after installing so it loads the plugin. For a published 
 - `plugins/jimmy/agents` contains role definitions and an installer for Codex custom agents.
 - `plugins/jimmy/skills/jimmy/playbooks` and `scripts` contain the workflow material.
 
-The port covers all 50 skills in pstack 0.15.9, pinned to commit `e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a`, plus 14 Jimmy-specific skills. Existing skills, playbooks, references, and supporting scripts are included. Codex tools replace the upstream host's agent calls, model rules, transcript paths, and recurring audit commands. See the [runtime adapter](plugins/jimmy/skills/jimmy/references/codex-runtime.md).
+The port covers all 53 skills in pstack 0.15.23, pinned to commit `837067b75aa20ab58d7b2a2f6c0531e37118c596`, plus 14 Jimmy-specific skills. Existing skills, playbooks, references, and supporting scripts are included. Codex tools replace the upstream host's agent calls, model rules, transcript paths, and recurring audit commands. See the [runtime adapter](plugins/jimmy/skills/jimmy/references/codex-runtime.md).
 
 The [upstream inventory](plugins/jimmy/pstack-upstream.json) records the source and reviewed port hashes. Check resource coverage, frontmatter, links, and drift with:
 

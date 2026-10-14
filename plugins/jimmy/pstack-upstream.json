@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/cursor/plugins",
   "path": "pstack",
-  "version": "0.15.9",
-  "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+  "version": "0.15.23",
+  "commit": "837067b75aa20ab58d7b2a2f6c0531e37118c596",
   "scope": "All upstream skills, supporting resources, and agent definitions; Jimmy-only skills and roles are preserved.",
   "adaptations": [
     "Jimmy names, Codex role agents, and capability-aware runtime tools.",
@@ -15,20 +15,20 @@
     {
       "upstream": "agents/comment-sicko.md",
       "jimmy": "agents/comment-sicko.md",
-      "upstream_sha256": "c0fd0383008da45fc78cfac17b9007d62c42f87ad1c8d5c2fb658b1fd01f7c82",
-      "jimmy_sha256": "c0fd0383008da45fc78cfac17b9007d62c42f87ad1c8d5c2fb658b1fd01f7c82"
+      "upstream_sha256": "3e239e40b7b4b9beb2cf7f3ccc57f2388eb8b69bd1ba8ae888ef87ef6e0e2116",
+      "jimmy_sha256": "3e239e40b7b4b9beb2cf7f3ccc57f2388eb8b69bd1ba8ae888ef87ef6e0e2116"
     },
     {
       "upstream": "agents/poteto-agent.md",
       "jimmy": "agents/jimmy-agent.md",
-      "upstream_sha256": "abe41c169ecbfe65641f1725f4188d568e046c0dec7fd2dc271abb594c299201",
+      "upstream_sha256": "979f18abd000d185a0b4c41a2a4111c0910596a7f5c81cbb571885bc721b2bf7",
       "jimmy_sha256": "abf9dc2c6ff0ac46b2de604a758ac3a82739c4994c2d59727018462a3852b114"
     },
     {
       "upstream": "skills/architect/SKILL.md",
       "jimmy": "skills/architect/SKILL.md",
-      "upstream_sha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
-      "jimmy_sha256": "faf1434a84011891c09c31015c31ecaaa9ffb92cbe75f321ace94c85949479d5"
+      "upstream_sha256": "31f8e97a52bfa5432edd61f68ade2a8632ef0bacbc2d2a6802d7a0e6821944ac",
+      "jimmy_sha256": "250ae46ab9870cf1ee01adbe877655f33c2cac1590d19a4101667e9bcae98be0"
     },
     {
       "upstream": "skills/architect/references/design-red-flags.md",
@@ -45,14 +45,14 @@
     {
       "upstream": "skills/architect/references/runner-prompt.md",
       "jimmy": "skills/architect/references/runner-prompt.md",
-      "upstream_sha256": "983bf2820cc14ed8ecab6e448e1033e5cfe6031967d0a9287b48c7fa9c33d925",
+      "upstream_sha256": "21dd5314aab778c5007228027a4591d97693fbec6ab86524037772b63f40948e",
       "jimmy_sha256": "45c8db5808e97a96b749147d099d960d64be68900a296d16c878d63931eb9e35"
     },
     {
       "upstream": "skills/arena/SKILL.md",
       "jimmy": "skills/arena/SKILL.md",
-      "upstream_sha256": "e3a1f6c49a08b7e0b92134e53300d146f1f22ba83386d2019926e736df421851",
-      "jimmy_sha256": "5518ffd5da4212d4c45d7c6ca13fa482f6165ea66b170dec2581ed2f1ed3fe7a"
+      "upstream_sha256": "f15524f216c1c63804b89edb4ff8e53bb21a7b8ed367368dedeb9468eeec6a92",
+      "jimmy_sha256": "7226c441953793c7c60e3ddd34e3c1e50c688b0f5af9107f44da5588965d7254"
     },
     {
       "upstream": "skills/automate-me/SKILL.md",
@@ -63,14 +63,14 @@
     {
       "upstream": "skills/benchmark-checklist/SKILL.md",
       "jimmy": "skills/benchmark-checklist/SKILL.md",
-      "upstream_sha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8",
-      "jimmy_sha256": "8509d370a944001fee1e7b1000dee150a3b45b95a0542bfb819588e4f240627e"
+      "upstream_sha256": "ba109e96c8f6c1c391baccf19e5d11e14370df7b3f2605e1572cd565a6c0fca0",
+      "jimmy_sha256": "b9fb074b319ef8cb4c69306507589d7dd9f84a1457d0c5424262b0423fed4b57"
     },
     {
       "upstream": "skills/blast-radius/SKILL.md",
       "jimmy": "skills/blast-radius/SKILL.md",
-      "upstream_sha256": "5f02db9101ccf26c20254718f0fcd5c2c7ac5d4292b0e0923d0944ac47237aff",
-      "jimmy_sha256": "4dc94701157e43ddb754b859cc086e5cbd15367b3b36f78b0614b05ce12e12bd"
+      "upstream_sha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
+      "jimmy_sha256": "4571dedc097942cd485df2c99a175dda4c908a09d72a5d1daf7551e05c1544d1"
     },
     {
       "upstream": "skills/bro/SKILL.md",
@@ -87,8 +87,8 @@
     {
       "upstream": "skills/create-verification-skill/SKILL.md",
       "jimmy": "skills/create-verification-skill/SKILL.md",
-      "upstream_sha256": "644f2551403c1bca01a2855b34611b6e7be0ce0dc5b204514c376c0f6a6e6ac4",
-      "jimmy_sha256": "5eceaf277590add9787c168509c135f014b53e36468f684b3f81802e1bdc8760"
+      "upstream_sha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
+      "jimmy_sha256": "01df6a47e39ec8ea1efcf00efdd69c5b853e0128029abefc359d456cbae37676"
     },
     {
       "upstream": "skills/create-verification-skill/references/feature-map-example/README.md",
@@ -111,14 +111,14 @@
     {
       "upstream": "skills/figure-it-out/SKILL.md",
       "jimmy": "skills/figure-it-out/SKILL.md",
-      "upstream_sha256": "0eb9485f0e7d84fee56b5d0f0af0faf4635e3ca87c8cba3970c01293b76ecc19",
-      "jimmy_sha256": "53d6e7af32f0b2076a7eb5aec38527b74b858a47b83df0ccec3616f47d595caa"
+      "upstream_sha256": "d9574cc24929773d5c23f40626ae1e09660afddd7de48e08dd6494d9fff9bbf0",
+      "jimmy_sha256": "6a25d50eb5c011cc68de522de77e10c71814a409877c2c6f4dad5101954fbe48"
     },
     {
       "upstream": "skills/how/SKILL.md",
       "jimmy": "skills/how/SKILL.md",
-      "upstream_sha256": "d31805589c7f6a63a6db6c9fadebbd79fb9660682cf1654e9b2e5e1e7cd30bc0",
-      "jimmy_sha256": "107a10495b100a7598ffad18c4fedb1716c1eb9b07b6f8d5bbbd5d1d4fcf49bc"
+      "upstream_sha256": "47cfe3e6fe55c49c3bdf8ad1b645dcd5fece8f0c36fd22d2e7221f9faa71f648",
+      "jimmy_sha256": "68bc0cddf9d743cf8f49cdc833d64049a76258ebc7d644768381c38a409fa6cf"
     },
     {
       "upstream": "skills/how/references/explainer-prompt.md",
@@ -129,14 +129,20 @@
     {
       "upstream": "skills/how/references/explorer-prompt.md",
       "jimmy": "skills/how/references/explorer-prompt.md",
-      "upstream_sha256": "a3b44a6e5bb16a6d4d1cac19db8ed5322ffd5f5f5d45baca4e73990ca096f8be",
-      "jimmy_sha256": "6ac60afc93f385a13fb43d8bb45e3547e3201f2f52c37958d927e9059e9abdd7"
+      "upstream_sha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
+      "jimmy_sha256": "1bee57fb6a0412286ae5fb4534e151f58188a5d354272d3a3e9618cd50fb1721"
+    },
+    {
+      "upstream": "skills/in-your-own-words/SKILL.md",
+      "jimmy": "skills/in-your-own-words/SKILL.md",
+      "upstream_sha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad",
+      "jimmy_sha256": "4575dd2ff6e62a0c3a8eb23bbb0520e48d3ac550c1d869b12a9aceef5c98c3cd"
     },
     {
       "upstream": "skills/interrogate/SKILL.md",
       "jimmy": "skills/interrogate/SKILL.md",
-      "upstream_sha256": "59d498c3e9848a24b2d105eb3f05b808aa4152adf4cb1de7bbb6aff4f4cd9b68",
-      "jimmy_sha256": "c9f1aa527d213240485baf2c1473c27f1fea425dc66ed1283663db8cb81ad756"
+      "upstream_sha256": "25341c393f515c1e1fa9bce668b7551e9f98c195113a460ff524d3c1f7f50cd9",
+      "jimmy_sha256": "11de460e8d439475d81b82961726e9cda11f9594be94373ac7a17970616ced1f"
     },
     {
       "upstream": "skills/interrogate/references/code-quality-review.md",
@@ -153,14 +159,20 @@
     {
       "upstream": "skills/interrogate/references/reviewer-prompt.md",
       "jimmy": "skills/interrogate/references/reviewer-prompt.md",
-      "upstream_sha256": "e0598e254792b56de39bb16b1e6db559b03a522fdc54b98f942d254090920ae6",
-      "jimmy_sha256": "e0598e254792b56de39bb16b1e6db559b03a522fdc54b98f942d254090920ae6"
+      "upstream_sha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+      "jimmy_sha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25"
     },
     {
       "upstream": "skills/interrogate/references/rubric.md",
       "jimmy": "skills/interrogate/references/rubric.md",
-      "upstream_sha256": "a85aa801abbaf14434f00579440abc0d8e2723227ba8bf57de7cca8d6e7d2f25",
-      "jimmy_sha256": "c91b73984f5026ad33191953c62410cc79b9d580c122b7aa942de1d95917ea68"
+      "upstream_sha256": "0f9c6bdb0b96e26dbde5f6407f417e0c02f54080e7a1268d8994f3c3ec6c5ac0",
+      "jimmy_sha256": "cc5d0eb3c31a44ee2b48571b85e62410dcbc001afe9cd9e25bb588aa47b89b27"
+    },
+    {
+      "upstream": "skills/ketchup/SKILL.md",
+      "jimmy": "skills/ketchup/SKILL.md",
+      "upstream_sha256": "d9704b154081af306b6583b2752498d454f9d761e9989ff1f037efd414f86bb4",
+      "jimmy_sha256": "883a8630d62121216c4d9c587d3c1db19a5d1da16ea886f0ccbda63c24089227"
     },
     {
       "upstream": "skills/maintain-verification-skill/SKILL.md",
@@ -177,14 +189,32 @@
     {
       "upstream": "skills/no-comments/SKILL.md",
       "jimmy": "skills/no-comments/SKILL.md",
-      "upstream_sha256": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05",
+      "upstream_sha256": "08b9c769040c104ef7fb1902ebac97047edbb89b58c7e113e53c918287b092e6",
       "jimmy_sha256": "d2a0b8075c8826f8e0d5eb4e67f4d58dbb3ca3d907e297abe1284c8074b5ea6e"
+    },
+    {
+      "upstream": "skills/poteto-help/SKILL.md",
+      "jimmy": "skills/jimmy-help/SKILL.md",
+      "upstream_sha256": "be47823adf42732c579156cf461d0d416f141f038aaa69d6e23fa4e25f2b8eb0",
+      "jimmy_sha256": "ebd5c88e6eeaa5c5a537bf9900366afa63bb424695e61925a2b4ed511d28a7b5"
+    },
+    {
+      "upstream": "skills/poteto-help/references/prompting.md",
+      "jimmy": "skills/jimmy-help/references/prompting.md",
+      "upstream_sha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+      "jimmy_sha256": "b974dab8dc296deb11324685afc26a780121cc13b5afc67e4fa9ec5af71393e1"
+    },
+    {
+      "upstream": "skills/poteto-help/references/recipes.md",
+      "jimmy": "skills/jimmy-help/references/recipes.md",
+      "upstream_sha256": "315b211b6cc6b19e3da7c4a1e8ddde2d8557588713d0b894509bd22821c709da",
+      "jimmy_sha256": "a45a084431aaa781eee93aa31e68344d3960b12331ef22e4195d3a6746e2140d"
     },
     {
       "upstream": "skills/poteto-mode/SKILL.md",
       "jimmy": "skills/jimmy/SKILL.md",
-      "upstream_sha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
-      "jimmy_sha256": "1fb0952300fc1c88d1e3e0eb0a075019b43cf843e00f63e343cde719992100e5"
+      "upstream_sha256": "be90e646b623c5d2494d57ec14b8079d47904a1ca9456c10a2100c1dd90f9982",
+      "jimmy_sha256": "722677b473faf7b59d4c753cfdf6649fcdb54c7e40d8b1cdbe8c9c90804d6109"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -213,8 +243,8 @@
     {
       "upstream": "skills/poteto-mode/playbooks/babysit.md",
       "jimmy": "skills/jimmy/playbooks/babysit.md",
-      "upstream_sha256": "a0346c37c2313f36a863b80f66ee7b98059c2242adf74fc7b3e48abdb9ec6f5a",
-      "jimmy_sha256": "7aa04102ddab7110345d576fa299bc5adafa81bec19941c6f0f5d8c885708070"
+      "upstream_sha256": "e261c1ff5581e0f8fc6c686f34de4b535f87473e77beabea7dd8323021214610",
+      "jimmy_sha256": "3901dbfdd7f78eec541a290a849dfeb418021f951653396fd414be9493586cef"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/bug-fix.md",
@@ -255,8 +285,8 @@
     {
       "upstream": "skills/poteto-mode/playbooks/opening-a-pr.md",
       "jimmy": "skills/jimmy/playbooks/opening-a-pr.md",
-      "upstream_sha256": "ab40de7163c1c6e274f46ee559b2e53ef45673703f601f13f4931c199e6fb90f",
-      "jimmy_sha256": "2e5d003b4e89dad71cfbbeeca3b4ddcc211271f87686a7e29e92d93b8518aff2"
+      "upstream_sha256": "931070f5674e81a191277253d4e02b1c45d091b223f93bf506d3896a428a5967",
+      "jimmy_sha256": "e87e97cd63f220e50719f7c112afe33cda7ddf371e351bded22289c2503d4c61"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/orchestrate.md",
@@ -309,8 +339,8 @@
     {
       "upstream": "skills/poteto-mode/playbooks/trace-forensics.md",
       "jimmy": "skills/jimmy/playbooks/trace-forensics.md",
-      "upstream_sha256": "137ce3984fb96e45971fdff4d3c79fa4ccc647c5b30ae4945783b9fb23f8cec7",
-      "jimmy_sha256": "137ce3984fb96e45971fdff4d3c79fa4ccc647c5b30ae4945783b9fb23f8cec7"
+      "upstream_sha256": "e8a671fd5511a894f90c933bca75815e7a1d730cb53333075a80b0927e81acfc",
+      "jimmy_sha256": "e8a671fd5511a894f90c933bca75815e7a1d730cb53333075a80b0927e81acfc"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/visual-parity.md",
@@ -321,8 +351,8 @@
     {
       "upstream": "skills/poteto-mode/playbooks/worktree-cleanup.md",
       "jimmy": "skills/jimmy/playbooks/worktree-cleanup.md",
-      "upstream_sha256": "fc464dc4121926df1704f483c5feca83717c0a40b4651d3e11bd3aedd89441b6",
-      "jimmy_sha256": "cb608fddc8289a2eef668672d7bb3ccf5cbfa81727f393c595c364a9b70fbeb7"
+      "upstream_sha256": "ffecceb6d2fa7e07ca5703c968f4b7c5947309ed695d51fc73a55c3da5906480",
+      "jimmy_sha256": "070ebd2213e56747868f15d89ca1620cc23718b72cedd47e35cc0e7079da69ca"
     },
     {
       "upstream": "skills/poteto-mode/references/bugbot-triage.md",
@@ -345,14 +375,20 @@
     {
       "upstream": "skills/poteto-mode/scripts/check-plan.mjs",
       "jimmy": "skills/jimmy/scripts/check-plan.mjs",
-      "upstream_sha256": "4f9432d9989880b6afc2bdda503d5b12a9d07d357ecf31936b7ab5e83bc80523",
-      "jimmy_sha256": "f3d56a11a4991fe8af45f96b6400a4d34c88f95e8a7000ae80f0ac7abe509de6"
+      "upstream_sha256": "e58c3d871b09d477be00628d69dd23ffa6c2e3a1728f5b867a841baa8e90278b",
+      "jimmy_sha256": "3a1d8fb0ffa3fcf667e376d065d0ca268a2d48b4f82e209b85a699d01ce2b7e1"
+    },
+    {
+      "upstream": "skills/poteto-mode/scripts/check-plan.test.ts",
+      "jimmy": "skills/jimmy/scripts/check-plan.test.ts",
+      "upstream_sha256": "c80f3ea043b81f219b92c4c8a3af6bdd4f8d32ea596ec15b5b9e0252645f2ae8",
+      "jimmy_sha256": "93e8f6135081669e5eda71644412409593bb96195c041daf78f483058b5befde"
     },
     {
       "upstream": "skills/poteto-mode/scripts/orch/orch.test.ts",
       "jimmy": "skills/jimmy/scripts/orch/orch.test.ts",
-      "upstream_sha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
-      "jimmy_sha256": "8aee983ecb617bf073d3931eee99e4fc959127bc5d7f12ef1a768e44ccdaa85a"
+      "upstream_sha256": "773153ac74de6eb15f58d2682f487f5f30672d7efe3ef1d24a131aa9129d279b",
+      "jimmy_sha256": "082c63b236ce3996fbbf71a8d9911d80673e91d34c47f9ef236d09405c1790fb"
     },
     {
       "upstream": "skills/poteto-mode/scripts/orch/orch.ts",
@@ -369,14 +405,14 @@
     {
       "upstream": "skills/poteto-mode/scripts/package.json",
       "jimmy": "skills/jimmy/scripts/package.json",
-      "upstream_sha256": "d1f815091209d49763775cc188e8e06ff32d5fec648bffd2272bc25a165e87c3",
-      "jimmy_sha256": "327f207dd2b6f151b5422562e304530306ec5ebcbe203165a87285d48fad261e"
+      "upstream_sha256": "fd511a0c01f522e0c781ddd8eccea0e91697a0856c6e6a3261de78a6a0287c72",
+      "jimmy_sha256": "7c5b603dcdc3a616196dc8f6dca857a7e92ef32657c2e031e501b2a131d70d0c"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/cli.test.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/cli.test.ts",
       "upstream_sha256": "a35592b4c6da96caf8d47987e9cd503fab6c7774ab87d11a43f24b4b5df2a9d1",
-      "jimmy_sha256": "87d1ad2031db98aafaeb797e15bcf28065dd46294f3b37d9ed9b3dcce78edb75"
+      "jimmy_sha256": "5af487943d2314f921965988b8f268e8aa0f07bae46d0f9fdc6d4cd2b651285f"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/cli.ts",
@@ -387,32 +423,32 @@
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/fakes.test-helper.ts",
-      "upstream_sha256": "e53e31b7f03068063f53a99a3591b052aaed66e4e2b196b3a364980f60324ab1",
-      "jimmy_sha256": "e53e31b7f03068063f53a99a3591b052aaed66e4e2b196b3a364980f60324ab1"
+      "upstream_sha256": "cf0c5ee61b4a73444c1b775cfb6c81a40d312e055dd21a1f5eae6276e54de13f",
+      "jimmy_sha256": "cf0c5ee61b4a73444c1b775cfb6c81a40d312e055dd21a1f5eae6276e54de13f"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/github.test.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/github.test.ts",
-      "upstream_sha256": "0cbce011050522938523e36bb42a260e92b812dcd2076930fa681672ad316b24",
-      "jimmy_sha256": "e1179fb654f171080ef04c1d3bbd0337f408c80a26deb74ca736b47f27d63ef2"
+      "upstream_sha256": "035f4a0f1ab5a17ebf94ad1f7c14d1abd948852be30987c0e9d107b5ea5028ab",
+      "jimmy_sha256": "2c8283e6b7966d8c477bc55c467b43ddc151b32c3bd6d0eafedfd592baeaaad5"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/github.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/github.ts",
-      "upstream_sha256": "d1bbbafbe8e2c703c84da2029de7f2c4011412512f8cf65a42100f46bcb92c8a",
-      "jimmy_sha256": "794d62fff328627925835ee28897b614e3271ce779b460015b24ecd2daf56014"
+      "upstream_sha256": "9ea8de77e019de19929fbe4a86bc88492ffbecd89d6816d9857ed49db904c151",
+      "jimmy_sha256": "0594037b5fbef3ee3d99ce5f5c85d6ce0ce66fc411e04858f67ebd8b674a2b16"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/policy.test.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/policy.test.ts",
-      "upstream_sha256": "a9fedb25feefd1f57ef6a662f80c99018690170a3a8070773a08eaf694d1d3d9",
-      "jimmy_sha256": "a9fedb25feefd1f57ef6a662f80c99018690170a3a8070773a08eaf694d1d3d9"
+      "upstream_sha256": "146acabcfee9b6fa3342358eb0a9504aa65fd081bbc15b10adf9c1c5485067d2",
+      "jimmy_sha256": "146acabcfee9b6fa3342358eb0a9504aa65fd081bbc15b10adf9c1c5485067d2"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/policy.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/policy.ts",
-      "upstream_sha256": "68d240505852cf23c9b2dea463342e9e61243f486b3cc86c735d140f9ee7be49",
-      "jimmy_sha256": "0571c898897510a02901b405a6fe26d6e2ff53817f5da497ed60db0aa2790843"
+      "upstream_sha256": "f2a3e31223d05edc05e5473cc3f8f3cb9bd20c202c30c6abe7f21f0f7aee8fbb",
+      "jimmy_sha256": "077f9897c799979a8260c420a274334b70584d8bb3cca2d2a88c9e9daeb695d5"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/render.ts",
@@ -435,8 +471,8 @@
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/types.ts",
       "jimmy": "skills/jimmy/scripts/watch-pr/types.ts",
-      "upstream_sha256": "64ba6221e3bfe61bbb292337d199cdec6309455477280efb060203dba34e0e91",
-      "jimmy_sha256": "cbbf330040b0b47086e76ad8bfeae0f3a6bf87e6b7e968f9a3e9c8a5665239dd"
+      "upstream_sha256": "0cac435294dc85ce1ba755e8e67f6c5ab163dfa252f2722d6e3a2d68c58fec59",
+      "jimmy_sha256": "b3912bd8124c261e3221a46084ff989f87bca57fc4849d8c5720f5e97f6b938a"
     },
     {
       "upstream": "skills/poteto-mode/scripts/watch-pr/watch-pr",
@@ -447,8 +483,8 @@
     {
       "upstream": "skills/poteto-mode/scripts/worktree-audit.sh",
       "jimmy": "skills/jimmy/scripts/worktree-audit.sh",
-      "upstream_sha256": "95b8530f3c0ccada8cabc4b0727c052fbc85c141531375aaace65c427af8aecc",
-      "jimmy_sha256": "afe12af3419b95aac99a1aa50709c4af751479dd613ea8d9c09c5c20745c929d"
+      "upstream_sha256": "9faa9a2534ad64069dec67ac5b5ce1dc23b8fe635ecfd7f6557b1e3ada61fd2f",
+      "jimmy_sha256": "e2f80d71f9f0b1fe8b80dd08c3c08872e4b95e7f46139f8e1364e21aaccb0ccc"
     },
     {
       "upstream": "skills/principle-attack-the-premise/SKILL.md",
@@ -465,20 +501,20 @@
     {
       "upstream": "skills/principle-build-the-lever/SKILL.md",
       "jimmy": "skills/principle-build-the-lever/SKILL.md",
-      "upstream_sha256": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56",
-      "jimmy_sha256": "cc5b0b5a97bbaec03de54ab39cd6cd1deba59e3231201580e7f6f122c87f6e47"
+      "upstream_sha256": "3434b0ad0c640c6f1d7960be7a8986c3bcdc14e26060360dec29903df60074ff",
+      "jimmy_sha256": "9928ef37403958538904f56ade34e7ceb656d913b6cfec05d23725f8366c0abe"
     },
     {
       "upstream": "skills/principle-encode-lessons-in-structure/SKILL.md",
       "jimmy": "skills/principle-encode-lessons-in-structure/SKILL.md",
-      "upstream_sha256": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863",
-      "jimmy_sha256": "e66d95bd954a1e8ba298bc451ba1e9190c758f6d77c240540bedf8f28c895694"
+      "upstream_sha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9",
+      "jimmy_sha256": "d10983ec0f3637b6e114ed25dc0f6720a40f302e2165223a17ee2372b46afc68"
     },
     {
       "upstream": "skills/principle-exhaust-the-design-space/SKILL.md",
       "jimmy": "skills/principle-exhaust-the-design-space/SKILL.md",
-      "upstream_sha256": "8583310d7297b7823d75494faa57b003564d436807febecdecbd8321abe5cf6e",
-      "jimmy_sha256": "67e7e29ab4f484bfddcac55ece4d70f6efc25ccbf91de7de31fcec385f9f059e"
+      "upstream_sha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db",
+      "jimmy_sha256": "d39814747a6770075e9e950094c1704104aa61b0c26fc2075feb2c8bade700e9"
     },
     {
       "upstream": "skills/principle-experience-first/SKILL.md",
@@ -489,14 +525,14 @@
     {
       "upstream": "skills/principle-explain-the-number/SKILL.md",
       "jimmy": "skills/principle-explain-the-number/SKILL.md",
-      "upstream_sha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
-      "jimmy_sha256": "0a5cb3579a30e4da9d1635f5ceb11f773e551ec8626ac9c38b5db3985d3ac26b"
+      "upstream_sha256": "cd5a25f9e7cf023627ccb470dc5faa97542f29b4319496a32b839a8e1e988047",
+      "jimmy_sha256": "8a52dd10d9e51f04ae63bf2a6a48a433c9810cab565225b3918afe86a9a50525"
     },
     {
       "upstream": "skills/principle-fix-root-causes/SKILL.md",
       "jimmy": "skills/principle-fix-root-causes/SKILL.md",
-      "upstream_sha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
-      "jimmy_sha256": "6b5787202ddac723c8b1d06c12934562c7b02ac9c672bfc33dbd2d9c96d32f18"
+      "upstream_sha256": "2131069d285d82fb799458494f2e4ac8759c9c6a60f9e300828c17874f514c6e",
+      "jimmy_sha256": "61033aca8cede035f0e02f720f43e3f8e2a883f43294ba6b3771d4d6d4679966"
     },
     {
       "upstream": "skills/principle-foundational-thinking/SKILL.md",
@@ -507,14 +543,14 @@
     {
       "upstream": "skills/principle-guard-the-context-window/SKILL.md",
       "jimmy": "skills/principle-guard-the-context-window/SKILL.md",
-      "upstream_sha256": "d2cef147862576e3d709b7afc149d85196245e8338b9c7eef337c95fba412b3e",
-      "jimmy_sha256": "7a0a9540d4c0e8053ace79628d0a493444a82d1bbe1d8e94c8e561606c3d2912"
+      "upstream_sha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a",
+      "jimmy_sha256": "478752e80498d65c173f52c95db65322bbc98fb31139e406e160e54a5a11aa2b"
     },
     {
       "upstream": "skills/principle-laziness-protocol/SKILL.md",
       "jimmy": "skills/principle-laziness-protocol/SKILL.md",
-      "upstream_sha256": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff",
-      "jimmy_sha256": "f45159ad7ea5f01a08d364897307f69ca18fa57b87d6ed6b89ca222a2388bf7d"
+      "upstream_sha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45",
+      "jimmy_sha256": "44ec0cc302105cff3da36e1d192aba697a5dffd6c42ec3bf37df447b8a960960"
     },
     {
       "upstream": "skills/principle-make-operations-idempotent/SKILL.md",
@@ -531,20 +567,20 @@
     {
       "upstream": "skills/principle-minimize-reader-load/SKILL.md",
       "jimmy": "skills/principle-minimize-reader-load/SKILL.md",
-      "upstream_sha256": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69",
-      "jimmy_sha256": "d44ded81ac7cfc194dca65c9943a55fe8a058660485049a6e607e6bdf5d70738"
+      "upstream_sha256": "1ea2b7fef2391cae5844c4efdbd59031f775e8a52d06b7495d707229a200dcca",
+      "jimmy_sha256": "5b566bf8092c348778f0cece7bd52d24a6c65696b0237123b91c6ff960f22bb6"
     },
     {
       "upstream": "skills/principle-model-the-domain/SKILL.md",
       "jimmy": "skills/principle-model-the-domain/SKILL.md",
-      "upstream_sha256": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07",
-      "jimmy_sha256": "b50a9ca53a9cd445b6804ff4eeb2904bba5e9d502a8e51c0ebd8cbe830c8be26"
+      "upstream_sha256": "52c0d85e0c3827c41c18299b642657d7b47eaf77b7b31609e42e0df42b84c75f",
+      "jimmy_sha256": "5f8b61dfdbfa904bd3d08ec6f456a29a1c1081b3858d404fb31cb24c01b3b8a2"
     },
     {
       "upstream": "skills/principle-never-block-on-the-human/SKILL.md",
       "jimmy": "skills/principle-never-block-on-the-human/SKILL.md",
-      "upstream_sha256": "f2764bb9338cbfc788c903cf4b9cd0a5f4042d3a04dd6d59cbd525d9beaadd0a",
-      "jimmy_sha256": "90cd48f4082367fe70fc1659fec5a8d0e76a40cb7f9be4797b4b460cec28a4dd"
+      "upstream_sha256": "05030a7a083c337676f793881b4e93cd218e8f1dd676529f56e6ac1d3efb8d1f",
+      "jimmy_sha256": "0e1598f72e991f8587606bef73d62bef87f59a2712a80f193ca2d12d7da5c4d0"
     },
     {
       "upstream": "skills/principle-outcome-oriented-execution/SKILL.md",
@@ -561,8 +597,8 @@
     {
       "upstream": "skills/principle-redesign-from-first-principles/SKILL.md",
       "jimmy": "skills/principle-redesign-from-first-principles/SKILL.md",
-      "upstream_sha256": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe",
-      "jimmy_sha256": "b3ac6bc1c707aa8ad1a331851ad71aeb48f179136907ab2015f34881c674d056"
+      "upstream_sha256": "170e0a658783e43fee8ec5a8c2422a4abb8f69cef621dd1819a95910b8207034",
+      "jimmy_sha256": "4bc84bab3dcda11115d4472915085d6939c6fb98ca10ff5defd2072c60e12d0e"
     },
     {
       "upstream": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
@@ -579,20 +615,20 @@
     {
       "upstream": "skills/principle-subtract-before-you-add/SKILL.md",
       "jimmy": "skills/principle-subtract-before-you-add/SKILL.md",
-      "upstream_sha256": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03",
-      "jimmy_sha256": "65fa4e1a2a630040eb0abbcfeaf0e82241fd968443021b535f94b4b6d4b7aa0f"
+      "upstream_sha256": "8c93bb9d1a7f38e2ef37655d93f0e790fa59903105af3d500cc8a663ebe45f3f",
+      "jimmy_sha256": "a273e3955fc39223088149d7a1a955b5d44e143fd1d9d4c8e4945353b8b81344"
     },
     {
       "upstream": "skills/principle-test-behavior-not-implementation/SKILL.md",
       "jimmy": "skills/principle-test-behavior-not-implementation/SKILL.md",
-      "upstream_sha256": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e",
+      "upstream_sha256": "b2b73ba42920f9c3174ecdf808ec6e4591b3a9266ada9a05814f386004266d3a",
       "jimmy_sha256": "96b3c6f135dadfb362c6083d9702185eec99d1f823d5c781505e098b533dd041"
     },
     {
       "upstream": "skills/principle-type-system-discipline/SKILL.md",
       "jimmy": "skills/principle-type-system-discipline/SKILL.md",
-      "upstream_sha256": "c83da8031ffb4c86410030d3e261f659598fca2b7d8158fd9dc269d70a3a025e",
-      "jimmy_sha256": "1fa13e29e277c87fbd25e87bc77145bfe539bef12e529fd20809f324e0d7a2d3"
+      "upstream_sha256": "2e492cef34bb25a20b9115df61f9ef3a9837e3fda144ffda8079e5f45a1b72e8",
+      "jimmy_sha256": "64e759d3194cda2277e58298ea4cc097ebb4e8a503818e6f5bfc4ccc5c15e784"
     },
     {
       "upstream": "skills/recall/SKILL.md",
@@ -603,38 +639,38 @@
     {
       "upstream": "skills/reflect/SKILL.md",
       "jimmy": "skills/reflect/SKILL.md",
-      "upstream_sha256": "36efa48cc4ec2ba6f8131651aae24c6321682b098ed47a1069a7509462bf4a84",
-      "jimmy_sha256": "3637a00b98d66f53731667b19b3759e472ed72879b6e2f996d0ed9cb3b97e355"
+      "upstream_sha256": "f5e9200f37e2a4567c0eeb0ba244fde66c1b3f35e3b7a883de2f85b3bda7365a",
+      "jimmy_sha256": "de569f951369d6ac621cefa5277bd8a9225f753a48572fb5499004530bb4f75a"
     },
     {
       "upstream": "skills/reflect/references/divergent-reviewer.md",
       "jimmy": "skills/reflect/references/divergent-reviewer.md",
-      "upstream_sha256": "221dfc0abf7cbcd25e1da3cd87323f5d1050fc3bf652e096d093584e183c98fb",
-      "jimmy_sha256": "2b95a4d8833b5b0555c708555f60c4ae646641f44c7bb1b36bd3f1fd4959a328"
+      "upstream_sha256": "f6030d88e20e906ef5e2d9ba44cb013ce610c49c2fe2ef74c377d32e0dc9e939",
+      "jimmy_sha256": "8e3329e8cf8cd402d2ec2f31556b237bed1755faeb91b998562a8c0b2ffc48bb"
     },
     {
       "upstream": "skills/reflect/references/judgment-reviewer.md",
       "jimmy": "skills/reflect/references/judgment-reviewer.md",
-      "upstream_sha256": "a40ecb9b28bd2a3491e11a541157fe58efe158e0eda7b61a5006c14590aabe61",
-      "jimmy_sha256": "816d743376326542147542d71f633a23ca15317f6720f1f0ae1a82c7cefc922f"
+      "upstream_sha256": "38f917619fbf346062d643e0ad6b12fc952d58678dfcbbf42ffcf6d8b9c08307",
+      "jimmy_sha256": "cb6964fa5343ff371bee2f3327fb3c5b05710e9211411491af1ae053dc021658"
     },
     {
       "upstream": "skills/reflect/references/synthesizer.md",
       "jimmy": "skills/reflect/references/synthesizer.md",
-      "upstream_sha256": "2f76c847eb45b182dc6fbcbf7d96c8ee7e2986ecfd9e0d640fec44e3cc5a617c",
-      "jimmy_sha256": "4446b42b39045639da1dd66a8da118c62062d8f6ade033e6a90d56d2089f6df6"
+      "upstream_sha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
+      "jimmy_sha256": "4d736c2019ef8d093a1418be80e38e805673726c66ffaaa6ce7959d341cc2227"
     },
     {
       "upstream": "skills/reflect/references/tooling-reviewer.md",
       "jimmy": "skills/reflect/references/tooling-reviewer.md",
-      "upstream_sha256": "bc49ced90fa81eaba3083b88aeb430d900a6d8f14ff40c1d6b52263bacfc77b6",
-      "jimmy_sha256": "c4a1ff95962a6637e00d849d7caea343e85889056f9fc35af7f8ae9f105dd9d7"
+      "upstream_sha256": "f81b8697e7366fbbc18feba52c6e3253a101f751091364ebc4396a1d9b5753b4",
+      "jimmy_sha256": "c5cdaa7b0708ae7d931dbbe8e9b255b2a19b5feeb4246ca425a81f53eddc7ffc"
     },
     {
       "upstream": "skills/setup-pstack/SKILL.md",
       "jimmy": "skills/setup-jimmy/SKILL.md",
-      "upstream_sha256": "125dd0c8f588782cfb271efae8f97a0719e43e79f56b3495c095f460bcee6389",
-      "jimmy_sha256": "8516de93bf4e6e4db5243cc999cf763e7c3165ebe4f2efe33459b12011f26a65"
+      "upstream_sha256": "d61b47256a18155a81c8e5ef95e3cc6569ce8c18317c35c4dd9c8015cf68cb59",
+      "jimmy_sha256": "127dbce1b8b22d725b57eb9729117d7f38e38b95de2407add15e56a383f09b96"
     },
     {
       "upstream": "skills/show-me-your-work/SKILL.md",
@@ -675,8 +711,8 @@
     {
       "upstream": "skills/technical-writing/SKILL.md",
       "jimmy": "skills/technical-writing/SKILL.md",
-      "upstream_sha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
-      "jimmy_sha256": "b83d616480d74381acdc5accb65a409c01095b71abc7dc02b6cadc496138dc81"
+      "upstream_sha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43",
+      "jimmy_sha256": "7a6c08c90548d13b80e74b06115aeeb03847dbef758cefc1eeca70ba9c0db50b"
     },
     {
       "upstream": "skills/typescript-best-practices/SKILL.md",
@@ -693,26 +729,26 @@
     {
       "upstream": "skills/unslop/SKILL.md",
       "jimmy": "skills/unslop/SKILL.md",
-      "upstream_sha256": "195411d320b5b328f9f642baf59757ed19aaf0931c0838740e0aca273d538dc1",
-      "jimmy_sha256": "290a10a90e52f080fdf0f225f043088990b5cd8d8b8307c800a91cfeb1568aa4"
+      "upstream_sha256": "ccab208e315ce05e2fab8eeee2f7879f1289b5c6844840b2d307adf31c79144f",
+      "jimmy_sha256": "996d82059bc84ea8cc22ad3306918240d52fed6e92b65efdea1c1789b233ca78"
     },
     {
       "upstream": "skills/why/SKILL.md",
       "jimmy": "skills/why/SKILL.md",
-      "upstream_sha256": "2a852ec8680920109d2b56538b027c52867896a597250ac5d18a13e0b42e5b06",
-      "jimmy_sha256": "2b1ab21a01f65747c4390a6841a76be02e04a163bfcccc91071d8516bb36c165"
+      "upstream_sha256": "fa1d1e9dec14b15381c1ccccad74044d6b6ea3b4af56821f59ba2d8e59b07545",
+      "jimmy_sha256": "605e6344c63991f914f6820d66b198f6b6f8525095fbed4bab122290787635a7"
     },
     {
       "upstream": "skills/why/references/epistemics.md",
       "jimmy": "skills/why/references/epistemics.md",
-      "upstream_sha256": "fcc0f559c072832c869a5ada72434b4849320a637ae63c09e8ee14f7ad787059",
-      "jimmy_sha256": "fcc0f559c072832c869a5ada72434b4849320a637ae63c09e8ee14f7ad787059"
+      "upstream_sha256": "d54a2361b2d5973bc3fe2edf62f446d87935974d4b40d47f23b9529f956ca758",
+      "jimmy_sha256": "d54a2361b2d5973bc3fe2edf62f446d87935974d4b40d47f23b9529f956ca758"
     },
     {
       "upstream": "skills/why/references/investigator-prompt.md",
       "jimmy": "skills/why/references/investigator-prompt.md",
-      "upstream_sha256": "6892956a7ab0b5ee6c4babaf4f793703abe89b350ea7cb9463b4a56eea1c8266",
-      "jimmy_sha256": "6892956a7ab0b5ee6c4babaf4f793703abe89b350ea7cb9463b4a56eea1c8266"
+      "upstream_sha256": "c44afba186f899094f3694e6c9d6de5d14ff7c4ce28b787a9f50fc789c9a7fc3",
+      "jimmy_sha256": "c44afba186f899094f3694e6c9d6de5d14ff7c4ce28b787a9f50fc789c9a7fc3"
     },
     {
       "upstream": "skills/why/references/source-playbook.md",
@@ -723,8 +759,8 @@
     {
       "upstream": "skills/why/references/sources/code-archaeology.md",
       "jimmy": "skills/why/references/sources/code-archaeology.md",
-      "upstream_sha256": "8c14aa382f0de40829b2668d43e3f54814480bb93a486c9282ada4003f6b9dbd",
-      "jimmy_sha256": "8c14aa382f0de40829b2668d43e3f54814480bb93a486c9282ada4003f6b9dbd"
+      "upstream_sha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7",
+      "jimmy_sha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7"
     },
     {
       "upstream": "skills/why/references/sources/databricks.md",
@@ -735,14 +771,14 @@
     {
       "upstream": "skills/why/references/sources/datadog.md",
       "jimmy": "skills/why/references/sources/datadog.md",
-      "upstream_sha256": "ebe9c07bac28e47757ee7f16fb93b0c01d427a08c501957d047f395a2f37b7e7",
-      "jimmy_sha256": "ebe9c07bac28e47757ee7f16fb93b0c01d427a08c501957d047f395a2f37b7e7"
+      "upstream_sha256": "b139faac5dc11b8f26c8255dce6033c1a6ac143b038d3dd103f2034c5dbec9cd",
+      "jimmy_sha256": "b139faac5dc11b8f26c8255dce6033c1a6ac143b038d3dd103f2034c5dbec9cd"
     },
     {
       "upstream": "skills/why/references/sources/incident-postmortem.md",
       "jimmy": "skills/why/references/sources/incident-postmortem.md",
-      "upstream_sha256": "a899470f05f86029630a13a2696491cc708ca7b56a6e822a69ff6e954d6ff8cf",
-      "jimmy_sha256": "a899470f05f86029630a13a2696491cc708ca7b56a6e822a69ff6e954d6ff8cf"
+      "upstream_sha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839",
+      "jimmy_sha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839"
     },
     {
       "upstream": "skills/why/references/sources/linear.md",
@@ -759,20 +795,20 @@
     {
       "upstream": "skills/why/references/sources/sentry.md",
       "jimmy": "skills/why/references/sources/sentry.md",
-      "upstream_sha256": "6f292bc4fb1548e956f95e1900b9481abf5134254419f1cd9edec95428c82d73",
-      "jimmy_sha256": "6f292bc4fb1548e956f95e1900b9481abf5134254419f1cd9edec95428c82d73"
+      "upstream_sha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702",
+      "jimmy_sha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702"
     },
     {
       "upstream": "skills/why/references/sources/slack.md",
       "jimmy": "skills/why/references/sources/slack.md",
-      "upstream_sha256": "58fee61d024b3700b407e7acbed367944720ff05adfddb6954d36c88368f3ba7",
-      "jimmy_sha256": "58fee61d024b3700b407e7acbed367944720ff05adfddb6954d36c88368f3ba7"
+      "upstream_sha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c",
+      "jimmy_sha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c"
     },
     {
       "upstream": "skills/why/references/synthesizer-prompt.md",
       "jimmy": "skills/why/references/synthesizer-prompt.md",
-      "upstream_sha256": "733a3e9cf897b1aca56aaddeae01a3832e4bfed024c2f602db2d1bf807d7a73b",
-      "jimmy_sha256": "733a3e9cf897b1aca56aaddeae01a3832e4bfed024c2f602db2d1bf807d7a73b"
+      "upstream_sha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb",
+      "jimmy_sha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb"
     }
   ]
 }
