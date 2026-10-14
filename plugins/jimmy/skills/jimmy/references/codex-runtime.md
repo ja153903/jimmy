@@ -1,6 +1,6 @@
 # Codex runtime
 
-Read this before a Jimmy workflow. It translates the shared engineering rules into the tools this Codex session actually exposes.
+Read this once per agent and workflow context. Nested skills reuse the read while runtime capabilities and configuration are unchanged. It translates the shared engineering rules into the tools this Codex session actually exposes.
 
 ## Installed paths and state
 
@@ -24,7 +24,7 @@ For program state, use a user-named directory or a task-specific project directo
 
 ## Role preferences and delegation
 
-Read `~/.codex/jimmy-models.md` explicitly on every workflow invocation. If `.codex/jimmy-models.md` exists in the project, each of its role lines takes precedence. For a missing project line, use the account line. Only a role missing from both files uses the skill's default. `inherit`, `inherit-parent`, or `auto` means use an available generic agent type without a pinned model and omit the model override. Preserve the requested role lens in the brief. Resolve configured model names against the runtime's available models. For an explicit model override, use an available generic agent type that accepts it and preserve the role lens in the brief. Fixed worker and critic types can pin their models. Do not pass an override to an immutable role or report it as inherited. Follow the runtime's `fork_turns` constraints when setting model or reasoning overrides. If no type can honor the preference, report that limitation. A budget line cannot override a fixed role's TOML reasoning effort. Changing that default requires an installed agent config and refreshed runtime tools that advertise the chosen effort. Pass a supported reasoning override only through an override-compatible generic type. Do not claim a configured model or effort ran when the runtime selected another.
+Read `~/.codex/jimmy-models.md` when resolving a workflow context. Reuse resolved preferences in nested skills for the same project and runtime. Refresh after an explicit configuration change, a project change, or a runtime change. A new agent reads the runtime reference once and receives the parent's resolved preferences in its brief. If `.codex/jimmy-models.md` exists in the project, each of its role lines takes precedence. For a missing project line, use the account line. Only a role missing from both files uses the skill's default. `inherit`, `inherit-parent`, or `auto` means use an available generic agent type without a pinned model and omit the model override. Preserve the requested role lens in the brief. Resolve configured model names against the runtime's available models. For an explicit model override, use an available generic agent type that accepts it and preserve the role lens in the brief. Fixed worker and critic types can pin their models. Do not pass an override to an immutable role or report it as inherited. Follow the runtime's `fork_turns` constraints when setting model or reasoning overrides. If no type can honor the preference, report that limitation. A budget line cannot override a fixed role's TOML reasoning effort. Changing that default requires an installed agent config and refreshed runtime tools that advertise the chosen effort. Pass a supported reasoning override only through an override-compatible generic type. Do not claim a configured model or effort ran when the runtime selected another.
 
 Use `collaboration.spawn_agent` for subagents. Pass supported `agent_type` values, such as `jimmy-agent`, `worker-fast`, `worker-deep`, `critic-risk`, `critic-deep`, `critic-broad`, `critic-fast`, `judge`, or `comment-sicko`. The actual tool parameter has no `jimmy:` prefix. Respect the routed skill's role and model policy, the available concurrency cap, and its authorization to delegate.
 
@@ -32,7 +32,7 @@ Spawn calls return while agents work. There is no `Task`, `Agent`, `run_in_backg
 
 Use `collaboration.wait_agent` for completion events and `collaboration.list_agents` for read-only status. Use `collaboration.send_message` for a hold, stop, or a state-dependent directive to a running agent. Use `collaboration.interrupt_agent` when a running agent must stop. These tools act on this task's subagents. Messaging a separate app task uses its own tool and needs the human's authorization.
 
-Fresh agents take new rounds with consolidated scope. Reuse is reserved for costly live state, as Jimmy's Subagents section specifies. A completion notification supplies a report, not proof. Inspect the artifacts. If delegation is unavailable or forbidden, own the scoped work directly and retain independent review where the available tools allow it.
+Use Jimmy's Subagents section to choose reuse for immediate implementation fixes or a fresh agent for new scope and independent review. Consolidate requirements and findings in every brief. A completion notification supplies a report, not proof. Inspect the artifacts. If delegation is unavailable or forbidden, own the scoped work directly and retain independent review where the available tools allow it.
 
 ## Watches and recurring audits
 

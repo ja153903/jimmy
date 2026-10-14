@@ -32,7 +32,7 @@ Write one clear paragraph. If you're unsure about the intent, ask the user befor
 
 ## Step 3, Spawn Reviewers
 
-Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
 
 Use the `interrogate reviewers` configuration line, one seat per entry. The default panel uses these `agent_type` roles:
 

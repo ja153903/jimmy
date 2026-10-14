@@ -8,7 +8,8 @@
     "Jimmy names, Codex role agents, and capability-aware runtime tools.",
     "Codex preferences, chat history, and hourly thread heartbeats.",
     "Generic configurable review bots and existing Jimmy tooling improvements.",
-    "Portable benchmark commands and corrected behavioral-test examples."
+    "Portable benchmark commands and corrected behavioral-test examples.",
+    "Risk-based design routing, reusable grounding and workflow context, and scoped agent and cleanup-check reuse."
   ],
   "files": [
     {
@@ -27,7 +28,7 @@
       "upstream": "skills/architect/SKILL.md",
       "jimmy": "skills/architect/SKILL.md",
       "upstream_sha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
-      "jimmy_sha256": "367a2c962b0eb893f0bf658a116198f69599aed412fc3177e728353e4303564e"
+      "jimmy_sha256": "faf1434a84011891c09c31015c31ecaaa9ffb92cbe75f321ace94c85949479d5"
     },
     {
       "upstream": "skills/architect/references/design-red-flags.md",
@@ -51,13 +52,13 @@
       "upstream": "skills/arena/SKILL.md",
       "jimmy": "skills/arena/SKILL.md",
       "upstream_sha256": "e3a1f6c49a08b7e0b92134e53300d146f1f22ba83386d2019926e736df421851",
-      "jimmy_sha256": "4a502ef82348b95282cd728695b04e7f6319b87d084081d82b1f256a6c455717"
+      "jimmy_sha256": "5518ffd5da4212d4c45d7c6ca13fa482f6165ea66b170dec2581ed2f1ed3fe7a"
     },
     {
       "upstream": "skills/automate-me/SKILL.md",
       "jimmy": "skills/automate-me/SKILL.md",
       "upstream_sha256": "1510979b0b71b54284427a19c09918f8b1fdfc168f9b7f9e30098793a5ec88ef",
-      "jimmy_sha256": "0e3326d6d48f4bb628fa031b54d4f38bf16f1cc8b67bde58f1fc0f6f7ba7b5ee"
+      "jimmy_sha256": "1f862db28a8095f8dd34c55f81cacedb85cbc4421f88b8aac21d4efbcfa248f4"
     },
     {
       "upstream": "skills/benchmark-checklist/SKILL.md",
@@ -117,7 +118,7 @@
       "upstream": "skills/how/SKILL.md",
       "jimmy": "skills/how/SKILL.md",
       "upstream_sha256": "d31805589c7f6a63a6db6c9fadebbd79fb9660682cf1654e9b2e5e1e7cd30bc0",
-      "jimmy_sha256": "0517947685816b48befec40a96e7037b0b1e47ad7e01b485585911ae5359db0c"
+      "jimmy_sha256": "107a10495b100a7598ffad18c4fedb1716c1eb9b07b6f8d5bbbd5d1d4fcf49bc"
     },
     {
       "upstream": "skills/how/references/explainer-prompt.md",
@@ -135,7 +136,7 @@
       "upstream": "skills/interrogate/SKILL.md",
       "jimmy": "skills/interrogate/SKILL.md",
       "upstream_sha256": "59d498c3e9848a24b2d105eb3f05b808aa4152adf4cb1de7bbb6aff4f4cd9b68",
-      "jimmy_sha256": "a1cdf85289ae64cbec9379cc8ac06b37c48d7cfd2be67e3b6c601a11ab80d0df"
+      "jimmy_sha256": "c9f1aa527d213240485baf2c1473c27f1fea425dc66ed1283663db8cb81ad756"
     },
     {
       "upstream": "skills/interrogate/references/code-quality-review.md",
@@ -177,13 +178,13 @@
       "upstream": "skills/no-comments/SKILL.md",
       "jimmy": "skills/no-comments/SKILL.md",
       "upstream_sha256": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05",
-      "jimmy_sha256": "1e69551a0e57b656d4b28c5bd6b878832b13ddf113aaac8dcad46dead4c39478"
+      "jimmy_sha256": "d2a0b8075c8826f8e0d5eb4e67f4d58dbb3ca3d907e297abe1284c8074b5ea6e"
     },
     {
       "upstream": "skills/poteto-mode/SKILL.md",
       "jimmy": "skills/jimmy/SKILL.md",
       "upstream_sha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
-      "jimmy_sha256": "4d86492d12937232906f079f9b42785d2c83feecb776347ff9fa7479895ca3b0"
+      "jimmy_sha256": "1fb0952300fc1c88d1e3e0eb0a075019b43cf843e00f63e343cde719992100e5"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -219,7 +220,7 @@
       "upstream": "skills/poteto-mode/playbooks/bug-fix.md",
       "jimmy": "skills/jimmy/playbooks/bug-fix.md",
       "upstream_sha256": "018bbc146ae19145caa6c7e70591fee081b64447dda1c1c4b681c9974d928b13",
-      "jimmy_sha256": "801c66cb796dc231fee9b003163105ac1ee057ec0e1cef4e7aa6962498190ee2"
+      "jimmy_sha256": "a77a588f675cd6ad2fffda0267105ca2cce86e611187363db3a23e636be38296"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/eval.md",
@@ -231,7 +232,7 @@
       "upstream": "skills/poteto-mode/playbooks/feature.md",
       "jimmy": "skills/jimmy/playbooks/feature.md",
       "upstream_sha256": "3a62cc4a8cbcf144bb9dd05f05420a15be0d38b784d3b141bb730a5852f50a62",
-      "jimmy_sha256": "7e4e8aa0c49970e014c2137e66078f75add9d5a6b21bc325d89c9be147422589"
+      "jimmy_sha256": "05bb315639bfc08d92dc0f5f8021f3cba07fd2aa948c5ef1a3b05a48268911c3"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/hillclimb.md",
@@ -273,7 +274,7 @@
       "upstream": "skills/poteto-mode/playbooks/perf-issue.md",
       "jimmy": "skills/jimmy/playbooks/perf-issue.md",
       "upstream_sha256": "2b88ad0f880e4d4d755ac19fe52414d6631d6baa816d060f53cf0a7429d7e14a",
-      "jimmy_sha256": "8f21422d6671b471f55d0bd0f7d26fbcaedd548319ee9ff9433281a3b7a6a811"
+      "jimmy_sha256": "c761efb9a5bad5cca7249831751066bb0b576f6abe1057f526e29f1dffc07ab4"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/prototype.md",
@@ -285,7 +286,7 @@
       "upstream": "skills/poteto-mode/playbooks/refactoring.md",
       "jimmy": "skills/jimmy/playbooks/refactoring.md",
       "upstream_sha256": "50f4f7d3d301551f8b8a57c3303c99958c5ca630ae0d0051823b6987c0eb5b96",
-      "jimmy_sha256": "67efef8f730ad8e07c819891493957eabe4821eaefb3f4508eb7f9c3cee43adf"
+      "jimmy_sha256": "a04332afef5b00ef6275a8d8af098fd5b34f5cc94b867cb1fff8e9d8c3f9ec02"
     },
     {
       "upstream": "skills/poteto-mode/playbooks/runtime-forensics.md",
@@ -597,13 +598,13 @@
       "upstream": "skills/recall/SKILL.md",
       "jimmy": "skills/recall/SKILL.md",
       "upstream_sha256": "d265b0e5b6dc5b89c0407f3387d24462c988e1990a37d5359735137908128c5a",
-      "jimmy_sha256": "547c31fd15fe68811999347d3eebf94a5eb40addf3893cb11e045efea736c51c"
+      "jimmy_sha256": "810d0c9c578e4b0c0c33dd3a68186480ad69d15f64b75c0b0eb77dc2d98c9d5b"
     },
     {
       "upstream": "skills/reflect/SKILL.md",
       "jimmy": "skills/reflect/SKILL.md",
       "upstream_sha256": "36efa48cc4ec2ba6f8131651aae24c6321682b098ed47a1069a7509462bf4a84",
-      "jimmy_sha256": "964c89892184b58b4669954f1a5aab2cbfc4e1ca18d5706e5eff7f5920ce685a"
+      "jimmy_sha256": "3637a00b98d66f53731667b19b3759e472ed72879b6e2f996d0ed9cb3b97e355"
     },
     {
       "upstream": "skills/reflect/references/divergent-reviewer.md",
@@ -633,13 +634,13 @@
       "upstream": "skills/setup-pstack/SKILL.md",
       "jimmy": "skills/setup-jimmy/SKILL.md",
       "upstream_sha256": "125dd0c8f588782cfb271efae8f97a0719e43e79f56b3495c095f460bcee6389",
-      "jimmy_sha256": "36d22958078110f7c80bedad2b43a7d7f89ecbd095a11d621c843cece235c314"
+      "jimmy_sha256": "8516de93bf4e6e4db5243cc999cf763e7c3165ebe4f2efe33459b12011f26a65"
     },
     {
       "upstream": "skills/show-me-your-work/SKILL.md",
       "jimmy": "skills/show-me-your-work/SKILL.md",
       "upstream_sha256": "bcff5f7f9fd23f92c12b251f9cd6b947e9485e1055cfacb6fdd9cae0789d7550",
-      "jimmy_sha256": "bc6c1a15c7c5412545e7d1713a3d082b5e541f221054ea2a77db9a76668ea8e2"
+      "jimmy_sha256": "401322728534780b211c627e131bc577b76a1947d5830afe6a66b6f2487b9722"
     },
     {
       "upstream": "skills/show-me-your-work/references/decision-log-template.tsv",
@@ -657,7 +658,7 @@
       "upstream": "skills/swarm/SKILL.md",
       "jimmy": "skills/swarm/SKILL.md",
       "upstream_sha256": "bdcee4168e22428036e93d7cdeec3f391dbc4132f927f6db2540328c22db0273",
-      "jimmy_sha256": "c36046c57d2b4246230e703e29d961825c32ba48bef04d48839c4f1dc175ecaf"
+      "jimmy_sha256": "42f7bd658bde2057b625e77d68a9722e8de61a81701742ce48e49cc875e14900"
     },
     {
       "upstream": "skills/tdd/SKILL.md",
@@ -699,7 +700,7 @@
       "upstream": "skills/why/SKILL.md",
       "jimmy": "skills/why/SKILL.md",
       "upstream_sha256": "2a852ec8680920109d2b56538b027c52867896a597250ac5d18a13e0b42e5b06",
-      "jimmy_sha256": "eb14628d0aea44f055d63a5c0a6ed74443f1d8e09b2fb73caab8552a88480d98"
+      "jimmy_sha256": "2b1ab21a01f65747c4390a6841a76be02e04a163bfcccc91071d8516bb36c165"
     },
     {
       "upstream": "skills/why/references/epistemics.md",

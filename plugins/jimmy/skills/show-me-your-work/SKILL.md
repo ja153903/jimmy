@@ -63,7 +63,7 @@ Correct the log, not the story. The audit never edits or removes a row, even an 
 
 ## Cross-model review of the trail
 
-Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) and the project and user model configuration on each invocation. Before handing back, spawn an independent `judge` with `collaboration.spawn_agent` and a read-only prompt. Use a different configured available model when possible. If only the parent's model is available, retain the independent review and report the missing model diversity. The subagent reads the audit trail and the run's transcript, then flags what the user should pay attention to.
+Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Before handing back, spawn an independent `judge` with `collaboration.spawn_agent` and a read-only prompt. Use a different configured available model when possible. If only the parent's model is available, retain the independent review and report the missing model diversity. The subagent reads the audit trail and the run's transcript, then flags what the user should pay attention to.
 
 - Decisions logged with weak or absent evidence.
 - Verification steps skipped or claimed without proof in the transcript.

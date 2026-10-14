@@ -1,11 +1,13 @@
 ---
 name: swarm
-description: "Fan out N parallel workers, drain them, and return one report. Use for /swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration."
+description: "Fan out parallel workers and return one report. Use for /swarm, races, coverage, or discovered independent work in implementation, exploration, verification, and review."
 ---
 
 # Swarm
 
 Fan out N parallel workers. They may cover separate slices, race the same brief, or mix both. The parent waits, aggregates, and returns one report.
+
+Use swarm proactively whenever implementation, exploration, verification, or review reveals independent, checkable slices, even when the user did not name swarm. Reassess when dependencies clear. Start ready slices together and give each worker exclusive outputs. Separate shared write targets first. Serialize only real dependencies or writes that must remain shared. Slice coverage does not require competing solutions; race workers only when comparing independent solutions is useful.
 
 ## Start
 
@@ -21,7 +23,7 @@ Open a todolist with one entry per phase before launching anything.
 1. State the done predicate and the artifact or report the swarm must return.
 2. Choose the shape. Partition into slices, race N workers on identical briefs, or mix both. For a race or mixed shape, declare `first pass`, `rank all`, or `best-of` before spawning.
 3. Set N from the user or derive it from the shape. N is the total worker count. Launch waves when it exceeds the available concurrency slots.
-4. Pick the worker from the `swarm workers` configuration line, default `worker-fast`. Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies. For a model race, name each arm's available model up front.
+4. Pick the worker from the `swarm workers` configuration line, default `worker-fast`. Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies. For a model race, name each arm's available model up front.
 5. Give each worker its own writable output when it writes. When workers verify or measure commits, each brief names the exact SHAs. A measurement brief also names the method (sample count, what one sample is, order). The worker records both in its result.
 
 ## Phase B: Fan out

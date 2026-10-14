@@ -19,7 +19,7 @@ Open a todolist with one entry per phase before starting.
 
 ## Phase A: Ground the problem
 
-Build a real mental model of every system the new code touches. Run the **how** skill over the relevant subsystems.
+Reuse existing **how** findings when they cover the same affected subsystems and their relevant source is unchanged. Trace missing or changed areas with **how**. Do not repeat grounding solely because architect was invoked.
 
 Naming a file isn't grounding. Produce the traced model `how` prescribes. If the design redefines ownership or layering, also run the **why** skill on the existing shape so the rationale becomes a constraint, not a guess.
 
@@ -29,7 +29,7 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Run the **arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`.
 
-Take the runners from the `architect runners` configuration line in place of `arena runners`. Defaults are `critic-risk`, `critic-deep`, `critic-broad`, `critic-fast`. Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies. Configuration and rejected entries follow the runner rules in the **arena** skill's Phase A.
+Take the runners from the `architect runners` configuration line in place of `arena runners`. Defaults are `critic-deep` and `critic-broad`. Add operational or mechanical lenses when the design involves rollout, retries, shared state, or a broad migration. Keep the independent arena cross-judge. Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies. Configuration and rejected entries follow the runner rules in the **arena** skill's Phase A.
 
 Read-only runner roles return their design package to the parent. The parent saves each package to its own candidate path. A configured writer role may write its assigned isolated output directly.
 

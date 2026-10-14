@@ -7,14 +7,14 @@ description: "Use for \"how does X work\", code walkthroughs before changing som
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
-Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
 
 ## Step 1. Assess Complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. One explainer explores and explains in a single pass. Go to Step 2b.
-- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first, then hand off to the explainer. Go to Step 2a.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): the lead explores and explains directly. Go to Step 2b.
+- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first, then synthesize their findings in the lead. Go to Step 2a.
 
 When in doubt, take the simple path.
 
@@ -30,27 +30,21 @@ Each explorer gets the prompt in `references/explorer-prompt.md` with its angle 
 
 ## Step 2b. Direct Explain (simple questions)
 
-Spawn one subagent that explores and explains in one pass:
-
-- Tool: `collaboration.spawn_agent`.
-- Configuration role: `how explainer`, default `agent_type: "worker-deep"`.
-- The prompt forbids writes.
-
-Build its prompt from `references/explainer-prompt.md` without the explorer-findings section. Go to Step 4.
+Explore and explain directly without spawning an agent. Follow the output structure in `references/explainer-prompt.md`. Keep the investigation read-only. Go to Step 4.
 
 ## Step 3. Synthesize (complex questions only)
 
-Once all explorers have returned, spawn one subagent to synthesize their findings into one explanation:
+Once all explorers have returned, synthesize their findings in the lead. Use `references/explainer-prompt.md` as the output guide. Delegate synthesis only when the findings need substantial reconciliation or an independent explanation is requested:
 
 - Tool: `collaboration.spawn_agent`.
 - Configuration role: `how explainer`, default `agent_type: "worker-deep"`.
 - The prompt forbids writes.
 
-Build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
+If delegating, build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
 
 ## Step 4. Present
 
-Present the explainer's output to the user. Light edits for clarity or context from the conversation are fine. Do not substantially rewrite it.
+Present the explanation to the user. If synthesis was delegated, check its evidence and edit for clarity or context.
 
 ## Output Format
 

@@ -92,7 +92,7 @@ reflect synthesizer: judge
 arena runners: worker-deep, worker-fast, worker-deep, worker-fast
 arena cross-judge pool: judge, critic-deep
 swarm workers: worker-fast
-architect runners: critic-risk, critic-deep, critic-broad, critic-fast
+architect runners: critic-deep, critic-broad
 interrogate reviewers: critic-risk, critic-deep, critic-broad, critic-fast
 ```
 

@@ -21,7 +21,7 @@ Use `mcp__codex_app__read_thread` for the active thread when its ID is available
 
 Launch three reviewers with `collaboration.spawn_agent` within the available concurrency limit. Prompts forbid edits and allow context lookups through enabled tools.
 
-Read [the Codex runtime reference](../jimmy/references/codex-runtime.md) before delegating. Read `.codex/jimmy-models.md` and `~/.codex/jimmy-models.md` on each invocation. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
 
 | Lens | Configuration role | Default `agent_type` | Prompt template |
 |---|---|---|---|
