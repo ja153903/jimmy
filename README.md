@@ -1,34 +1,37 @@
 # Jimmy
 
-Jimmy ports pstack's engineering workflows to Codex. This repository contains a Codex marketplace with one installable plugin.
+Jimmy builds Claude Code and Codex packages from a pinned pstack source. Shared workflow rules keep routine edits direct. Host adapters define the tools, models, and paths each runtime supports.
 
-## Install in Codex
+## Build and verify
 
-Clone this repository, then run:
+```sh
+python3 plugins/scripts/build.py
+python3 -m unittest discover -s plugins/scripts -p 'test_*.py'
+python3 plugins/scripts/build.py --check
+```
+
+## Install
+
+Build first, then add this repository as a marketplace.
+
+For Codex:
 
 ```sh
 codex plugin marketplace add /absolute/path/to/jimmy
 codex plugin add jimmy@jimmy
 ```
 
-Start a new Codex task after installing so it loads the plugin. For a published GitHub repository, replace the local path with `owner/jimmy`.
+For Claude Code:
 
-## Contents
-
-- `plugins/jimmy/skills` contains Jimmy and its companion skills.
-- `plugins/jimmy/agents` contains role definitions and an installer for Codex custom agents.
-- `plugins/jimmy/skills/jimmy/playbooks` and `scripts` contain the workflow material.
-
-The port covers all 53 skills in pstack 0.15.23, pinned to commit `837067b75aa20ab58d7b2a2f6c0531e37118c596`, plus 14 Jimmy-specific skills. Existing skills, playbooks, references, and supporting scripts are included. Codex tools replace the upstream host's agent calls, model rules, transcript paths, and recurring audit commands. See the [runtime adapter](plugins/jimmy/skills/jimmy/references/codex-runtime.md).
-
-The [upstream inventory](plugins/jimmy/pstack-upstream.json) records the source and reviewed port hashes. Check resource coverage, frontmatter, links, and drift with:
-
-```sh
-python3 plugins/jimmy/scripts/check-pstack-parity.py
+```text
+/plugin marketplace add /absolute/path/to/jimmy
+/plugin install jimmy@jimmy
 ```
 
-Pass `--source /path/to/pstack` to also compare an extracted upstream snapshot. Hash checks detect changes since review; they do not prove workflow behavior. See the [plugin README](plugins/jimmy/README.md) for tool and agent setup.
+Start a new chat after installing. Invoke `jimmy` in Codex or `/jimmy:jimmy` in Claude Code.
+
+See the [plugin guide](plugins/README.md) for prerequisites, generated package paths, upstream preview and acceptance commands, and validation limits. The [evaluation procedure](plugins/docs/evaluation.md) covers workflow behavior, token spend, and elapsed time.
 
 ## Credit
 
-Selected workflows, playbooks, and principles are adapted from [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). The original work is MIT licensed. Its copyright and permission notice are preserved in [plugins/jimmy/LICENSE.pstack](plugins/jimmy/LICENSE.pstack).
+Jimmy adapts [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). Its MIT license is preserved in [plugins/jimmy/LICENSE](plugins/jimmy/LICENSE) and both generated packages.

@@ -1,11 +1,12 @@
 ---
 name: interrogate
 description: "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles."
+disable-model-invocation: true
 ---
 
 # Interrogate
 
-Spawn independent reviewers to adversarially review code changes. Every reviewer gets the same intent and rubric. Seek model diversity where available. Deliver a synthesized verdict without applying changes.
+Spawn one reviewer per configured model to adversarially review code changes. The adversarial signal comes from model diversity, not assigned personas. The deliverable is a synthesized verdict. Do NOT auto-apply changes.
 
 ## Step 1, Scope
 
@@ -19,24 +20,22 @@ Package the diff or file contents with any surrounding context files the reviewe
 
 ## Step 2, Intent
 
-Before spawning reviewers, state the intent in one clear paragraph from the user's message, commit messages, the PR description if one exists, and the code. If the intent remains uncertain, state the assumption that frames the review.
+Before spawning reviewers, state the intent in one clear paragraph from the user's message, commit messages, the PR description if one exists, and the code. If you're unsure about the intent, ask the user before proceeding.
 
 ## Step 3, Spawn Reviewers
 
-Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Launch all reviewers in a single message with the Task tool, one per entry on the `interrogate reviewers` line in `~/.cursor/rules/pstack-models.mdc`, labeled Reviewer A, B, and so on to match the entry count. If the rule or that line is missing, use the table defaults.
 
-Use the `interrogate reviewers` configuration line, one seat per entry. By default, use one correctness reviewer and one mechanical reviewer. Add operational and design reviewers when the change has those risks:
+| Subagent | Default model |
+|----------|---------------|
+| Reviewer A | `claude-opus-5-5-xhigh` |
+| Reviewer B | `grok-4.7-xhigh-fast` |
 
-| Role | Lens |
-|---|---|
-| `critic-deep` | Correctness and invariants |
-| `critic-fast` | Mechanical issues and missing tests |
-| `critic-risk` | Operational failure, retries, rollback |
-| `critic-broad` | Design and blast radius |
+Each reviewer gets `subagent_type: generalPurpose`, `readonly: true`, and `model` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `auto` or `inherit-parent` entry, so that reviewer runs on the parent model.
 
-Launch with `collaboration.spawn_agent` within the available concurrency limit. Reviewers must not edit files. A configured model override uses a compatible configurable agent as described in the runtime reference. If an entry is rejected, retry that seat once using its default role and report the fallback.
+If the Task tool rejects a configured entry, run that reviewer on its family's table default and say so. Families go by prefix: `claude-*`, and `grok-*` with `cursor-grok-*` and `composer-*`. A refused `composer-*` entry runs on Reviewer B's default. With no family match, use Reviewer A's default. If it rejects a table default, spawn with the closest equivalent from the valid slugs in its error message (prefer the same family and reasoning tier), and open a separate PR to update the default table. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug or apply either fallback to it.
 
-Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`.
+Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **jimmy-mode** skill.
 
 ## Step 4, Synthesize
 

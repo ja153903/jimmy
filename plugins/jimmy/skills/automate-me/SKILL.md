@@ -1,22 +1,23 @@
 ---
 name: automate-me
-description: "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via skill-creator + unslop, optionally pulling fresh evidence from recent transcripts."
+description: "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via create-skill + unslop, optionally pulling fresh evidence from recent transcripts."
+disable-model-invocation: true
 ---
 
 # Automate me
 
 A guided flow for turning the user's working conventions into a skill agents will follow. The output is one `-mode` skill tailored to them (e.g. `jay-mode`, `priya-mode`).
 
-This skill orchestrates three others: an inline mining pass (see step 1), the bundled `skill-creator` (authoring), and the **unslop** skill (prose discipline). It sequences them. It doesn't replace them.
+This skill orchestrates three others: an inline mining pass (see step 1), Cursor's built-in `create-skill` (authoring), and the **unslop** skill (prose discipline). It sequences them. It doesn't replace them.
 
 ## Flow
 
 ### 0. Check for an existing skill
 
-Look recursively for `.agents/skills/**/*-mode/SKILL.md` and `~/.agents/skills/*-mode/SKILL.md` matching the user's handle. Mode skills can live in a personal category directory (`.agents/skills/<handle>/`), not only at the top level. If one exists, state that you will update it unless the user asked to start fresh: Also inspect legacy locations only when the available-skill catalog or the user identifies them. Preserve the user's existing path for an update.
+Look recursively for `.cursor/skills/**/*-mode/SKILL.md` and `~/.cursor/skills/*-mode/SKILL.md` matching the user's handle. Mode skills can live in a personal category directory (`.cursor/skills/<handle>/`), not only at the top level. If one exists, confirm intent with `AskQuestion` (unless they already said "update my skill" or similar):
 
 - Update the existing skill (default for repeat runs)
-- Start fresh only when requested
+- Start fresh (rare, ask why before doing it)
 
 Update mode changes the rest of the flow:
 - Step 1 mines only history since the skill was last edited (`git log -1 --format=%cI <path>`).
@@ -25,9 +26,9 @@ Update mode changes the rest of the flow:
 
 ### 1. Mine their history
 
-Use Codex chat tools to find history for the active workspace and the requested time window. Read only matching threads. If those tools omit needed evidence, use a provided transcript or `~/.codex/sessions` entries after checking workspace metadata. Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Locate the active workspace's transcripts before fanning out. The system prompt names the workspace's `agent-transcripts/` directory. Use only that path. Don't glob across `~/.cursor/projects/*/`. That crosses workspace boundaries and reads private chats from unrelated projects.
 
-Survey recent agent conversations within that scope for recurring patterns. Run multiple parallel subagents across slices of history (e.g. last 2-4 weeks, split into 3 slices so each has enough material). Each slice mining subagent reads transcripts from the workspace-scoped path the parent provides, looks for the signals below, and returns a short structured list of patterns it saw with evidence pointers. Default signals worth hunting:
+Survey recent agent conversations within that scope for recurring patterns. Run multiple parallel subagents across slices of history (e.g. last 2-4 weeks, split into 3 slices so each has enough material). Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **jimmy-mode** skill. Each slice mining subagent reads transcripts from the workspace-scoped path the parent provides, looks for the signals below, and returns a short structured list of patterns it saw with evidence pointers. Default signals worth hunting:
 
 - Response preferences (length, tone, format, "dumb it down" corrections)
 - Delegation habits (subagents, models, specialized workflows, parallelism)
@@ -40,9 +41,9 @@ Cross-check across slices before elevating a signal. Patterns seen in 2+ slices 
 
 ### 2. Ask the user directly
 
-Mining misses intent that hasn't come up yet. Use `request_user_input` when available and appropriate for optional preferences. Otherwise ask a short question in chat.
+Mining misses intent that hasn't come up yet. Use the `AskQuestion` tool (structured multi-choice) rather than asking the user to type from scratch.
 
-Ask one or two questions with a few clear choices. The Codex input tool allows at most three questions and mutually exclusive options. Start broad ("Which areas matter most?"), then follow up on selected areas with specific options. After the structured rounds, one free-form chat question catches anything the options missed.
+Shape: one or two questions with 4-6 options each, `allow_multiple: true` for category questions. Start broad ("Which areas matter most?"), then follow up on selected areas with specific options. After the structured rounds, one free-form chat question catches anything the options missed.
 
 Don't dump 20 questions.
 
@@ -59,27 +60,27 @@ Group the combined signals into sections. Common ones (use only what applies):
 - **Process**: git worktrees, commits, PRs, review/merge tooling.
 - **Skills**: skill-authoring habits, fix-the-skill-first, proposing new skills.
 
-The **jimmy** skill shows the shape. Read it for granularity. Don't copy its content. The user's rules are not the same as jimmy's.
+The **jimmy-mode** skill shows the shape. Read it for granularity. Don't copy its content. The user's rules are not the same as jimmy-mode's.
 
 ### 4. Draft the skill
 
-Read and use the bundled `skill-creator` skill from the available skill catalog to author the skill. Placement:
+Use Cursor's built-in `create-skill` skill to author the skill. Placement:
 
-- Path: preserve an existing mode skill's category. For a new mode, use `.agents/skills/<handle>/<handle>-mode/SKILL.md` when the repo has an established personal category for that handle. Otherwise default to `.agents/skills/<handle>-mode/SKILL.md` in the project (or `~/.agents/skills/<handle>-mode/` if the user prefers a personal skill).
+- Path: preserve an existing mode skill's category. For a new mode, use `.cursor/skills/<handle>/<handle>-mode/SKILL.md` when the repo has an established personal category for that handle. Otherwise default to `.cursor/skills/<handle>-mode/SKILL.md` in the project (or `~/.cursor/skills/<handle>-mode/` if the user prefers a personal skill).
 - Handle: the user's first name or chosen identifier.
 - Frontmatter `description`: trigger on their name + `/<handle>-mode` + "work in their style", not on generic keywords like "write code" or "review PR".
-- Frontmatter formatting: follow `skill-creator`'s YAML rules. Keep `description` as one YAML scalar. Quote it or use `description: >-` with indented continuation lines when punctuation or wrapping requires it.
-- Preserve existing invocation policy. Keep automatic discovery for new skills unless the user explicitly requests an invocation-only skill.
+- Frontmatter formatting: follow `create-skill`'s YAML rules. Keep `description` as one YAML scalar. Quote it or use `description: >-` with indented continuation lines when punctuation or wrapping requires it.
+- Frontmatter `disable-model-invocation: true` by default. Opt out only if the user explicitly wants their mode to apply on every turn.
 
 ### 5. Iterate on prose
 
-Apply the **unslop** skill and `skill-creator`'s writing guidelines to every line.
+Apply the **unslop** skill and `create-skill`'s writing guidelines to every line.
 
-Show the draft to the user and take feedback. Cut ruthlessly. A mode skill is not a manual.
+Show the draft to the user and take feedback. Expect multiple iterations. Cut ruthlessly. A mode skill is not a manual.
 
 ### 6. Land it
 
-For a repository skill, follow the user's delivery request and the **Opening a PR** playbook when a PR is appropriate. For a personal skill, save it at the requested installed path.
+Work in a worktree off main. Commit and open a PR. Don't push to main directly.
 
 ## Guardrails
 
@@ -92,11 +93,12 @@ For a repository skill, follow the user's delivery request and the **Opening a P
 
 ## Evaluation
 
-A `-mode` skill is subjective output. A `skill-creator`-style test/iterate benchmark loop isn't useful here. Vibe-check with the user: does it read like them? Did it miss anything? Then ship.
+A `-mode` skill is subjective output. A `create-skill`-style test/iterate benchmark loop isn't useful here. Vibe-check with the user: does it read like them? Did it miss anything? Then ship.
 
 Run a description-optimization loop only if the skill's trigger accuracy turns out to be a problem in practice.
 
 ## When not to use
 
-- User wants a task-specific skill (not working conventions): `skill-creator` alone, no mining required.
+- User wants a task-specific skill (not working conventions): `create-skill` alone, no mining required.
 - User wants to capture one narrow workflow (e.g. "how I write commit messages"). That's a regular skill, not a mode skill.
+

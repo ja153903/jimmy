@@ -1,40 +1,49 @@
-# Requests worth copying
+# Prompts worth copying
 
-Replace placeholders with the real target and checks. Adapt the request to the task rather than copying its exact wording.
+Swap in the real paths, skills, and done checks. Informal wording works.
 
 ## Understand
 
-- `$jimmy Read <issue>. Restate the underlying problem in your own words. Do not change code yet.`
-- `$jimmy Investigate why <symptom> happens. Cite the code and history. Keep this read-only.`
-- `$how Explain how <subsystem> works and where a change to <behavior> belongs.`
-- `$recall Catch me up on my recent work on <topic>, then read <issue>.`
-- `$jimmy Take over <branch>. Identify completed work, verify its state, and continue without repeating it.`
+- `/jimmy-mode read <thread>. restate the underlying issue in your own words, in plain english.`
+- `/in-your-own-words <long or messy ask>`
+- `/sharpen <your task>`
+- `/jimmy-mode investigate why <symptom>. give me what we know, what data you used, and your best hypotheses. don't change any code yet.`
+- `use /how to understand <subsystem>. then use /why to find out why it broke recently.`
+- `/recall my work on <topic> from last week, then read <issue>.`
+- `/teach me why you implemented it this way and not <other way>. what did you trade off?`
+- `/jimmy-mode take over this branch. read the decision log, find what's done, and continue. don't redo finished work.`
 
 ## Build
 
-- `$jimmy <symptom>. Reproduce it first, then fix it and show the observed result.`
-- `$jimmy Add <behavior>. Preserve <specific existing behavior> and verify both paths.`
-- `$jimmy Move <code> into one module without changing output. Capture the current output first and compare after.`
-- `$jimmy <operation> takes <time> on <fixture>. Measure the cause, fix it, and show before and after results.`
+- Bug: `/jimmy-mode <symptom>. repro first, then fix and verify.`
+- Bug in an app: `/jimmy-mode repro this with /verify-<app>. if it repros on main, fix it and show me a video as proof.`
+- Bug with a cheap test: `/jimmy-mode repro <bug> first. if there's a cheap test path, /tdd it. then fix and rerun.`
+- Feature: `/jimmy-mode add <behavior>. <current output> stays byte-identical. verify both.`
+- Refactor: `/jimmy-mode move <code> into one module, zero behavior change. record the current output first and prove it's unchanged after.`
+- Perf: `/jimmy-mode <operation> takes <time> on <fixture>. trace it, fix the measured cause, show me before and after.`
 
 ## Design and plan
 
-- `$jimmy Prototype a few options for <feature>. Show the outputs so we can compare them.`
-- `$architect Sketch the types and module boundaries for <feature>. Let me review the design before implementation.`
-- `$jimmy Turn <settled design> into a plan of small changes, each with a verification step.`
-- `$jimmy Plan the migration from <source> to <target>. Preserve the current behavior, including known quirks.`
+- `/jimmy-mode prototype a few options for <feature>. take screenshots or videos for me to compare.`
+- `/jimmy-mode we need <feature>. /architect it first, and answer open questions with prototypes. let me review before proceeding.`
+- `/jimmy-mode write a tutorial for how i would use <new package> first. then /teach me why it beats the current one.`
+- `ask /arena for a second opinion on this thread and our approach.`
+- `/jimmy-mode turn this design into a plan. small verifiable PRs, each with its own verification steps.`
+- `/jimmy-mode plan the migration of <library> to <target>. small verifiable PRs. the result must match the original exactly, bugs included.`
 
 ## Review and ship
 
-- `$interrogate Review this branch for real bugs and regressions. Give a verdict without editing it.`
-- `$swarm Check each package under <directory> against its own check script and return one report.`
-- `$jimmy Open a PR for this change with verification evidence.`
-- `$jimmy Check on PR <number> and address anything needed to make it merge-ready.`
-- `$jimmy Land the verified stack.`
+- `/interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the dismissals too.
+- `/swarm check every package under <dir> against its check script. one worker per package. one report.`
+- `/jimmy-mode open the pr. small ordered commits, evidence in the description.`
+- `/jimmy-mode babysit this pr. get it green.` For status only: `/jimmy-mode check on pr <number>. anything outstanding?`
+- `/jimmy-mode land the stack.`
 
 ## Away and back
 
-- `$jimmy I am stepping away. Work on <goal> until <checks pass>. Use a fresh worktree from <base> and keep a decision trail. Stop only at <named gate>.`
-- `$show-me-your-work Summarize the decisions from the run and point me to their evidence.`
-- `$reflect Identify durable lessons from this task and propose specific skill changes.`
-- `$ketchup Catch me up on what changed in this chat since my last message.`
+- `/jimmy-mode im going to bed. <goal> in a fresh worktree off <base>. done means <checks>. keep a decision log. don't ask me before committing. /loop until done. if you're truly stuck after a few hours, stop and write up why.`
+- `/show-me-your-work catch me up on what you did last night.` Read its Attention section first.
+- `/jimmy-mode full autopilot on this queue. each item is independent.`
+- `/jimmy-mode autopilot these changes but stack them, don't ship. i'll land the stack.`
+- `/reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
+- `/bro` restates the last reply in plain words.

@@ -1,15 +1,16 @@
 ---
 name: why
 description: "Use for 'why does X work this way', 'why we picked Y', design rationale, regressions, postmortems, or data-backed thresholds. Discovers available MCPs and queries each evidence category (source control, issue tracker, long-form docs, real-time chat, infrastructure observability, error tracking, product analytics warehouse) in parallel, then returns a cited read on decisions and tradeoffs. Use how for runtime behavior."
+disable-model-invocation: true
 ---
 
 # Why
 
 Investigate the motivation and intent behind code. The companion `how` skill answers what the code does and how it works. `why` answers what forces led to its shape.
 
-Resolve runtime and model preferences per [the Codex runtime reference](../jimmy/references/codex-runtime.md). Reuse the current workflow context in nested skills. Project values take precedence. Missing role lines keep the defaults below. `inherit` and `auto` select an override-capable generic agent with the role lens in its prompt and no model or reasoning override, as the runtime reference specifies.
+Each spawn below names a role line in the `pstack-models.mdc` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If the Task tool rejects a slug, use the default and say so. If it rejects the default, use the closest valid slug of the same family from its error message. Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **jimmy-mode** skill.
 
-Give investigators and the synthesizer read-only instructions in their prompts. Use `collaboration.spawn_agent` with roles that can access the enabled tools. Codex has no `readonly` or Ask-mode spawn flag.
+Every spawn is `generalPurpose` with `readonly: false` (agent mode). **Do not use readonly/Ask mode.** It strips MCP access, which disables the MCP-backed investigators and the synthesizer's citation spot-checks. Investigators still shouldn't write anything.
 
 ## Operating Posture
 
@@ -19,11 +20,11 @@ Operate as a **careful, cautious, and precise investigator**. Be honest about wh
 
 The **target** is usually a chunk of code, a pattern, a feature, or a named design decision. The **question** is usually a design rationale, a tradeoff, a motivating edge case, an external constraint, dead code, or a broad history sweep.
 
-If the target is vague ("why do we do it this way?" with no clear referent), make your best guess from conversation context (open files, recent edits, editor location, what was just discussed). State your interpretation briefly so the user can redirect if you're off, then proceed.
+If the target is vague ("why do we do it this way?" with no clear referent), make your best guess from conversation context (open files, recent edits, cursor location, what was just discussed). State your interpretation briefly so the user can redirect if you're off, then proceed.
 
 ## Step 2. Establish the Code Anchor
 
-Before spawning investigators, build the seed context inline: file paths and line ranges, key symbols, the commits touching the target, PR numbers in merge commits, and linked ticket IDs. Use `git blame` and `git log --follow -p` to trace the relevant history. When `gh` is available and a substantive commit has a PR, read its body and discussion with `gh pr view`. This anchor goes to every investigator and to the synthesizer.
+Before spawning investigators, build the seed context inline: file paths and line ranges, key symbols (functions, classes, constants), the last few commits touching the target, PR numbers from merge commits (pattern `(#1234)` in the subject line), and any linked ticket IDs. Run `git blame -L <start>,<end> <file>` for last-touch commits, `git log --follow -p -- <file>` for full history with patches through renames, `git log --oneline -20 -- <file>` for recent commits with PR numbers visible, and `git log -1 --format=%B <commit>` to extract PR numbers. Then pull the PR bodies and discussion for any substantive commit: `gh pr view <number> --json title,body,author,createdAt,mergedAt,labels,closingIssuesReferences,comments,reviews`. This anchor goes to every investigator and to the synthesizer.
 
 ## Step 3. Spawn Parallel Investigators
 
@@ -31,7 +32,7 @@ Before spawning investigators, build the seed context inline: file paths and lin
 
 ### Discovery
 
-Before spawning investigators, discover the enabled tools from the current Codex session. Use `ALL_TOOLS` metadata in `functions.exec` or the available tool list. Load connector tools through tool search when provided. Do not infer a connector exists from an installed plugin name.
+Before spawning investigators, list the available MCPs from the Cursor environment. Use the available-tools map when present. Otherwise inspect the `mcps/` directory Cursor exposes for enabled MCP servers.
 
 Map each available MCP to one evidence category:
 
@@ -43,16 +44,14 @@ Map each available MCP to one evidence category:
 6. Error / exception tracking
 7. Product analytics warehouse
 
-Source control is available through git in a checkout. Use `gh` only when it is available and authenticated. For the other six, classify the enabled tools by name, instructions, and resource descriptors. If a tool could fit more than one category, choose its primary evidence. Record ambiguous cases in the coverage map.
+Source control is always available through git and `gh`. For the other six, classify using the MCP name, server instructions, tool names, and resource descriptors. If an MCP could fit more than one category, choose the one matching its primary evidence. Record ambiguous cases in the coverage map.
 
-Launch matching investigators in waves within the available concurrency limit. Don't ask one agent to cover multiple MCPs.
+Spawn one investigator per category that has a matching MCP, all in a single message so they run concurrently, each owning exactly one tool or MCP. Don't ask one agent to cover multiple MCPs. `model`: the `why investigators` line, default `grok-4.7-xhigh-fast`.
 
-Subagent config (each):
-- Tool: `collaboration.spawn_agent`.
-- Configuration role: `why investigators`, default `agent_type: "worker-fast"`.
-- Prompts forbid writes and allow evidence lookups through available tools.
-
-Fill in `references/investigator-prompt.md` for each investigator. Add the relevant source guide under `references/sources/` using `references/source-playbook.md`. For defensive code, also include `references/sources/incident-postmortem.md`. Pass the code anchor and the user's question.
+Each investigator's prompt is `references/investigator-prompt.md` filled in, plus:
+- the category playbook `references/sources/<source>.md` for the selected MCP, adapted from the examples in `references/source-playbook.md`
+- `references/sources/incident-postmortem.md` **if the target code looks defensive** (null checks, retry logic, timeout handling, rate limiting, feature flags, egress guards, OOM handlers)
+- the code anchor and the user's original question
 
 ### Investigator roster, one per available evidence category
 
@@ -77,13 +76,7 @@ If your scope assessment suggests a single-commit trivial target where the PR de
 
 ## Step 4. Synthesize
 
-Spawn one synthesizer subagent:
-
-- Tool: `collaboration.spawn_agent`.
-- Configuration role: `why synthesizer`, default `agent_type: "judge"`.
-- The prompt forbids writes and requires spot-checking citations through available tools.
-
-The synthesizer gets:
+Spawn one synthesizer. `model`: the `why synthesizer` line, default `claude-opus-5-5-xhigh`. It gets:
 1. The investigator findings, including any null results and any categories skipped with justification
 2. The code anchor
 3. The user's original question

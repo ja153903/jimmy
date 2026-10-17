@@ -1,0 +1,20 @@
+{
+  "interface": {
+    "displayName": "Jimmy"
+  },
+  "name": "jimmy",
+  "plugins": [
+    {
+      "category": "Productivity",
+      "name": "jimmy",
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "source": {
+        "path": "./",
+        "source": "local"
+      }
+    }
+  ]
+}

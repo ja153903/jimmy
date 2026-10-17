@@ -1,0 +1,22 @@
+{
+  "author": {
+    "name": "Jaime Abbariao"
+  },
+  "description": "Jimmy workflows and principles for Claude Code and Codex.",
+  "interface": {
+    "capabilities": [
+      "Write"
+    ],
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Use jimmy for this task."
+    ],
+    "developerName": "Jaime Abbariao",
+    "displayName": "Jimmy",
+    "longDescription": "Jimmy workflows and principles for Claude Code and Codex.",
+    "shortDescription": "Focused workflows for coding agents."
+  },
+  "name": "jimmy",
+  "skills": "./skills/",
+  "version": "0.4.0"
+}

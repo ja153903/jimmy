@@ -1,6 +1,7 @@
 ---
 name: benchmark-checklist
 description: "Vet a perf measurement (limiter, tuning, limits, errors, repeatability, relevance, and whether the work happened) before you report or act on it. Use when you run a benchmark or report a speedup or regression you measured."
+disable-model-invocation: true
 ---
 
 # Benchmark checklist
@@ -12,8 +13,8 @@ For a quick ballpark the user asked for, one run is enough. Still check question
 ## Before you run anything
 
 - Write down the claim you expect to make, in the words you would ship ("export is 30% faster at p50 on the 60k-row dataset"). The questions test that sentence.
-- Read the measurement script. Note what it times, what it counts, and what it ignores.
-- Check the load average with `uptime` and the core count with `sysctl -n hw.logicalcpu` on macOS or `getconf _NPROCESSORS_ONLN` on Linux. If the machine is busy, find out what is running. If you cannot stop it, interleave the sides so both see the same noise, and say so in the report.
+- Read the measurement script. Note what it times, counts, and ignores.
+- Check the load average with `uptime` and the core count with `nproc`. If the machine is busy, find out what is running. If you cannot stop it, interleave the sides so both see the same noise, and say so in the report.
 
 ## The questions
 

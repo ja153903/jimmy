@@ -18,11 +18,7 @@ Scan for:
 
 ## Scope to skills and tools the session actually used
 
-Findings must point to skills, tools, or MCPs invoked in this transcript. Speculative routings to skills the parent never opened do not count. To check whether a skill was used, scan the transcript for:
-
-- File reads against any `SKILL.md` file (workspace `.agents/skills/`, user-level `~/.agents/skills/`, or plugin-installed paths under `~/.codex/plugins/`)
-- Subagent prompts that name a skill path
-- Tool calls (`exec_command`, `rg`, connector tools, and other available tools) that match a skill's documented commands
+Route findings only to skills, tools, or MCPs this transcript used. A skill counts as used when the transcript shows a `Read` of its `SKILL.md` (under `.cursor/skills/`, `~/.cursor/skills/`, or `~/.cursor/plugins/`), a `Task` prompt naming its path, or a tool call (Shell, Grep, MCP, etc.) matching its documented commands. Speculative routings to skills the parent never opened do not count.
 
 Two finding shapes are valid:
 - The parent invoked the skill and you found a real gap in its body. Route to the skill's relevant section.
