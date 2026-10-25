@@ -1,11 +1,30 @@
 # Efficient Jimmy workflows
 
-Use the smallest workflow that answers the request. For a reversible edit with clear ownership and an established design, implement directly and run a focused check, even across files. Read a playbook for substantive work. Its inherited `how`, `architect`, delegation, and fan-out mandates apply only when ownership, design, or review risk warrants them. Search for specific files before opening broad trees. Reuse a short summary within the same task and runtime instead of reloading unchanged instructions.
+## Default path
 
-Scale work to risk. Use `architect` when ownership, data shape, or cross-module behavior is unclear. A function call alone does not justify design exploration. Use `arena` when competing implementations warrant its cost.
+Inspect relevant code, implement one solution, run focused verification, review the diff, and finish. The lead owns this path. A task spanning several files does not by itself need delegation or design exploration. Load one relevant playbook for substantive work; load additional skills only to resolve a specific question. Reuse unchanged instructions and findings within this workflow context.
 
-Delegate independent, checkable work when its benefit repays the setup cost. Give each agent one owner, exclusive files, file pointers, and a concrete result. Share a compact brief instead of full transcripts. Apply full Jimmy mode to the lead of sustained orchestration. Delegates read only the skills their slice needs. If delegation is unavailable, work directly and report the lost independent review.
+## Escalation and budgets
 
-Use the native tool's exposed schema for fields, roles, models, and scheduling. Default models to inheritance. Override only with an available model. Follow the user's authorization and explicit gates before external writes or messages.
+Start with zero delegates, one implementation, and one review pass. These are workflow defaults, not runtime-enforced quotas. User requests and repository-required checks take precedence.
 
-Check the changed artifact directly. Stop when the check answers the material risk. Report the command, outcome, and limit.
+Escalate against a named question or risk:
+
+- Unclear ownership or an expensive-to-reverse interface: compare at most two short design sketches in the lead, choose, then implement once. Use [architect](../skills/architect/SKILL.md).
+- Independent work with disjoint outputs that repays startup and integration: use at most two workers total across the task. Use [swarm](../skills/swarm/SKILL.md). Parallelism targets elapsed time and may increase total tokens.
+- A concrete correctness, security, migration, or concurrency risk needing another perspective: use one independent reviewer and one review round. Give the reviewer that risk and the relevant diff. Use [interrogate](../skills/interrogate/SKILL.md).
+- Competing implementations would resolve consequential uncertainty that sketches or a small experiment cannot: use [arena](../skills/arena/SKILL.md), with two candidates and lead selection. An arena uses the worker budget, not a separate allowance.
+
+Budgets apply to the whole task, not separately to each phase or delegate. Delegates do not spawn more agents by default. Before exceeding a default, state the unresolved question, evidence that existing work cannot answer it, the additional work, and its stopping condition. Continue within existing authorization; a budget increase alone does not require permission. Explicit panel sizes and exhaustive investigations override the matching default. Do not quietly replace an explicit independent review with self-review.
+
+A failed check requires diagnosis and repair, not abandonment to meet a budget. Recheck the fix and affected behavior. Avoid restarting whole panels for a local defect. When progress depends on missing access or user input, report the precise gap.
+
+## Context and models
+
+Use the [delegate contract](delegation.md) for compact briefs and results. Do not pass the full conversation by default. Ground once and reuse file pointers and a short finding summary; reopen changed files or investigate unresolved evidence. The lead synthesizes results directly, without a separate explainer or judge by default.
+
+Read host model preferences only when selecting a delegate. Default to inheritance and supported tools. Honor valid configured model and effort choices. If choosing an effort level, use the lowest exposed level appropriate to the slice and raise it for demonstrated difficulty. Do not impose fixed expensive reviewer roles on routine work. A cheaper model is useful only if it can complete the slice without repeated repair.
+
+## Verification and finish
+
+Use [verification evidence](verification.md) to reuse checks only while their inputs remain valid. Complete repository-required checks. Finish when the acceptance criteria and material risks are covered; do not repeat checks for each workflow phase. Keep the final report to the outcome, commands and observed results, and unresolved limits. Report measured savings only with host usage and elapsed-time evidence, including delegates.

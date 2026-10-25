@@ -1,25 +1,10 @@
 ### Perf issue
 
-**You own the measurement story. Plan, review, verify the numbers.** Tie every fix to a measurement, don't read source instead of measuring.
+Tie the change to measurement. The lead owns the baseline, implementation, and comparison.
 
-1. Capture a baseline trace via the matching control skill. Vet the baseline, and each later number, with the **benchmark-checklist** skill.
-2. `how` to ground hypotheses. Don't claim a perf ceiling without running it first.
-   Try the performance mantras in order, cheapest first:
-   1. Don't do it. Stop work whose result nothing uses rather than cheapening it.
-   2. Do it, but don't do it again.
-   3. Do it less.
-   4. Do it later.
-   5. Do it when they're not looking.
-   6. Do it concurrently.
-   7. Do it cheaper.
+1. Capture the actual slow path and baseline. Use [benchmark checklist](../../benchmark-checklist/SKILL.md) before acting on or reporting measured differences.
+2. Find the limiter. Prefer removing unnecessary work, reusing valid work, and reducing frequency before concurrency or a cheaper implementation.
+3. Implement one hypothesis at a time and verify outputs as well as timing. Delegate only independent experiments within the shared [budget](../../../docs/efficiency.md). A function boundary does not require an architecture panel.
+4. Compare equivalent runs, including failures and retries. Report inconclusive results when measurement cannot support a difference. Keep the raw evidence.
 
-   When an earlier mantra meets the target, stop.
-3. Plan the fix from the trace. If it crosses a function boundary, `architect` first. Delegate implementation to a subagent using your configured perf-issue model (default `grok-4.7-xhigh-fast`). Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section. Review the diff. Capture a post-fix trace.
-   Apply the **sequence-verifiable-units** principle skill, verifying each attempt before trying the next.
-4. Parse and compare the artifacts (JSON to sqlite, diff). "Inconclusive" or wrong-surface is not a pass. Flag it.
-5. Cite the measurement in the PR.
-6. Run **Opening a PR**.
-
-For sustained improvement against a metric rather than a one-off fix, use the Hillclimb playbook (`playbooks/hillclimb.md`).
-
-**Reply:** baseline number, post-fix number, delta, artifact path.
+Use [Opening a PR](opening-a-pr.md) when PR delivery is in scope. Report the measurement, method, limiter, verified behavior, and limitations. Sustained optimization can use [hillclimb](hillclimb.md), retaining task-wide budgets.

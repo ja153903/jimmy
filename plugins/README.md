@@ -63,11 +63,13 @@ Acceptance keeps a journaled backup beside this directory until adoption succeed
 
 ## Control workflow cost
 
-The `jimmy` entrypoint handles a routine, scoped change directly. It loads a playbook and relevant principles when the task warrants them. Crossing a function boundary alone does not start an architecture panel. Delegates receive focused briefs and reuse relevant context.
+The default path is one lead inspecting, implementing one solution, verifying, and reviewing the diff. Shared adapters replace the routine playbooks and the `how`, `why`, `architect`, `swarm`, `arena`, and `interrogate` entrypoints. The imported source remains pinned for updates and reference. Default routing no longer depends on overriding contradictory instructions in those entrypoints.
 
-The shared efficiency policy also applies when a companion skill is invoked directly. Explicit requests for design exploration or independent review still take precedence. Host model choices default to inheritance, so the package does not pin unsupported or expensive model slugs.
+[Efficiency](adapters/common/docs/efficiency.md) defines task-wide defaults: zero delegates, one implementation, and one review pass. A named uncertainty can justify two workers total or one independent reviewer. Design choices start with short sketches; arenas are reserved for uncertainty that warrants duplicate implementation or explicit requests. User-requested panel sizes and repository-required checks take precedence. These are instructions, not enforced host quotas. A budget increase requires a reason and stopping condition, not a new permission gate.
 
-These changes reduce mandatory instruction loading and agent fanout by construction. Actual token spend and elapsed time depend on the task and runtime. No speedup or cost saving has been measured. Use [the evaluation procedure](docs/evaluation.md) before claiming one.
+[Delegate briefs](adapters/common/docs/delegation.md) avoid full-chat inheritance when supported. Workers do not restart the parent's workflow or delegate recursively by default. Host model preferences are read when a delegate is needed, and otherwise add no startup step. [Verification evidence](adapters/common/docs/verification.md) can be reused across phases only while its relevant inputs remain unchanged, including dirty files and runtime dependencies. Integrated output still needs verification.
+
+No speedup or cost saving has been measured. Use [the evaluation procedure](docs/evaluation.md) to compare behavior, elapsed time, total tokens including delegates, and failed attempts. Parallelism may reduce latency while increasing tokens.
 
 ## Source and adapters
 

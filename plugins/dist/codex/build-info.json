@@ -6,7 +6,7 @@
     },
     ".codex-plugin/plugin.json": {
       "mode": 420,
-      "sha256": "73da03e1372bd8eaf07552b1cdb5134d31765c49451b1f477728bf5b1a5c921f"
+      "sha256": "9f361ed7a2ea91692b83770cdda680c67ff36bc75f25dd6d22a092a1b2f2b3c9"
     },
     "LICENSE": {
       "mode": 420,
@@ -22,11 +22,15 @@
     },
     "agents/jimmy-agent.md": {
       "mode": 420,
-      "sha256": "0b00c7edda3f4cdfa6587446750a64a0e46041bccda08f6efa46d70d56212dee"
+      "sha256": "e9a841dbc508a225bee7d0c06d5f20b507faffe8474da3770af7167d5ebd92c2"
+    },
+    "docs/delegation.md": {
+      "mode": 420,
+      "sha256": "efd788279a3080a094772c7863c58f7fde5c68692e54f2b68a411059fb29c4c8"
     },
     "docs/efficiency.md": {
       "mode": 420,
-      "sha256": "6138164c3ba666656f5bafbc82bbce14372dbc4b5ae5ea979b479510796592d8"
+      "sha256": "e3fa5ee08cae16bd61e61ea0465980fc8b88e644d8936341cb07a877cb51c436"
     },
     "docs/guide/01-setup.md": {
       "mode": 420,
@@ -102,15 +106,19 @@
     },
     "docs/runtime.md": {
       "mode": 420,
-      "sha256": "9792fa90dc51cd98be0cccc10b5f438f4676fc1b77d5600c7817b23bf0172476"
+      "sha256": "dfaa638ab490949276817b9e82eb5ea15d410a98614820fb6ad52c85a272cc3b"
     },
     "docs/upstream-mode.md": {
       "mode": 420,
       "sha256": "e51be89e89fb43742b418e447f7e88ca178b7a1678ccea3c0c56520bf5a29ac7"
     },
+    "docs/verification.md": {
+      "mode": 420,
+      "sha256": "90b458178d29b77ea05e459dbebe9c7e9124c56558c2a53593c003279e0a38f8"
+    },
     "skills/architect/SKILL.md": {
       "mode": 420,
-      "sha256": "9c3a2f885e28b3fb9b3ab929eb0ccdf48e4c64e5b9dffabf2367f3674d5c5569"
+      "sha256": "8f44aecd1dc36107821474976e319ca062e41b8aa0140eec34267fc6ab947fde"
     },
     "skills/architect/agents/openai.yaml": {
       "mode": 420,
@@ -130,7 +138,7 @@
     },
     "skills/arena/SKILL.md": {
       "mode": 420,
-      "sha256": "c1300941baa95107c8d7dc4dc94af7a525133ae92cccf980a798973b24e83c3d"
+      "sha256": "85c85567e9a8db4a7cc273be5d0b5ba8e95105f8ec2b37af2b97cc8460ad1faf"
     },
     "skills/arena/agents/openai.yaml": {
       "mode": 420,
@@ -206,7 +214,7 @@
     },
     "skills/how/SKILL.md": {
       "mode": 420,
-      "sha256": "eca05f880c01d34fe8bea3536effb74195f2926b8a32161a2c78ed8552804d00"
+      "sha256": "240e7b9c75c9a9d6ba1e58fb4516bb57cfc0bda05907cf45a68e4a139e485b98"
     },
     "skills/how/agents/openai.yaml": {
       "mode": 420,
@@ -230,7 +238,7 @@
     },
     "skills/interrogate/SKILL.md": {
       "mode": 420,
-      "sha256": "15e613430f1bc54ea63c50e2ec6995c0847bfa52d0c5545b7dab909d5294b4ff"
+      "sha256": "3b30395a45ee8905364e295c9b39d6645d687eb8205cdb35849f34e8abd823c0"
     },
     "skills/interrogate/agents/openai.yaml": {
       "mode": 420,
@@ -278,7 +286,7 @@
     },
     "skills/jimmy-mode/playbooks/authoring-a-skill.md": {
       "mode": 420,
-      "sha256": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa"
+      "sha256": "b143c109249d2a2f9b8fe7c8c3df0c3884cf67db24e89e9c171c49bc4910d679"
     },
     "skills/jimmy-mode/playbooks/autonomous-run.md": {
       "mode": 420,
@@ -298,7 +306,7 @@
     },
     "skills/jimmy-mode/playbooks/bug-fix.md": {
       "mode": 420,
-      "sha256": "66e26542dad131cfd7df80ac0cdf81ed4d85e7b5e3f0eb65b933888760c4831f"
+      "sha256": "7ef31a49217bf42ea4c8866e3e02eb700a2ccbfacb0f9ae4eea5711d76318572"
     },
     "skills/jimmy-mode/playbooks/eval.md": {
       "mode": 420,
@@ -306,7 +314,7 @@
     },
     "skills/jimmy-mode/playbooks/feature.md": {
       "mode": 420,
-      "sha256": "af8ce700b99953741cb547e34308fde0cf6b98ce67e1652c800d0deedf53aba1"
+      "sha256": "4a1ff33609f606b40f34a80c25611ab02455407f921a5a911c7cf6a668869e37"
     },
     "skills/jimmy-mode/playbooks/hillclimb.md": {
       "mode": 420,
@@ -314,7 +322,7 @@
     },
     "skills/jimmy-mode/playbooks/investigation.md": {
       "mode": 420,
-      "sha256": "dc66bcf6af3a074fc7f67aa5e12b93ef571a4fb4d8e17f2f1af5ae5359f42e46"
+      "sha256": "e65291c674b89a8454eea52960f5f2a7b4f0e3ded2ff5d62bb21bda67520f141"
     },
     "skills/jimmy-mode/playbooks/multi-phase-plan.md": {
       "mode": 420,
@@ -322,7 +330,7 @@
     },
     "skills/jimmy-mode/playbooks/opening-a-pr.md": {
       "mode": 420,
-      "sha256": "006a3c0e8da464067aaccc8edaa63612c28b580492482dfe13277a1ed867d38d"
+      "sha256": "2b80931ffa728692bb51e79a7dd9a32e916cba3f47f155665732e1bbdf1ea9b1"
     },
     "skills/jimmy-mode/playbooks/orchestrate.md": {
       "mode": 420,
@@ -334,7 +342,7 @@
     },
     "skills/jimmy-mode/playbooks/perf-issue.md": {
       "mode": 420,
-      "sha256": "c12aa2f82de7651a11676a3d5fea168f539b7f0faaa3a501d279255dd2a469c8"
+      "sha256": "22fcece30460390c51e9e894decea209d238197fd6d79e09be532da52732ed19"
     },
     "skills/jimmy-mode/playbooks/prototype.md": {
       "mode": 420,
@@ -342,7 +350,7 @@
     },
     "skills/jimmy-mode/playbooks/refactoring.md": {
       "mode": 420,
-      "sha256": "0f5dd38113379ea8cf61e2182eca0a7478eea9a869eb40c2dddab3335aeca197"
+      "sha256": "f80cc8ec9d7526755f11c56ede2511ba8ebf6bcd68e7f234b07086a5b9fef7bb"
     },
     "skills/jimmy-mode/playbooks/runtime-forensics.md": {
       "mode": 420,
@@ -458,7 +466,7 @@
     },
     "skills/jimmy/SKILL.md": {
       "mode": 420,
-      "sha256": "da5560198ce2cdf34defa8b22fec86e89996a1362e37e79e5c737d42a1f1eb99"
+      "sha256": "6ec7a011adca68ba9df3c39195ef330a7cc3c2bb0149d38922a7869518ae6775"
     },
     "skills/ketchup/SKILL.md": {
       "mode": 420,
@@ -746,7 +754,7 @@
     },
     "skills/swarm/SKILL.md": {
       "mode": 420,
-      "sha256": "6babc608e03e518a2f581e070111ad433bdf2201ebb7b1e23cf271c9fe840c3c"
+      "sha256": "152d50a37cefa28f43b0aa43c72cc6439985cefd67eba7dad22ec170a4e36951"
     },
     "skills/swarm/agents/openai.yaml": {
       "mode": 420,
@@ -798,7 +806,7 @@
     },
     "skills/why/SKILL.md": {
       "mode": 420,
-      "sha256": "63e5142acb43b69569a7fc67db08e9ab18af8f885e3906d81342a37e2affa79f"
+      "sha256": "4b44b6753b1f0ef632e35fca61865f3faabeaa5e481adfc7f49d53112ce7a945"
     },
     "skills/why/agents/openai.yaml": {
       "mode": 420,
@@ -854,7 +862,7 @@
     }
   },
   "host": "codex",
-  "package_version": "0.4.0",
+  "package_version": "0.5.0",
   "source": {
     "commit": "09d06eb4b97a1020ab31e84030e38baf1099c7dc",
     "path": "pstack",

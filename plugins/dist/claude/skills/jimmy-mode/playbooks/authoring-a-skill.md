@@ -1,12 +1,7 @@
 ### Authoring or modifying a skill
 
-**You own the skill's voice.**
+Use an available host skill creator. Keep the entrypoint concise and move conditional detail into linked references. Preserve the user's scope and existing invocation policy. Change adapters for imported workflows rather than modifying the pinned source.
 
-1. Use the **create-skill** skill (Cursor's built-in for authoring SKILL.md files).
-2. Validate the skill: frontmatter has `name` and `description`, referenced files exist, cross-skill links resolve.
-3. Test cases if structural. Skip if subjective.
-4. Run **Opening a PR**.
+Validate frontmatter and links, inspect the generated skill, and exercise realistic requests when the change affects routing or behavior. Package checks alone do not establish behavioral correctness. A focused independent forward-test can be justified within the shared [budget](../../../docs/efficiency.md); give it the request and relevant artifacts without the intended answer.
 
-When in doubt, delete. Keep only prose that changes a decision. Tell it to do the thing and skip the reason. Explain only when the rule is confusing without one. Match tone to scope. Point at structural sources (types, READMEs, config) per the **encode-lessons-in-structure** principle skill. Delegate to other skills by path. Don't restate. A workflow you keep hitting but isn't captured → propose a new skill.
-
-**Reply:** summary of the skill, key design decisions, validation notes.
+Use [Opening a PR](opening-a-pr.md) when PR delivery is in scope. Report changed decisions, validation evidence, and untested behavior.

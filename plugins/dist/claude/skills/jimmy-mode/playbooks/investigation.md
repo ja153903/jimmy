@@ -1,14 +1,7 @@
 ### Investigation
 
-**You own the answer. Plan, route, write.**
+Investigations are read-only unless the user also authorizes changes. Answer directly from targeted evidence and cite relevant locations. Reuse existing grounding. Use [how](../../how/SKILL.md) for behavior or ownership and [why](../../why/SKILL.md) for rationale only when their guidance is needed.
 
-Investigation requests are read-only. They produce a cited explanation or a recommendation, not a code change.
+For a choice, compare tradeoffs and recommend an option. Separate observations from inferences and missing evidence. Do not produce a mandatory onboarding report, throughput checkpoint, design arena, or separate synthesis agent. Independent searches can use [swarm](../../swarm/SKILL.md) under the shared [budget](../../../docs/efficiency.md).
 
-1. Route through the **how** skill. For motivation questions, also route through the **why** skill.
-2. Throughput checkpoint stays one line: `throughput checkpoint: n/a, read-only investigation`.
-3. Produce the `how`-shaped output (Overview / Key Concepts / How It Works / Where Things Live / Gotchas), or a recommendation with a tradeoffs table if the request is a decision between alternatives.
-4. Apply the **unslop** skill to the reply.
-
-No PR, no babysit, no `architect` unless the investigation precedes a code change. If it does, hand back to the user and re-route to Bug fix or Feature.
-
-**Reply:** the investigation output. For "are we sure?" answers, include your real judgment with reasons. Push back if the premise is wrong (see Autonomy).
+Report the answer, supporting evidence, and material uncertainty. Do not create commits or PRs for a read-only investigation.

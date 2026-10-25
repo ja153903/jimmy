@@ -28,6 +28,8 @@ def source_fixture(root: Path) -> None:
     write(root, "jimmy/agents/helper.md", "---\nname: helper\ndescription: Help.\nis_background: true\n---\n\nAgent.\n")
     write(root, "jimmy/skills/jimmy-mode/SKILL.md", "---\nname: Jimmy Mode\ndescription: Old mode.\ndisable-model-invocation: true\nicon: crown\n---\n\nOriginal mode.\n")
     write(root, "jimmy/skills/helper/SKILL.md", "---\nname: Helper\ndescription: Help.\ndisable-model-invocation: true\n---\n\nOriginal helper.\n")
+    write(root, "jimmy/skills/jimmy-mode/playbooks/feature.md", "Upstream feature workflow.\n")
+    write(root, "jimmy/skills/helper/references/example.md", "Upstream reference.\n")
     files = {}
     for path in root.rglob("*"):
         if path.is_file():
@@ -120,6 +122,29 @@ class BuildCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("source differs from upstream pin", result.stderr)
         self.assertEqual(before, output.read_bytes())
+
+    def test_nested_workflow_adapters_replace_source_without_changing_pin(self) -> None:
+        relative = "skills/jimmy-mode/playbooks/feature.md"
+        write(self.root, f"adapters/common/{relative}", "[Reference](../../helper/references/example.md)\n")
+        write(self.root, f"adapters/codex/{relative}", "Codex-specific workflow.\n")
+        source_before = (self.root / "jimmy" / relative).read_bytes()
+        lock_before = (self.root / "upstream.lock.json").read_bytes()
+
+        result = self.run_build()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual((self.root / "dist/codex" / relative).read_text(), "Codex-specific workflow.\n")
+        self.assertEqual(
+            (self.root / "dist/claude" / relative).read_text(),
+            "[Reference](../../helper/references/example.md)\n",
+        )
+        for host in ("codex", "claude"):
+            self.assertEqual(
+                (self.root / f"dist/{host}/skills/helper/references/example.md").read_text(),
+                "Upstream reference.\n",
+            )
+        self.assertEqual((self.root / "jimmy" / relative).read_bytes(), source_before)
+        self.assertEqual((self.root / "upstream.lock.json").read_bytes(), lock_before)
+        self.assertEqual(self.run_build("--check").returncode, 0)
 
     def test_codex_policy_preserves_other_yaml_fields(self) -> None:
         write(

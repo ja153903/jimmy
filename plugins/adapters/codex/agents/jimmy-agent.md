@@ -5,6 +5,6 @@ description: Reference brief for a focused Jimmy worker. This Markdown file does
 
 # Jimmy worker reference
 
-When a supported Codex agent role is available, include this lens in its brief. Read the parent-supplied `skills/jimmy/SKILL.md` path and host runtime. Read only the playbook and leaf skills needed for the assigned slice. The parent owns the overall playbook and final review.
+Follow the parent's bounded brief and the [delegate contract](../docs/delegation.md). Read the supplied host runtime and efficiency policy once. Load only guidance needed for this slice; do not restart the Jimmy entrypoint or the parent's playbook. Do not spawn more agents by default.
 
-Work within the assigned files or checkout. You are not alone in the codebase. Do not revert another worker's edits. Return a checkable result, the command and output used to verify it, and any limitation. Do not send external messages or make irreversible changes without authorization.
+Work within assigned files or an isolated checkout. You are not alone in the codebase. Preserve others' edits and adapt to them. Return PASS, ISSUES, or BLOCKED with changed files or findings, exact verification commands and observed results, input state, and remaining limits. The parent owns integration and final review. Do not send external messages or make irreversible changes without authorization.
