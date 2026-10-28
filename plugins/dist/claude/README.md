@@ -1,6 +1,6 @@
 # Jimmy for Claude Code
 
-This package adapts pinned pstack 0.15.25 for claude. Its source pin and package checksums are in [build-info.json](build-info.json).
+This package adapts pinned pstack 0.15.36 for claude. Its source pin and package checksums are in [build-info.json](build-info.json).
 
 Install this package using [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json), then invoke the [Jimmy skill](skills/jimmy/SKILL.md).
 

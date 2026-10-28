@@ -59,6 +59,12 @@ To retry the exact version, use the full commit from the preview lock instead of
 
 This removes manual fork merging. It does not automate semantic review of new tools, workflow rules, or host behavior.
 
+The current pin is pstack 0.15.36 (`c742dd61706fbacc1b95f1a20b7b988cf096ce6c`). It includes PR-watcher deadline and fork-stack fixes, formal-verification creation and maintenance skills, and TLA+ statecharts. Jimmy's review adapter asks for executable reproductions and lead reruns while preserving unresolved risks that cannot be reproduced. It retains the task-wide reviewer budget. The orchestration adapter uses exposed host tools and a compact durable record instead of Cursor project storage or the removed `orch` CLI.
+
+Formal verification is optional, for a named property that tests cover poorly. Generated project skills belong in the active host's project skill directory. Statechart needs a supported TypeScript runtime (see its launcher), plus TLC and Java 11 or later via `TLA2TOOLS` and `JAVA`, or mise for the pinned automatic installation. Initial downloads need network access. A renderer is optional; the model-checking result and Mermaid output remain usable without one. Verification must demonstrate that a broken variant fails, record its bounds and covered code, and distinguish model drift from product defects.
+
+Integration validation: 25 Python packaging/updater tests, 61 PR-watcher/plan-check tests, and the watcher type check passed. A focused statechart run on Node 26.12.0 passed 192 tests, skipped one live fuzz check, and failed one diagnostic assertion: importing a view that throws `null` prints a Node-internal stack before the caught value. The same output occurs in a standalone dynamic import; statechart still exits 2 and writes no artifacts. Two additional live TLC fixture checks (Counter and MediaPlayer), using TLC 1.7.4 and Java 20, passed. Rendering, the full live fuzz suite, and automatic mise installation were not exercised. On macOS, run symlink tests with a canonical `TMPDIR`, and run process-cleanup tests where child-process inspection is permitted.
+
 Acceptance keeps a journaled backup beside this directory until adoption succeeds. After an interrupted adoption, rerun the same accept command to restore the previous source and retry. Do not delete the backup while recovering.
 
 ## Control workflow cost
@@ -83,4 +89,4 @@ No speedup or cost saving has been measured. Use [the evaluation procedure](docs
 
 The upstream Cursor manifest remains only as provenance. The generated packages use native manifests and load their host runtime before following inherited workflow instructions. Advanced cloud execution, persistent orchestration, and recurring automations work only when the active host exposes the required capabilities. Unsupported steps must be reported.
 
-Pstack is [Lauren Tan's MIT-licensed project](https://github.com/cursor/plugins/tree/09d06eb4b97a1020ab31e84030e38baf1099c7dc/pstack). Its license is preserved in `jimmy/LICENSE` and both generated packages. Native packaging follows the [Codex plugin documentation](https://developers.openai.com/plugins/build/plugins) and [Claude Code plugin reference](https://code.claude.com/docs/en/plugins-reference).
+Pstack is [Lauren Tan's MIT-licensed project](https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c/pstack). Its license is preserved in `jimmy/LICENSE` and both generated packages. Native packaging follows the [Codex plugin documentation](https://developers.openai.com/plugins/build/plugins) and [Claude Code plugin reference](https://code.claude.com/docs/en/plugins-reference).

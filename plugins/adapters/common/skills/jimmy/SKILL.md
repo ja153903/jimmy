@@ -20,6 +20,8 @@ Use [architect](../architect/SKILL.md) for unclear ownership or consequential in
 
 Read principle leaves only for an unresolved decision they materially affect. Do not produce a separate onboarding explanation before routine implementation. Use [how](../how/SKILL.md) and [why](../why/SKILL.md) when their questions need answering.
 
+For a property that ordinary tests cannot adequately cover, such as a race or retry invariant, use [Create a formal verification skill](../create-formal-verification-skill/SKILL.md). Use [Maintain a formal verification skill](../maintain-formal-verification-skill/SKILL.md) when covered code has drifted. Choose one valuable property, state the bounds, and prove the check catches a broken variant; formal verification is not a routine gate for every change. For TLA+ results, use [Statechart](../statechart/SKILL.md) to explain behavior and counterexamples.
+
 Large migrations can use [figure-it-out](../figure-it-out/SKILL.md); sustained autonomous work can use [autonomous run](../jimmy-mode/playbooks/autonomous-run.md) or [orchestrate](../jimmy-mode/playbooks/orchestrate.md). These routes retain the host runtime, task-wide budgets, and user authorization.
 
 Verify the actual artifact. Report PASS, ISSUES, or BLOCKED, the outcome, commands and observed results, and any unresolved limit. Do not claim measured performance improvements without measurement.

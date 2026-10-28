@@ -159,6 +159,30 @@ class BuildCliTest(unittest.TestCase):
         self.assertIn("allow_implicit_invocation: false", policy)
         self.assertIn("may_be_disabled: false", policy)
 
+    def test_skill_adapter_preserves_executable_resources(self) -> None:
+        launcher = "jimmy/skills/helper/scripts/run"
+        resource = "jimmy/skills/helper/scripts/value.txt"
+        write(self.root, launcher, '#!/bin/sh\ncat "$(dirname "$0")/value.txt"\n', 0o755)
+        write(self.root, resource, "verified resource\n")
+        lock_path = self.root / "upstream.lock.json"
+        lock = json.loads(lock_path.read_text())
+        for relative in (launcher, resource):
+            path = self.root / relative
+            lock["files"][relative] = {
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "mode": stat.S_IMODE(path.stat().st_mode),
+            }
+        lock_path.write_text(json.dumps(lock))
+
+        result = self.run_build()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for host in ("codex", "claude"):
+            packaged = self.root / f"dist/{host}/skills/helper/scripts/run"
+            run = subprocess.run([str(packaged)], text=True, capture_output=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertEqual(run.stdout, "verified resource\n")
+            self.assertEqual(stat.S_IMODE(packaged.stat().st_mode), 0o755)
+
     def test_broken_local_link_prevents_publish(self) -> None:
         write(self.root, "adapters/common/docs/efficiency.md", "[Missing](missing.md)\n")
         result = self.run_build()

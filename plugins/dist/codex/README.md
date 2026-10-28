@@ -1,6 +1,6 @@
 # Jimmy for Codex
 
-This package adapts pinned pstack 0.15.25 for codex. Its source pin and package checksums are in [build-info.json](build-info.json).
+This package adapts pinned pstack 0.15.36 for codex. Its source pin and package checksums are in [build-info.json](build-info.json).
 
 Install this package using [.agents/plugins/marketplace.json](.agents/plugins/marketplace.json), then invoke the [Jimmy skill](skills/jimmy/SKILL.md).
 

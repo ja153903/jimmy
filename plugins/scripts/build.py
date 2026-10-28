@@ -19,7 +19,7 @@ sys.dont_write_bytecode = True
 from upstream import verify_source
 
 
-VERSION = "0.5.0"
+VERSION = "0.6.0"
 HOSTS = ("codex", "claude")
 SKILL_PREAMBLE = (
     "Before following this skill, read [efficiency](../../docs/efficiency.md) and "
