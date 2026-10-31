@@ -1,4 +1,3 @@
 __pycache__/
 *.py[cod]
-.plugins.upstream-accept.lock
-.plugins.upstream-backup/
+node_modules/

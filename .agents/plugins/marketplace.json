@@ -8,7 +8,7 @@
       "name": "jimmy",
       "source": {
         "source": "local",
-        "path": "./plugins/dist/codex"
+        "path": "./"
       },
       "policy": {
         "installation": "AVAILABLE",

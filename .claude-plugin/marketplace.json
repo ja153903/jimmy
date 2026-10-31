@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "jimmy",
-      "source": "./plugins/dist/claude"
+      "source": "./"
     }
   ]
 }
