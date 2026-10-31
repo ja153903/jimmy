@@ -4,8 +4,6 @@ description: "Apply when integrating a new requirement into an existing design."
 disable-model-invocation: true
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Redesign From First Principles
 
 When integrating a change, don't bolt it onto the existing design. Redesign as if the requirement had been a foundational assumption from the start.

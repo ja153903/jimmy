@@ -3,8 +3,6 @@ name: setup-pstack
 description: Configure optional per-role Jimmy model preferences for the current host when the user asks to choose models or budgets.
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Set up pstack models
 
 Read [the host runtime](../../docs/runtime.md) to find the preference paths and the agent tool this session exposes. Preferences are read explicitly by Jimmy. They are not an automatically applied rule. Do not write Cursor rules or settings.

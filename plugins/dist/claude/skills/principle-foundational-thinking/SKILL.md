@@ -4,8 +4,6 @@ description: "Apply before writing logic: choosing core types and data structure
 disable-model-invocation: true
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Foundational Thinking
 
 **Structural decisions** protect option value. **Code-level decisions** protect simplicity.

@@ -4,8 +4,6 @@ description: "Apply when introducing a new internal API while old callers still 
 disable-model-invocation: true
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Migrate Callers Then Delete Legacy APIs
 
 - Update tests to assert the new contract, and delete tests that only protect pre-refactor implementation details

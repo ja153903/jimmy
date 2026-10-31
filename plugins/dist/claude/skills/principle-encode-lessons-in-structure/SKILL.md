@@ -4,8 +4,6 @@ description: "Apply when you catch yourself writing the same instruction a secon
 disable-model-invocation: true
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Encode Lessons in Structure
 
 If the lesson needs judgment and cannot be encoded, make the instruction more prominent and add an example of the failure mode.

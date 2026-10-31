@@ -3,8 +3,6 @@ name: jimmy
 description: Route software work through Jimmy's concise, risk-scaled workflows and verified results. Use for Jimmy mode, pstack mode, or a request to work in this style.
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Jimmy
 
 Read [runtime](../../docs/runtime.md) and [efficiency](../../docs/efficiency.md) once per workflow context. Use the current host's tools and preserve the user's scope and authorization.

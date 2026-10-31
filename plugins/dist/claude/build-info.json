@@ -18,11 +18,11 @@
     },
     "agents/comment-sicko.md": {
       "mode": 420,
-      "sha256": "3cbcc5db0f21f188acb459ec5c699c1d93bc2073dacc49bb50eb7386ac363343"
+      "sha256": "a6f70f94f6be2f038400e8d578e2df8aa362ac59df5f0a22ac2a6354a8941312"
     },
     "agents/jimmy-agent.md": {
       "mode": 420,
-      "sha256": "f990d36120394c26286d88b01a13a6ab71ae9138c775bc9b453e92bc76e35a60"
+      "sha256": "6341854d757f7b404d7d235b719724913d589f23a4988d7a43c03f714341f4d8"
     },
     "docs/delegation.md": {
       "mode": 420,
@@ -142,7 +142,7 @@
     },
     "skills/benchmark-checklist/SKILL.md": {
       "mode": 420,
-      "sha256": "f275b52f2bbf6250c49fdcc26f554c819dc5f2033dd995caa09dd81cd98f8b0f"
+      "sha256": "ba109e96c8f6c1c391baccf19e5d11e14370df7b3f2605e1572cd565a6c0fca0"
     },
     "skills/blast-radius/SKILL.md": {
       "mode": 420,
@@ -150,7 +150,7 @@
     },
     "skills/bro/SKILL.md": {
       "mode": 420,
-      "sha256": "9da8edcbdee0ec46a51d0bf892479fe0c82eb558c4fd5648dc2eb2c845ad4ff0"
+      "sha256": "aa329d0ceeeecb6822a7174ad76bb07a7826a3c52ceb6a588dec4138815084bb"
     },
     "skills/correct/SKILL.md": {
       "mode": 420,
@@ -194,7 +194,7 @@
     },
     "skills/in-your-own-words/SKILL.md": {
       "mode": 420,
-      "sha256": "2d71254b3e8fbe30f5ea8bb18075532eb5d5bed183b36967f8753eeb9e46f9e9"
+      "sha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad"
     },
     "skills/interrogate/SKILL.md": {
       "mode": 420,
@@ -386,11 +386,11 @@
     },
     "skills/jimmy/SKILL.md": {
       "mode": 420,
-      "sha256": "c572cec216990be2f2a4337d3e7a55b19054bedaacd48c2e7f0c9537ab3af017"
+      "sha256": "854513add467ef145f660b8c73b57b8eeebbfc36718bbc82a6afdf82b4cb2490"
     },
     "skills/ketchup-video/SKILL.md": {
       "mode": 420,
-      "sha256": "2a531c3718bc5c616fa619b91134115314ebb6f5ae74a10357660e050d9dabf3"
+      "sha256": "027aed9a01adf208aeac3a134f47d12f7c1e42d6fea03095aedc2bae58cdcfd1"
     },
     "skills/ketchup/SKILL.md": {
       "mode": 420,
@@ -414,11 +414,11 @@
     },
     "skills/principle-attack-the-premise/SKILL.md": {
       "mode": 420,
-      "sha256": "2613ab1e3b1e6016b008b6e9e22f29fee0955a231096e3c1e12f1d5f9b708b41"
+      "sha256": "6a932884daad4aa189e9b5d1665226bbc75621d4d2a398fd4003bebd382f4599"
     },
     "skills/principle-boundary-discipline/SKILL.md": {
       "mode": 420,
-      "sha256": "ee4c58541f3e4a4a5bb71f3d301e8d2b513638189e2a2e93053c237d67ef5623"
+      "sha256": "62ac2862c2caa22dd14531f51c9c6bb445ceb198ca98a687e25b4d47c1f10a28"
     },
     "skills/principle-build-the-lever/SKILL.md": {
       "mode": 420,
@@ -426,51 +426,51 @@
     },
     "skills/principle-encode-lessons-in-structure/SKILL.md": {
       "mode": 420,
-      "sha256": "086a97bf54375695eaa359f288141b8399ef87ca86764f75164d9c1ada4bbba7"
+      "sha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9"
     },
     "skills/principle-exhaust-the-design-space/SKILL.md": {
       "mode": 420,
-      "sha256": "5db1711d786261e661a56fcff921757d2da7a65e788b2669d457df5b51785a80"
+      "sha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db"
     },
     "skills/principle-experience-first/SKILL.md": {
       "mode": 420,
-      "sha256": "acd0b90616aff7519cf6e8e42c5b4fbb5d759a9aa319bbee62fed04c5f7b044f"
+      "sha256": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b"
     },
     "skills/principle-explain-the-number/SKILL.md": {
       "mode": 420,
-      "sha256": "600f13825ea6d13fa7d8d80977e81e27893e2db13db81d2249deb719142559b9"
+      "sha256": "3c84fbf9a7d9842abcfcd134010782b32092ac3d3fb4aaf9ed5732dca83aa58c"
     },
     "skills/principle-fix-root-causes/SKILL.md": {
       "mode": 420,
-      "sha256": "b1db7b4f4e3c9f3a6c3877da2c87b59f1d02f53d0be4f644b21480e4d4306a2a"
+      "sha256": "8df3c8c3fe57eb0055a5c8efab8ab144557fdf301da70b1cdc77a3a3ef3f3052"
     },
     "skills/principle-foundational-thinking/SKILL.md": {
       "mode": 420,
-      "sha256": "569c415f890d770089a63ad39eb5a8eed1cf6808d25b85729a41f58b33d1b4c3"
+      "sha256": "864b827e8199d946ce58beca0f89c4ed4099ed6e426fb698a3aaa45de2a9eea2"
     },
     "skills/principle-guard-the-context-window/SKILL.md": {
       "mode": 420,
-      "sha256": "10e74c05918d3a5cb728e8212a6e06129754a85475987315a8df08a6474b3712"
+      "sha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a"
     },
     "skills/principle-laziness-protocol/SKILL.md": {
       "mode": 420,
-      "sha256": "824b2be53e81166084e9a4208a5b476fa461fb6a1742a408a092dcce7f626447"
+      "sha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45"
     },
     "skills/principle-make-operations-idempotent/SKILL.md": {
       "mode": 420,
-      "sha256": "fa15dbe6e8198e15e9f1a8cd23f3b8397012e269f48ab761cd30fb3adfb28d7d"
+      "sha256": "7aa9327cf1f1aa057e95d47a0a78bd88a8f9d556b608866fee939d455a53a019"
     },
     "skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md": {
       "mode": 420,
-      "sha256": "cc2eb0ed63a2a1653a111533abd325f19fe995a1d175bc1a26715ddcf9474935"
+      "sha256": "580ad9bb1a0994ecb924321ba49efc38a2f85c64e22c76fb133f57a78272a2e6"
     },
     "skills/principle-minimize-reader-load/SKILL.md": {
       "mode": 420,
-      "sha256": "91536cfef84b94a68d390bec15dc7685f2288f8b2e8f2a7c5955a85e7ee737f2"
+      "sha256": "1ea2b7fef2391cae5844c4efdbd59031f775e8a52d06b7495d707229a200dcca"
     },
     "skills/principle-model-the-domain/SKILL.md": {
       "mode": 420,
-      "sha256": "f703e98c5c89690935d945608f37b6eab5de791f05a4f727b40dbca2d4e64535"
+      "sha256": "52c0d85e0c3827c41c18299b642657d7b47eaf77b7b31609e42e0df42b84c75f"
     },
     "skills/principle-never-block-on-the-human/SKILL.md": {
       "mode": 420,
@@ -478,7 +478,7 @@
     },
     "skills/principle-outcome-oriented-execution/SKILL.md": {
       "mode": 420,
-      "sha256": "5d8b91a67bf3127504035bb4c805e307db70889ac35ac6012f029a3e79f361e5"
+      "sha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d"
     },
     "skills/principle-prove-it-works/SKILL.md": {
       "mode": 420,
@@ -486,27 +486,27 @@
     },
     "skills/principle-redesign-from-first-principles/SKILL.md": {
       "mode": 420,
-      "sha256": "40f5d0825544af3a37b0d2a14a881cd9b1bf702da9065c5a3c9e4b3a768a6198"
+      "sha256": "170e0a658783e43fee8ec5a8c2422a4abb8f69cef621dd1819a95910b8207034"
     },
     "skills/principle-separate-before-serializing-shared-state/SKILL.md": {
       "mode": 420,
-      "sha256": "e9d81ccafdb38fe7c1856e3ff6921d4413ffc967982b2d301609d499fe52229c"
+      "sha256": "05294b40448e927c5da1c7b6f5c6b9fed3744637e3833d2d948b9154a9dd00bb"
     },
     "skills/principle-sequence-verifiable-units/SKILL.md": {
       "mode": 420,
-      "sha256": "0d3a23bed5de28d203a943f00a5ed5884b81194a38af9c5da1c92aab79f5cff9"
+      "sha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187"
     },
     "skills/principle-subtract-before-you-add/SKILL.md": {
       "mode": 420,
-      "sha256": "5f79e27eb14e46af4c5f6026c0d49c89133fb3838ad12d0d13576ac6174135a7"
+      "sha256": "8c93bb9d1a7f38e2ef37655d93f0e790fa59903105af3d500cc8a663ebe45f3f"
     },
     "skills/principle-test-behavior-not-implementation/SKILL.md": {
       "mode": 420,
-      "sha256": "9bfa423135427260a3fd079104d0e64ee1795ea2170305afb0c427425ee2c45b"
+      "sha256": "f7223698623b6a26fea49c751e466b38e6691b1f32ce841d3983e7ffbe2b74a6"
     },
     "skills/principle-type-system-discipline/SKILL.md": {
       "mode": 420,
-      "sha256": "178d5b5342dbd777047df20fa96db31a80f2f10a43039256e68a187877e48f4c"
+      "sha256": "5cdaf79785e3c12b2592b9469ee8c272143eb86ab7a18d8382197cea5fd30106"
     },
     "skills/recall/SKILL.md": {
       "mode": 420,
@@ -534,11 +534,11 @@
     },
     "skills/setup-pstack/SKILL.md": {
       "mode": 420,
-      "sha256": "42c4c9ca23bb657e3b07a2d679ed5a79b6309023f0bdd6895fef7a47a29d8c49"
+      "sha256": "29539cb1400e1b6d24c57b45e43c5ad516e20879d256ec1a8a9861bf61a62bdd"
     },
     "skills/sharpen/SKILL.md": {
       "mode": 420,
-      "sha256": "6c14d4e8eceba75244e8fecdd4352d53a7edfcce3db754047675af5b36945209"
+      "sha256": "563dfc460c605d311e650726288e2f1cbd61eab817db178d6e7e29643e07e7a2"
     },
     "skills/show-me-your-work/SKILL.md": {
       "mode": 420,
@@ -554,7 +554,7 @@
     },
     "skills/statechart/SKILL.md": {
       "mode": 420,
-      "sha256": "aaeba1f90f5d25c94a8f0c1a84cb9c0bfc9949f04efb0090ff8d9c82ffd42abf"
+      "sha256": "b23a8fd235aa52091917c3383ca981f94f7ddc7fad9abbaa4b8bb218648e8900"
     },
     "skills/statechart/references/render.md": {
       "mode": 420,
@@ -2190,11 +2190,11 @@
     },
     "skills/teach/SKILL.md": {
       "mode": 420,
-      "sha256": "62620d524713a54d24e9c7e49a9158cfef89e93d7e61a1eefb4e49cc1c7bcefd"
+      "sha256": "bd286e5a6290673be2cd28aef7af2ec7f1fb138e6bce156ea657368c7e7fc8a4"
     },
     "skills/technical-writing/SKILL.md": {
       "mode": 420,
-      "sha256": "ccc17a3d582aaccdb9498fa412fcf19fb6bb7e7b13bfc142fe43ed072b841a82"
+      "sha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43"
     },
     "skills/typescript-best-practices/SKILL.md": {
       "mode": 420,

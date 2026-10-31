@@ -26,11 +26,8 @@ SKILL_PREAMBLE = (
     "[the host runtime](../../docs/runtime.md) once per workflow context. "
     "Their host and routing rules supersede the inherited instructions below."
 )
-AGENT_PREAMBLE = (
-    "Before following this agent, read [efficiency](../docs/efficiency.md) and "
-    "[the host runtime](../docs/runtime.md) once per workflow context. "
-    "Their host and routing rules supersede the inherited instructions below."
-)
+# Only skills that touch host tools or delegation need the shared docs; others skip two reads.
+HOST_TERMS = re.compile(r"\b(cursor|subagents?|spawn\w*|delegat\w*|worktrees?|automations?|agents?)\b", re.IGNORECASE)
 FRONTMATTER = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
 INLINE_LINK = re.compile(r"\[[^\]]+\]\((<[^>]+>|[^)]+)\)")
 REFERENCE_LINK = re.compile(r"^\s*\[[^\]]+\]:\s*(<[^>]+>|\S+)", re.MULTILINE)
@@ -132,13 +129,15 @@ def normalize_markdown(package: Path, host: str, explicit_skills: set[str]) -> N
         fields.insert(0, f"name: {slug}")
         if host == "claude" and slug in explicit_skills:
             fields.append("disable-model-invocation: true")
-        path.write_text("---\n" + "\n".join(fields) + "\n---\n\n" + SKILL_PREAMBLE + "\n\n" + body.lstrip("\n"), encoding="utf-8")
+        text = "".join(other.read_text(encoding="utf-8") for other in path.parent.rglob("*.md") if other != path) + body
+        preamble = SKILL_PREAMBLE + "\n\n" if HOST_TERMS.search(text) and "docs/runtime.md" not in body else ""
+        path.write_text("---\n" + "\n".join(fields) + "\n---\n\n" + preamble + body.lstrip("\n"), encoding="utf-8")
         if host == "codex" and slug in explicit_skills:
             codex_explicit_policy(path.parent)
     for path in sorted((package / "agents").glob("*.md")):
         lines, body = split_frontmatter(path)
         fields = [line for line in lines if line.split(":", 1)[0] not in {"is_background", "icon", "color"}]
-        path.write_text("---\n" + "\n".join(fields) + "\n---\n\n" + AGENT_PREAMBLE + "\n\n" + body.lstrip("\n"), encoding="utf-8")
+        path.write_text("---\n" + "\n".join(fields) + "\n---\n\n" + body.lstrip("\n"), encoding="utf-8")
 
 
 def local_link_targets(markdown: str) -> list[str]:

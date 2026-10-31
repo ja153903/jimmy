@@ -94,6 +94,15 @@ class BuildCliTest(unittest.TestCase):
         after = {path.relative_to(self.root).as_posix(): path.read_bytes() for path in (self.root / "dist").rglob("*") if path.is_file()}
         self.assertEqual(before, after)
 
+    def test_preamble_only_for_skills_touching_host_tools(self) -> None:
+        write(self.root, "adapters/common/skills/plain/SKILL.md", "---\nname: plain\ndescription: Plain.\n---\n\nRewrite prose.\n")
+        write(self.root, "adapters/common/skills/fanout/SKILL.md", "---\nname: fanout\ndescription: Fan out.\n---\n\nSpawn two subagents.\n")
+        self.assertEqual(self.run_build().returncode, 0)
+        skills = self.root / "dist/claude/skills"
+        self.assertNotIn("Before following this skill", (skills / "plain/SKILL.md").read_text())
+        self.assertIn("Before following this skill", (skills / "fanout/SKILL.md").read_text())
+        self.assertNotIn("Before following", (self.root / "dist/claude/agents/helper.md").read_text())
+
     def test_check_detects_stale_bytes_and_modes_without_repairing(self) -> None:
         self.assertEqual(self.run_build().returncode, 0)
         stale = self.root / "dist/codex/stale.txt"

@@ -4,8 +4,6 @@ description: "Layered technical-writing standard: Diátaxis structure, Google de
 disable-model-invocation: true
 ---
 
-Before following this skill, read [efficiency](../../docs/efficiency.md) and [the host runtime](../../docs/runtime.md) once per workflow context. Their host and routing rules supersede the inherited instructions below.
-
 # Technical writing
 
 Write so a tired engineer understands on the first read. Apply all four layers.
