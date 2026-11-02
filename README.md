@@ -4,11 +4,12 @@ A directory of coding skills shared by Claude Code and Codex. This repository is
 
 ```text
 skills/       Skills and their scripts, references, and assets
+agents/       Claude Code subagents the plugin ships
 docs/         Shared workflow guidance
 scripts/      Repository checks
 ```
 
-Both `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json` point to `./skills/`. Both marketplace entries install this repository root.
+Both `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json` point to `./skills/`. Claude Code also loads the subagents in `agents/`. Both marketplace entries install this repository root.
 
 ## Install
 
