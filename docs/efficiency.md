@@ -14,13 +14,13 @@ Future wakeups need an exposed scheduling tool and authorization for recurring w
 
 ## Escalation and budgets
 
-Start with zero delegates, one implementation, and one review pass. These are workflow defaults, not runtime-enforced quotas. User requests and repository-required checks take precedence.
+Start with zero delegates, one implementation, and one review pass, unless the [review policy](review.md) requires independent review. These are workflow defaults, not runtime-enforced quotas. User requests, repository-required checks, and required review take precedence; efficiency defaults never waive required review.
 
 Escalate against a named question or risk:
 
 - Unclear ownership or an expensive-to-reverse interface: compare at most two short design sketches in the lead, choose, then implement once. Use [architect](../skills/architect/SKILL.md).
 - Independent work with disjoint outputs that repays startup and integration: use at most two workers total across the task. Use [swarm](../skills/swarm/SKILL.md). Parallelism targets elapsed time and may increase total tokens.
-- A concrete correctness, security, migration, or concurrency risk needing another perspective: use one independent reviewer and one review round. Give the reviewer that risk and the relevant diff. Use [interrogate](../skills/interrogate/SKILL.md).
+- A [review policy](review.md) trigger, or a concrete correctness or security risk needing another perspective: use one independent reviewer and one review round unless a count is configured or requested. Use [interrogate](../skills/interrogate/SKILL.md).
 - Competing implementations would resolve consequential uncertainty that sketches or a small experiment cannot: use [arena](../skills/arena/SKILL.md), with two candidates and lead selection. An arena uses the worker budget, not a separate allowance.
 
 Budgets apply to the whole task, not separately to each phase or delegate. Delegates do not spawn more agents by default. Before exceeding a default, state the unresolved question, evidence that existing work cannot answer it, the additional work, and its stopping condition. Continue within existing authorization; a budget increase alone does not require permission. Explicit panel sizes and exhaustive investigations override the matching default. Do not quietly replace an explicit independent review with self-review.

@@ -1,0 +1,9 @@
+{
+  "name": "submission-retry",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": "./retry.js",
+  "scripts": {
+    "test": "node --test"
+  }
+}

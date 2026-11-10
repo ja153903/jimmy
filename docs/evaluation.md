@@ -54,3 +54,7 @@ Compare the current baseline to each change group as well as the final package: 
 Judge time and tokens separately at equivalent verified outcomes. Include failed trials and repair work in the report, even though failed runs cannot count as successful speedup samples. Report success rate alongside successful-run medians and ranges so a fast but unreliable variant cannot win by dropping failures. Do not claim billing savings from raw token totals without applicable billing evidence.
 
 Behavioral forward-tests can run in temporary fixture repositories with a compact independent agent brief. Give the evaluator the request, candidate skill, and raw fixture, without the expected answer or previous diagnosis. Inspect its actual edits and tool evidence. This is a routing check, not an end-to-end cost benchmark; fresh-host trials and host usage are still needed.
+
+## Workflow fixtures
+
+[Workflow fixtures](../verification/workflow/README.md) grade whether review, contract derivation, and verification actually happened, from the retained tool record. Keep each fixture's `hidden/` directory out of the evaluator's workspace and brief.

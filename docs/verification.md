@@ -1,4 +1,27 @@
-# Verification evidence
+# Verification
+
+## Behavioral contract
+
+Before implementation, derive expected behavior from the user's request and the surrounding supported flows. A bug reproduction identifies one failing case, not the complete contract.
+
+Before adding or changing a retry, identity, ownership, permission, or cancellation guard, answer:
+
+> What ordinary event can change the value this guard checks without invalidating the user's operation?
+
+Trace the operation's lifetime separately from the lifetime of the session, component, connection, or object used to represent it.
+
+Derive paired cases:
+
+- A supported operation that must remain valid across a relevant ordinary event.
+- A replaced, skipped, cancelled, or unauthorized operation that must be rejected.
+
+Choose cases that distinguish the intended condition from an overly broad substitute. Verify both outcomes with the cheapest faithful checks.
+
+Example: if the contract allows retries after navigation or reconnection, session recreation must not invalidate the pending operation. Replacing or skipping that operation must still invalidate it. A guard keyed on session identity fails the first case; deleting the guard fails the second.
+
+Keep the contract, paired cases, verification choice, and [review-trigger](review.md) decision in task state. Before completion, match each obligation to observed evidence or an explicit coverage gap.
+
+## Evidence records
 
 Keep a short task-local record when a check will be reused across workers or phases. No persistent database or committed log is needed for an ordinary task.
 

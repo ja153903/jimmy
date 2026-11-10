@@ -16,7 +16,9 @@ The lead inspects, implements one solution, verifies, and reviews the diff. For 
 - [Perf issue](../jimmy-mode/playbooks/perf-issue.md) for measured slowness.
 - [Skill authoring](../jimmy-mode/playbooks/authoring-a-skill.md) for SKILL.md edits.
 
-Use [architect](../architect/SKILL.md) for unclear ownership or consequential interface choices. Compare short sketches before implementing once. Use [swarm](../swarm/SKILL.md), [interrogate](../interrogate/SKILL.md), or [arena](../arena/SKILL.md) only for their escalation triggers or an explicit request. Apply the task-wide budgets in efficiency across these workflows.
+Use [architect](../architect/SKILL.md) for unclear ownership or consequential interface choices. Compare short sketches before implementing once. Use [swarm](../swarm/SKILL.md) or [arena](../arena/SKILL.md) only for their escalation triggers or an explicit request. Apply the task-wide budgets in efficiency across these workflows.
+
+Read and apply the [review policy](../../docs/review.md) during planning and again before completion; budgets never waive it. When it requires independent review, open [interrogate](../interrogate/SKILL.md) and follow it; do not wait for implicit skill invocation. Before changing a retry, identity, ownership, permission, or cancellation guard, derive the [behavioral contract](../../docs/verification.md#behavioral-contract) and its paired cases.
 
 Read principle leaves only for an unresolved decision they materially affect. Do not produce a separate onboarding explanation before routine implementation. Use [how](../how/SKILL.md) and [why](../why/SKILL.md) when their questions need answering.
 
