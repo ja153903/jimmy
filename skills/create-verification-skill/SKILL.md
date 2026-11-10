@@ -28,12 +28,25 @@ Write `verify-<app>/SKILL.md` under the current host's project skill directory w
 - **Doctor:** one read-only check that answers "is this instance worth driving?" — process up, right version/build, port owned by us, auth valid. An agent runs this first whenever anything looks off.
 - **Drive:** the harness recipe with real selectors/commands from this repo, not examples. Prefer stable handles (ARIA labels, data attributes, prompt strings, route paths) over coordinates and tab order.
 - **Evidence:** what to capture for a proof and where it goes. State the proof standards: exercise the real user path, not internal setters or test-only endpoints; capture the action and the resulting state, not just the final screen; verify side effects (files written, rows inserted, messages sent) alongside what's visible; mocks only where a production boundary already isolates the external system. When the safe path is a dry-run or test mode, verify what it actually skips by observing (files, network, git refs) rather than trusting its name: some dry-runs still touch the network or open a browser.
+- **Network faults:** for each mapped journey that makes network requests, the fault cases chosen from the requests it actually makes, the existing boundary used to inject them, and how to restore that boundary. Write `not applicable` for journeys without network dependencies. Requirements below.
 - **Cleanup:** how to tear down instances the run created. Never kill by process name; kill what you started. Cleanup removes instances and scratch state, never the evidence: proof artifacts survive the teardown, in a location the skill names.
 - **Helpers:** any script the skill ships is executable and its invocation is shown in the skill body. A helper the reader has to reverse-engineer is not a helper.
 
+### Network failure and recovery
+
+For affected network-dependent journeys, select failures from the requests the journey actually makes. Cover connection failure, stalled requests reaching their timeout, and applicable transient server errors or rate limits.
+
+For mutations, also cover a server commit whose response never reaches the client. A rejected request does not exercise this uncertain outcome.
+
+Inject faults deterministically at an existing boundary in an isolated test environment. Drive the real user entry point. Observe the error, completion time, preserved input and durable state, bounded retries, and supported recovery.
+
+After an uncertain write and any supported retry, inspect server-side state for duplicate effects. Restore fault injection during cleanup, including after failed attempts.
+
+Record expected and observed behavior, fault timing, recovery, and durable state. Report unavailable injection or observation as coverage gaps. Mark journeys without network dependencies as not applicable.
+
 ## 3. Seed the feature map
 
-Create `verify-<app>/features/README.md` under that project skill directory plus one file per user-facing feature you can identify (aim for the top 3-5 to start, from routes, commands, menus, or docs). Follow the shape in [`references/feature-map-example/`](references/feature-map-example/), with a README index and one file per feature. Each file answers, from the user's point of view: what the feature is, how to reach it, how to drive it with the harness, and what observable end state proves it works. The four H2s are `Sub-features`, `How to get to it (user POV)`, `Driving it with <harness>`, and `Gotchas`. If the seed data lacks a precondition that a journey needs, the journey reports a failure and the reason goes in that feature's `Gotchas`. Never weaken the journey to make it pass. The map is the repo's maintained verification source; a proof that drives one convenient entry point is incomplete when the map lists others.
+Create `verify-<app>/features/README.md` under that project skill directory plus one file per user-facing feature you can identify (aim for the top 3-5 to start, from routes, commands, menus, or docs). Follow the shape in [`references/feature-map-example/`](references/feature-map-example/), with a README index and one file per feature. Each file answers, from the user's point of view: what the feature is, how to reach it, how to drive it with the harness, and what observable end state proves it works. The four H2s are `Sub-features`, `How to get to it (user POV)`, `Driving it with <harness>`, and `Gotchas`. Network-dependent journeys list their fault cases under `Driving it with <harness>`; others state that network faults are not applicable. If the seed data lacks a precondition that a journey needs, the journey reports a failure and the reason goes in that feature's `Gotchas`. Never weaken the journey to make it pass. The map is the repo's maintained verification source; a proof that drives one convenient entry point is incomplete when the map lists others.
 
 ## 4. Prove the generated skill before handing it over
 

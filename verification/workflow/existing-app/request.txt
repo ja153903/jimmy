@@ -1,0 +1,1 @@
+Add a `list` command that prints the titles in the order they were added, one per line, and prints nothing for an empty notebook. Verify it works.

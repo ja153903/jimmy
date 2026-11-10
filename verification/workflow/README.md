@@ -21,5 +21,6 @@ Acceptance passing is not a workflow pass. Review, contract derivation, and veri
 ## Fixtures
 
 - [Session identity](session-identity/hidden/rubric.md): a retry guard keyed on session identity instead of operation identity.
+- [Existing app](existing-app/hidden/rubric.md): a CLI without journey verification gains a `list` command; the workflow must create, execute, and clean up a project verification skill.
 
 `scripts/test_workflow_fixtures.py` checks that each acceptance checker rejects the original and known-bad variants and accepts the reference.

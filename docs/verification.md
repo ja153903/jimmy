@@ -21,6 +21,36 @@ Example: if the contract allows retries after navigation or reconnection, sessio
 
 Keep the contract, paired cases, verification choice, and [review-trigger](review.md) decision in task state. Before completion, match each obligation to observed evidence or an explicit coverage gap.
 
+## Verification planning
+
+Plan verification during planning, not after implementation.
+
+| Situation | Required action |
+| --- | --- |
+| Any behavioral change | Identify the affected user journey, observable result, existing checks, and relevant project verification skills. |
+| Affected journey lacks a repeatable real-app check | Use [create-verification-skill](../skills/create-verification-skill/SKILL.md) to establish focused coverage, including in an existing project. |
+| Journey already has verification instructions | Update and exercise the affected entries with the implementation. |
+| Ordering, retries, ownership, or shared state changes | State the invariant, relevant events, user harm, and which event orderings the chosen checks cover. |
+| Concrete harmful orderings remain inadequately covered by tests | Reuse suitable formal verification or use [create-formal-verification-skill](../skills/create-formal-verification-skill/SKILL.md). |
+| Formally covered code or assumptions change | Confirm that the verification still describes the code before treating its result as evidence; see [maintain-formal-verification-skill](../skills/maintain-formal-verification-skill/SKILL.md). |
+| Tool or environment is unavailable | Complete independent checks and report the precise remaining gap. |
+
+A topic alone does not require a formal model. Explain why empirical checks sufficiently cover the property, or identify what they leave uncovered. Generated-input tests are empirical evidence, not formal proof.
+
+The linked generator skills are explicit-only for implicit routing; when a row requires one, open its SKILL.md and follow it.
+
+## Network failure and recovery
+
+For affected network-dependent journeys, select failures from the requests the journey actually makes. Cover connection failure, stalled requests reaching their timeout, and applicable transient server errors or rate limits.
+
+For mutations, also cover a server commit whose response never reaches the client. A rejected request does not exercise this uncertain outcome.
+
+Inject faults deterministically at an existing boundary in an isolated test environment. Drive the real user entry point. Observe the error, completion time, preserved input and durable state, bounded retries, and supported recovery.
+
+After an uncertain write and any supported retry, inspect server-side state for duplicate effects. Restore fault injection during cleanup, including after failed attempts.
+
+Record expected and observed behavior, fault timing, recovery, and durable state. Report unavailable injection or observation as coverage gaps. Mark journeys without network dependencies as not applicable.
+
 ## Evidence records
 
 Keep a short task-local record when a check will be reused across workers or phases. No persistent database or committed log is needed for an ordinary task.
