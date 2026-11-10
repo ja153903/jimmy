@@ -1,6 +1,6 @@
 # Evaluate workflow behavior and cost
 
-Validate the single maintained package with `python3 scripts/check_package.py` before running this procedure. Install that same directory in both hosts; no build is required. Run it in temporary fixture repositories. Keep real accounts, messages, production systems, and unrelated projects out of the fixtures.
+Validate the single maintained package with `uv run scripts/check_package.py` before running this procedure. Install that same directory in both hosts; no build is required. Run it in temporary fixture repositories. Keep real accounts, messages, production systems, and unrelated projects out of the fixtures.
 
 ## Verify behavior first
 

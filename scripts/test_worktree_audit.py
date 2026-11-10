@@ -1,11 +1,10 @@
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
-
+from pathlib import Path
 
 AUDIT = Path(__file__).resolve().parents[1] / "skills/jimmy-mode/scripts/worktree-audit.sh"
 
@@ -21,7 +20,9 @@ class WorktreeAuditTests(unittest.TestCase):
         self.git("init", "--quiet")
         (self.repo / "README.md").write_text("Fixture.\n")
         self.git("add", "README.md")
-        self.git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "--quiet", "-m", "fixture")
+        self.git(
+            "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "--quiet", "-m", "fixture"
+        )
         self.git("worktree", "add", "--quiet", "--detach", str(self.worktree))
         binaries = self.root / "bin"
         binaries.mkdir()
@@ -37,7 +38,13 @@ class WorktreeAuditTests(unittest.TestCase):
         return subprocess.run(["git", "-C", str(self.repo), *arguments], capture_output=True, text=True, check=True)
 
     def audit(self):
-        result = subprocess.run(["bash", str(AUDIT), "--base", "HEAD", str(self.repo)], env=self.environment, capture_output=True, text=True, check=True)
+        result = subprocess.run(
+            ["bash", str(AUDIT), "--base", "HEAD", str(self.repo)],
+            env=self.environment,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
         rows = [line.split("\t") for line in result.stdout.splitlines() if line.endswith(str(self.worktree))]
         self.assertEqual(len(rows), 1, result.stdout)
         return rows[0]
@@ -46,7 +53,9 @@ class WorktreeAuditTests(unittest.TestCase):
         row = self.audit()
         self.assertEqual(row[6:8], ["?", "review"])
 
-    @unittest.skipUnless(sys.platform == "darwin" and shutil.which("rg"), "explicit transcript dates currently use macOS stat")
+    @unittest.skipUnless(
+        sys.platform == "darwin" and shutil.which("rg"), "explicit transcript dates currently use macOS stat"
+    )
     def test_literal_worktree_path_finds_explicit_chat(self):
         transcripts = self.root / "transcripts"
         transcripts.mkdir()

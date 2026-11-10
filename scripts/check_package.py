@@ -1,28 +1,34 @@
 #!/usr/bin/env python3
 """Validate the maintained Jimmy package without generating or modifying files."""
+
 from __future__ import annotations
 
 import argparse
 import json
 import os
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 FRONTMATTER = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
 INLINE_LINK = re.compile(r"\[[^\]]+\]\((<[^>]+>|[^)]+)\)")
 REFERENCE_LINK = re.compile(r"^\s*\[[^\]]+\]:\s*(<[^>]+>|\S+)", re.MULTILINE)
 
+
+IGNORED_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".ruff_cache"}
+
+
 class PackageError(Exception):
     pass
+
 
 def tree_files(root: Path) -> dict[str, Path]:
     if root.is_symlink():
         raise PackageError(f"symlink is not allowed: {root}")
     result = {}
     for directory, names, files in os.walk(root, followlinks=False):
-        names[:] = [name for name in names if name not in {"node_modules", "__pycache__", ".git"}]
+        names[:] = [name for name in names if name not in IGNORED_DIRS]
         files = [name for name in files if name != ".DS_Store"]
         for name in names + files:
             path = Path(directory) / name
@@ -44,7 +50,7 @@ def split_frontmatter(path: Path) -> tuple[list[str], str]:
     lines = match.group(1).splitlines()
     if not any(line.startswith("description:") for line in lines):
         raise PackageError(f"missing description: {path}")
-    return lines, contents[match.end():]
+    return lines, contents[match.end() :]
 
 
 def local_link_targets(markdown: str) -> list[str]:
@@ -81,7 +87,6 @@ def check_links(package: Path) -> None:
         raise PackageError("broken local Markdown links:\n" + "\n".join(missing))
 
 
-
 def check_package(package: Path) -> int:
     if not package.is_dir():
         raise PackageError(f"missing package: {package}")
@@ -114,7 +119,9 @@ def check_package(package: Path) -> int:
         # Preserve explicit-only invocation in both hosts in the same skill folder.
         if "disable-model-invocation: true" in lines:
             policy = skill.parent / "agents/openai.yaml"
-            if not policy.is_file() or not re.search(r"(?m)^  allow_implicit_invocation: false\s*$", policy.read_text()):
+            if not policy.is_file() or not re.search(
+                r"(?m)^  allow_implicit_invocation: false\s*$", policy.read_text()
+            ):
                 raise PackageError(f"explicit-only skill needs matching invocation policy: {skill}")
     check_links(package)
     return len(skills)

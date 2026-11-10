@@ -41,9 +41,15 @@ Preserve invocation policy when editing: an explicit-only skill carries `disable
 
 ## Verify
 
+Maintenance scripts target Python 3.15 and use [uv](https://docs.astral.sh/uv/), [ruff](https://docs.astral.sh/ruff/), and [ty](https://docs.astral.sh/ty/), configured in `pyproject.toml`.
+
 ```sh
-python3 scripts/check_package.py
-python3 -m unittest discover -s scripts -p 'test_*.py'
+uv sync
+uv run scripts/check_package.py
+uv run python -m unittest discover -s scripts -p 'test_*.py'
+uv run ruff check scripts
+uv run ruff format --check scripts
+uv run ty check scripts
 ```
 
 Package validation checks the maintained skills, manifests, invocation metadata, and local links without modifying files. Run affected helpers with their documented runtimes; fresh-host behavior checks follow [the evaluation procedure](docs/evaluation.md).
