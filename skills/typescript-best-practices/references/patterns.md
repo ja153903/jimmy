@@ -1,20 +1,24 @@
 # TypeScript patterns
 
-Code examples for each rule in `SKILL.md`. The underlying principles are language-agnostic. See the **type-system-discipline** and **boundary-discipline** principle skills.
+Examples for the TypeScript best practices skill. See the **type-system-discipline** and **boundary-discipline** principle skills.
 
 ## Branded types
 
-Brand primitives so they can't be mixed up. Validate once at the boundary. Downstream code trusts the type.
+Brand a primitive when the brand prevents a concrete mix-up. Establish the brand at the boundary with a type guard that verifies its invariant. Downstream code trusts the type. This example assumes agent IDs use an `agent_` prefix followed by a UUID.
 
 ```ts
 type AgentId = string & { readonly __brand: "AgentId" };
 
-function isAgentId(input: string): input is AgentId {
-  return isUUID(input);
+function isAgentId(input: unknown): input is AgentId {
+  return (
+    typeof input === "string" &&
+    input.startsWith("agent_") &&
+    isUUID(input.slice("agent_".length))
+  );
 }
 
-function parseAgentId(input: string): AgentId {
-  if (!isAgentId(input)) throw new Error(`Invalid agent id: ${input}`);
+function parseAgentId(input: unknown): AgentId {
+  if (!isAgentId(input)) throw new Error("Invalid agent id");
   return input;
 }
 
@@ -81,11 +85,11 @@ A time range, as start plus duration:
 // Don't: a comment holds the invariant
 type TimeRange = { start: Date; end: Date }; // start <= end
 
-// Do: a negative range can't be written; derive end when needed
+// Store the duration directly and derive end when needed.
 type TimeRange = { start: Date; durationMs: number };
 ```
 
-Keep `durationMs` a plain number. Brand it (per Branded types) only if a raw number could be passed where a duration is expected, not by reflex. Pick the representation that makes the bad state unconstructable, then expose the reading you need on top (`pairs.flat()`, a `rangeEnd()` helper).
+Keep `durationMs` a plain number unless a brand prevents a concrete mix-up, such as passing seconds as milliseconds. Validate external durations at the boundary, including nonnegativity if the range requires it.
 
 ## Simplest total type
 
@@ -300,20 +304,15 @@ function renderChecks(s: Pick<ChecksMessage, "totalCount" | "checks">) {
 }
 ```
 
-Reach for `Pick`, `Omit`, `Parameters`, `ReturnType`, `Awaited`, `typeof` before writing a new interface.
+Use a simple utility type for a clear projection of an authoritative shape. When nested utilities or intersections obscure what an operation accepts or returns, define named input and output types. Reuse the authoritative types for schema-owned fields.
 
-## Object args
+## Arguments
+
+Pass one clear input directly, as in `getEligibleDestinations(fileTypes)`. Use object arguments when property names help readers distinguish several inputs.
 
 ```ts
-// Don't. Swap two args, still compiles.
-openFile(uri, {
-  startLineNumber: 10,
-  startColumn: 1,
-  endLineNumber: 10,
-  endColumn: 1,
-});
+const destinations = getEligibleDestinations(fileTypes);
 
-// Do. Order-independent, self-documenting.
 openFile({
   uri,
   selection: {
@@ -325,4 +324,4 @@ openFile({
 });
 ```
 
-Skip on hot paths: per-frame render, tokenizers, parsers, anything in a tight loop where the allocation cost matters.
+Consider allocation cost in tight loops such as tokenizers, parsers, and per-frame rendering.
