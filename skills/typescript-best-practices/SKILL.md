@@ -28,7 +28,7 @@ Apply the **type-system-discipline** principle skill first.
 | Structured telemetry | Prefer structured logger diagnostics with enough context to debug from an id. No `console.log` in shipped code. |
 
 - **Name meaningful work.** Extract a short transformation or other distinct operation when the name helps the reader, even with one caller. Collapse pass-through wrappers.
-- **Compose in React hooks.** Read React state, check gates, and call separate transformation, request, and telemetry functions. Keep dependency arrays in the hook. Pass request helpers the values they need as explicit arguments. Preserve request cancellation and error handling. Validate external data at the boundary.
+- **Compose; don't accumulate.** Write each entry point (handler, hook, job, command) as a short orchestrator: read inputs, check gates, and call separately named request, transformation, effect, and telemetry functions. Express transformations as pipelines of small pure functions (`filter(isBillable).map(toRow)`) rather than one loop doing several jobs. Pass helpers the values they need as explicit arguments. Preserve cancellation and error handling across the seams. Validate external data at the boundary. In React, the hook is the orchestrator and keeps the dependency arrays.
 - **Keep editable configuration plain.** Use a typed object and a named multiline string for instructions. Add remote configuration, loaders, schemas, or fallbacks when the requested behavior needs them.
 
 See [TypeScript patterns](references/patterns.md) for examples.

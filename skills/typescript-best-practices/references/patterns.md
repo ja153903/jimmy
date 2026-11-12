@@ -325,3 +325,36 @@ openFile({
 ```
 
 Consider allocation cost in tight loops such as tokenizers, parsers, and per-frame rendering.
+
+## Composition
+
+Write the entry point as an orchestrator that names each step. Keep transformations pure and chain them.
+
+```ts
+// Don't: one function mixes the request, parsing, filtering, mapping, persistence, and logging
+async function syncInvoices(accountId: string) {
+  const res = await fetch(`/api/accounts/${accountId}/invoices`);
+  const raw = await res.json();
+  const rows = [];
+  for (const inv of raw) {
+    if (inv.status !== "void" && inv.total > 0) {
+      rows.push({ id: inv.id, cents: Math.round(inv.total * 100) });
+    }
+  }
+  await db.insert(rows);
+  console.log("synced", rows.length);
+}
+
+// Do: the orchestrator reads as the steps; each step is named and testable alone
+async function syncInvoices(accountId: AccountId, signal: AbortSignal) {
+  const invoices = await fetchInvoices(accountId, signal); // request + parse at the boundary
+  const rows = invoices.filter(isBillable).map(toInvoiceRow); // pure pipeline
+  await saveInvoiceRows(rows); // effect
+  logger.info("invoices.synced", { accountId, count: rows.length });
+}
+
+const isBillable = (inv: Invoice) => inv.status !== "void" && inv.total > 0;
+const toInvoiceRow = (inv: Invoice): InvoiceRow => ({ id: inv.id, cents: Math.round(inv.total * 100) });
+```
+
+The same shape applies to React hooks: the hook reads state and gates, keeps the dependency array, and calls the request, transformation, and telemetry functions with explicit arguments.
