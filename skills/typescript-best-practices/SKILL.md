@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 Apply the **type-system-discipline** principle skill first.
 
+These rules outrank simplification. The **laziness-protocol** and **subtract-before-you-add** skills, "smallest change" instructions, and cleanup passes shrink scope and remove dead weight. They never weaken types. Don't delete or skip a boundary parse, a brand, a discriminated union, an exhaustiveness check, or a named step to shorten a diff. Don't reintroduce `as`, `any`, `!`, or an optional-field bag because it is fewer lines. When the type-correct version is longer, it is the smallest correct change.
+
 | Rule | Summary |
 |------|---------|
 | Discriminated unions | Model variants with a `kind` literal discriminant so impossible states can't be represented. No optional-field bags. |

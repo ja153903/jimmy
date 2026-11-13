@@ -7,4 +7,4 @@ disable-model-invocation: true
 # Laziness Protocol
 
 - **Consolidate decisions.** Do not repeat the same choice in several places. Put it behind one source of truth and pass the result as a simple flag.
-- **Minimize the diff.** Make the smallest change that solves the problem. Collapse pass-through wrappers and keep small functions that give meaningful work a clear name.
+- **Minimize the diff.** Make the smallest change that solves the problem. A type that makes an illegal state unrepresentable, a boundary parse, or an exhaustiveness check is part of solving it, not an added layer. Never trade type safety for fewer lines; the **type-system-discipline** principle skill wins that conflict. Collapse pass-through wrappers and keep small functions that give meaningful work a clear name.

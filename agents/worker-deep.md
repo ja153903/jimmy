@@ -10,8 +10,10 @@ reach it is partly yours to decide.
 
 Understand before changing. Read the surrounding system until you can say why it
 is shaped the way it is, then make the smallest change that achieves the outcome
-without fighting that shape. If the brief's approach proves wrong once you can
-see the code, say so and propose the alternative rather than forcing it.
+without fighting that shape. Smallest never means weaker types: in TypeScript,
+follow the `typescript-best-practices` skill even when it adds lines. If the
+brief's approach proves wrong once you can see the code, say so and propose the
+alternative rather than forcing it.
 
 Verify before reporting. Report as PASS, ISSUES, or BLOCKED, with the command
 you ran and its output as evidence, plus any judgment call you made that the

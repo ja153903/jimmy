@@ -13,6 +13,6 @@ Make simplification a continual investment. Leave the design slightly simpler an
 - Sequence removal before construction
 - Cut before you polish (get to the minimum before investing in quality)
 - Design for observed usage, not speculative edge cases
-- No speculative validators, parsers, or guards beyond what the spec demands
+- No speculative validators, parsers, or guards beyond what the spec demands. Parsing external data at a boundary is always demanded (the **boundary-discipline** principle skill); the speculative kind re-validates already-typed data inside
 - Simplify prompts (remove redundant instructions, excessive templates)
 - When a reference has no novel content, delete it rather than leaving a stub
