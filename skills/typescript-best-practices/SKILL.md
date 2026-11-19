@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # TypeScript best practices
 
-Apply the **type-system-discipline** principle skill first.
+Apply the **type-system-discipline** and **functional-composition** principle skills first.
 
 | Rule | Summary |
 |------|---------|

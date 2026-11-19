@@ -30,7 +30,6 @@ confirmation costs one word.
 4. Show the initial skill map (format below) and propose where to start. Let the user
    override.
 
-
 ## Skill map
 
 Track each subskill at levels 0-5:
