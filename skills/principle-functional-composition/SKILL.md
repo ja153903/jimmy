@@ -17,4 +17,6 @@ Build behavior by composing small, named, reusable pieces instead of growing one
 
 Composition serves the reader; it is not a license to layer. [Minimize Reader Load](../principle-minimize-reader-load/SKILL.md) still applies: no pass-through wrappers, no point-free chains that hide what flows through them. [Laziness Protocol](../principle-laziness-protocol/SKILL.md) still applies: reuse means sharing what exists, not building generic machinery for imagined callers.
 
+For examples of each rule, including Python and React, see [examples](references/examples.md).
+
 **The test:** can each function be described in one sentence and tested without the others, and does the entry point read as the list of steps?
