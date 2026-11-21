@@ -89,6 +89,41 @@ everything, with at least one question per subskill and one integrative problem.
 the user passes, show the final map and a summary of their weakest areas. If not,
 back to the loop.
 
+## Session summary
+
+When a session ends (course completed, "end session", or the user signals they are
+stopping), write a markdown summary to
+`~/db/learning/<YYYY-MM-DD>-<topic-slug>.md` (create the directory if missing),
+append a
+numeric suffix rather than overwrite an existing file, and tell the user the path. If
+file tools are unavailable, emit the same markdown in chat. Skip the file if the
+session never got past the diagnostic.
+
+Record only what the user actually demonstrated, under the same strictness as the
+evaluation rules. A concept you explained but never re-tested belongs under "not yet
+demonstrated," not "learned."
+
+    # <Topic>: session summary (<date>)
+
+    ## What you learned
+    - <subskill>: <start level> -> <end level>. <one line on what they can now do>
+
+    ## How you learned it
+    - <subskill>: <the question, exercise, or contradiction that produced the
+      breakthrough, and whether it came from reasoning or a direct explanation>
+
+    ## Misconceptions corrected
+    - <wrong belief> -> <correct belief>, exposed by <question or exercise>
+
+    ## Not yet demonstrated
+    - <concepts explained but not independently recalled; weak areas>
+
+    ## Next session
+    - <what to review first and what subskill comes next>
+
+    ## Resume state
+    <the "save state" block>
+
 ## Commands the user can use anytime
 
 - "show progress" — render the skill map
@@ -97,5 +132,6 @@ back to the loop.
 - "save state" — emit a compact block (topic, skill map with levels, notes on
   misconceptions and what has been covered) that can be pasted into a new session to
   resume
-- "resume from:" — followed by a saved state block; restore it and continue where it
-  left off
+- "resume from:" — followed by a saved state block or a session summary path; restore
+  it and continue where it left off
+- "end session" — write the session summary and stop
