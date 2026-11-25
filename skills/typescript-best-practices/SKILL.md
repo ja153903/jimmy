@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # TypeScript best practices
 
-Apply the **type-system-discipline** and **functional-composition** principle skills first.
+Apply the [Type System Discipline](../jimmy/references/principles/type-system-discipline.md) and [Functional Composition](../principle-functional-composition/SKILL.md) principles first.
 
 | Rule | Summary |
 |------|---------|
@@ -21,7 +21,7 @@ Apply the **type-system-discipline** and **functional-composition** principle sk
 | Type guards | Must verify the claim. A lying guard is worse than `as` because the bug hides behind a name that says it's safe. Name them `isX` or `hasX`. |
 | Exhaustiveness | Inline `const _exhaustive: never = x;` in default arms so the compiler errors when a new variant is added. |
 | `satisfies` over `as` | Validates the value without widening literal types. |
-| Boundary validation | Parse where data crosses in, into a named domain type. `Record<string, unknown>` (however spelled) stops at that parse. Trust types inside. See the **boundary-discipline** principle skill. |
+| Boundary validation | Parse where data crosses in, into a named domain type. `Record<string, unknown>` (however spelled) stops at that parse. Trust types inside. See the [Boundary Discipline](../jimmy/references/principles/boundary-discipline.md) principle. |
 | Readable types | Reuse authoritative schema types. Prefer simple named input and output types when nested utility types or intersections obscure the operation. |
 | Arguments | Pass a single clear input directly, as in `getEligibleDestinations(fileTypes)`. Use an object when naming several inputs clarifies the call. |
 | Real tests | Don't mock what you can run. Prefer the framework's real test primitives with leak/disposable checks, and verify UI in a running build. Mock only what you can't run locally. |

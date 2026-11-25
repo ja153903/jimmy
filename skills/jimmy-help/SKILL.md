@@ -19,6 +19,7 @@ Answer questions about installing Jimmy, selecting a workflow, or using a skill.
 - Verify the application: [create-verification-skill](../create-verification-skill/SKILL.md) or [maintain-verification-skill](../maintain-verification-skill/SKILL.md).
 - Unattended work: [autonomous run](../jimmy-mode/playbooks/autonomous-run.md). Future wakeups require an available scheduling tool and authorization.
 - Larger programs: [orchestrate](../jimmy-mode/playbooks/orchestrate.md).
+- To apply a named principle, use the [principle index](../../docs/guide/08-principles.md#the-25-briefly).
 - Explore the collection: read the [guide index](../../docs/guide/README.md).
 
 Both hosts install the same skills. Invocation syntax and available tools belong to the current host. Jimmy does not install custom modes, cloud agents, or an automation service. Missing capabilities must be reported rather than simulated with invented tool calls.

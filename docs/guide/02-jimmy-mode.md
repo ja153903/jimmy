@@ -9,8 +9,7 @@
 ```mermaid
 flowchart TD
     A[Your prompt] --> B[jimmy-mode]
-    B --> C[Read the Principles section]
-    C --> D{Match the task}
+    B --> D{Match the task}
     D -->|Read-only question| E[Investigation]
     D -->|Defect| F[Bug fix]
     D -->|New behavior| G[Feature]

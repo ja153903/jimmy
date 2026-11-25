@@ -15,7 +15,7 @@ Build behavior by composing small, named, reusable pieces instead of growing one
 - **Return new values.** Prefer building and returning data over mutating arguments or shared structures. Mutate locally only when it is contained and measurably cheaper.
 - **Modules by responsibility.** Group reusable pieces into a module with a narrow interface, so the next feature imports them instead of copying them. Extract on the second real use, or sooner when the name clarifies the step.
 
-Composition serves the reader; it is not a license to layer. [Minimize Reader Load](../principle-minimize-reader-load/SKILL.md) still applies: no pass-through wrappers, no point-free chains that hide what flows through them. [Laziness Protocol](../principle-laziness-protocol/SKILL.md) still applies: reuse means sharing what exists, not building generic machinery for imagined callers.
+Composition serves the reader; it is not a license to layer. [Minimize Reader Load](../jimmy/references/principles/minimize-reader-load.md) still applies: no pass-through wrappers, no point-free chains that hide what flows through them. [Laziness Protocol](../jimmy/references/principles/laziness-protocol.md) still applies: reuse means sharing what exists, not building generic machinery for imagined callers.
 
 For examples of each rule, including Python and React, see [examples](references/examples.md).
 

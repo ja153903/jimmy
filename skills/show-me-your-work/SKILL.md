@@ -52,7 +52,7 @@ Commit it only when the work is ambitious enough that a reviewer needs the trail
 ## Rules
 
 - Append-only. A wrong call gets a new row that supersedes it. Never edit or delete history.
-- Prefer evidence produced by committed scripts over hand-made one-offs (the **encode-lessons-in-structure** principle skill).
+- Prefer evidence produced by committed scripts over hand-made one-offs (the [Encode Lessons in Structure](../jimmy/references/principles/encode-lessons-in-structure.md) principle).
 
 ## Audit the log against the transcript
 
