@@ -45,6 +45,14 @@ Record in task state:
 - findings
 - disposition of each finding
 
+Record reviews with the [evidence CLI](verification.md#evidence-cli), which stores the reviewed tree with each record:
+
+- `evidence.py review --request TEXT --cmd '<reviewer CLI reading stdin>'` (or `$JIMMY_REVIEWER`) runs a reviewer from any provider on an isolated checkout of the exact tree and records its output.
+- For a host-native reviewer agent, save `evidence.py brief --request TEXT > /tmp/jimmy-brief.md` (use a unique path outside the checkout for concurrent reviews), give that file to the reviewer, then record its findings with `evidence.py review --findings FILE --by NAME --brief /tmp/jimmy-brief.md`. The record binds to that exact brief, so it covers only the diff that reviewer was shown. Give each reviewer its own `--by` name.
+- With neither available, `evidence.py review --request TEXT` records the missing review.
+
+Pass the same `--base <merge base>` to the brief or reviewer and the delivery gate so the reviewer sees the PR patch. Reviewers end with `VERDICT: PASS` or `VERDICT: ISSUES`; `evidence.py gate` accepts only passing verdicts that saw the triggered changes, with no outstanding ISSUES.
+
 If required independence is unavailable, report the missing review and do not claim review completion. Self-review does not substitute for required independent review.
 
 ## Count and rounds

@@ -20,4 +20,4 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
 
 [tool.ty.environment]
 python-version = "3.15"
-extra-paths = ["scripts"]
+extra-paths = ["scripts", "skills/jimmy/scripts"]

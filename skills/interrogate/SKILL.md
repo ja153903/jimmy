@@ -12,7 +12,7 @@ Give each reviewer the original user request, relevant documented behavior, the 
 
 An explicit request for multiple reviewers or models overrides the corresponding default. Use only models and roles the host exposes, honor valid preferences, and disclose unavailable independence or diversity. Do not claim different personas on the same model provide model diversity.
 
-Use the [delegate contract](../../docs/delegation.md). Reviewers get the same input, without other reviewers' conclusions. Give each reviewer an isolated checkout matching the review scope, including relevant uncommitted changes. Reproduction tests and probes belong there; reviewers do not edit the user's checkout or apply fixes. If isolation is unavailable, use non-mutating checks and disclose the coverage limit.
+Use the [delegate contract](../../docs/delegation.md). Reviewers get the same input, without other reviewers' conclusions: build it with `evidence.py brief` and record each review as the [review records](../../docs/review.md#records) describe. Give each reviewer an isolated checkout matching the review scope, including relevant uncommitted changes. Reproduction tests and probes belong there; reviewers do not edit the user's checkout or apply fixes. If isolation is unavailable, use non-mutating checks and disclose the coverage limit.
 
 Ask reviewers to break the intended behavior with the real code. Each defect needs a location, a failure mechanism, the exact reproduction command, observed output, and expected behavior. For a design, use a small prototype or probe of the current code. A shipped documentation defect can instead cite the incorrect line and the behavior or contract that disproves it. Style preferences and speculative future failures are not verified defects.
 

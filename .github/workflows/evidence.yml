@@ -1,0 +1,72 @@
+name: Jimmy evidence
+
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: false
+      - name: Verify package and fixtures
+        run: |
+          node --version
+          uv run --locked scripts/check_package.py
+          uv run --locked python -m unittest discover -s scripts
+          uv run --locked ruff check scripts skills/jimmy/scripts
+          uv run --locked ruff format --check scripts skills/jimmy/scripts
+          uv run --locked ty check scripts skills/jimmy/scripts
+
+  evidence:
+    needs: checks
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require successful checks on the PR head
+        env:
+          RESULT: ${{ needs.checks.result }}
+        run: test "$RESULT" = success
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Gate the tested commit
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          TESTED_SHA: ${{ github.event.pull_request.head.sha }}
+          REQUEST: |
+            ${{ github.event.pull_request.title }}
+
+            ${{ github.event.pull_request.body }}
+          JIMMY_REVIEWER: ${{ vars.JIMMY_REVIEWER }}
+        run: |
+          gate_path=skills/jimmy/scripts/evidence.py
+          head=$(git rev-parse HEAD)
+          test "$head" = "$TESTED_SHA"
+          base_entry=$(git ls-tree "$BASE_SHA" -- "$gate_path")
+          if [ -z "$base_entry" ]; then
+            if ! git cat-file -e "$head:$gate_path"; then
+              echo "The evidence CLI is missing from both the target branch and the PR." >&2
+              exit 1
+            fi
+            echo "::notice::Evidence enforcement starts after the CLI lands on the target branch. Package checks passed."
+            exit 0
+          fi
+          cli="$RUNNER_TEMP/evidence.py"
+          git show "$BASE_SHA:$gate_path" > "$cli"
+          base=$(git merge-base "$BASE_SHA" "$head")
+          python3 -I "$cli" receipt -- test "$head" = "$TESTED_SHA"
+          if python3 -I "$cli" gate --base "$base" --no-rerun; then
+            exit 0
+          fi
+          python3 -I "$cli" review --base "$base" --request "$REQUEST"
+          python3 -I "$cli" gate --base "$base" --no-rerun
