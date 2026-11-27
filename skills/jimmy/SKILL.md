@@ -7,6 +7,8 @@ description: Route software work through Jimmy's concise, risk-scaled workflows 
 
 Read [efficiency](../../docs/efficiency.md) once per workflow context. Use the current session's tools and preserve the user's scope and authorization.
 
+Before persisted code edits, resolve the [repository contract](../../docs/repository-fit.md) for the target paths and carry its exact instructions and checks into any writing brief.
+
 The lead inspects, implements one solution, verifies, and reviews the diff. For a reversible edit with clear ownership, work directly and run a focused check. For substantive work, read one matching playbook:
 
 - [Investigation](../jimmy-mode/playbooks/investigation.md) for a read-only answer.

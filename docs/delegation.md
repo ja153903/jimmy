@@ -9,6 +9,8 @@ The lead supplies:
 - Constraints and decisions already made, exact checks to run, and the task's remaining agent and review budget.
 - No nested delegation by default. Read relevant leaf guidance only; do not restart Jimmy's routing or the parent's playbook.
 
+For code writers, include the exact scoped instruction paths, package boundaries, required check commands and working directories from the repository contract. Have each writer follow [Jimmy worker](worker.md), including resolving the [repository contract](repository-fit.md) again for its exact targets.
+
 For writers, state that others share the codebase: preserve their edits and adapt to them. Use disjoint files or isolated checkouts. Shared writes serialize. Send only the diff and context needed for independent review; do not prime a reviewer with a previous reviewer's conclusions.
 
 Return PASS, ISSUES, or BLOCKED with changed files or findings, exact commands and observed results, and any unresolved question. Include verification scope and input state so the lead can assess whether evidence is still valid. Do not repeat the prompt, narrate exploration, or return full source and logs unless needed to establish a failure.
