@@ -1,0 +1,1 @@
+Fix the launcher. A queued creation sometimes finishes without completing onboarding, and the Continue action can start another creation while the first one is still pending. Keep cancellation and replacement safe, including failures and callbacks that arrive late. Use the existing dispatcher and attempt provider, preserve the public API, and verify the fix locally.

@@ -1,0 +1,1 @@
+Use Node.js and its standard library. No dependencies or external services are needed. Run public checks with npm test. Preserve the documented API, package.json, AGENTS.md, README.md, and existing tests. Add regression tests in new files. Keep changes local and uncommitted. Do not publish.

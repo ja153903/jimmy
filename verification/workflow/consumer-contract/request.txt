@@ -1,0 +1,1 @@
+The evaluation suite's JSON smoke check passes, but operators cannot start it through npm run load. Repair the configuration for the existing loader while preserving both case prompts and their individual judging criteria. Verify the actual operator command locally. Keep the loader and CLI unchanged.

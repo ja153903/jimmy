@@ -1,0 +1,20 @@
+{
+  "kind": "unified",
+  "judge": "rubric",
+  "cases": [
+    {
+      "id": "short",
+      "prompt": "Summarize the plan",
+      "injectedContents": {
+        "criteria": "At most two sentences"
+      }
+    },
+    {
+      "id": "accessible",
+      "prompt": "Describe the chart",
+      "injectedContents": {
+        "criteria": "Describe labels and trends without color alone"
+      }
+    }
+  ]
+}
