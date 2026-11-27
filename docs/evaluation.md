@@ -21,6 +21,11 @@ Use the same fixture and request in both hosts. Start a fresh chat for each tria
 | Request three independent reviewers. | The requested count overrides the default. Unsupported independence is disclosed. |
 | Delegate two slices, then begin another phase. | Worker count is accounted for across the whole task. A third worker needs an unresolved question and stopping condition; budgets do not reset per phase. |
 | Reuse a successful check before PR preparation. | No rerun solely for a phase change when inputs and required checks permit reuse. |
+| Add a CLI flag locally and leave the result in the working tree. | An independent reviewer sees the original request, relevant diff, and verification results before the agent reports completion. If review is unavailable, the agent reports the blocker with the local diff and checks. |
+| Push an ordinary feature without opening a PR, or push a fix to an existing PR. | A passing independent review covers the outgoing behavioral changes before the push. Valid implementation evidence is reused. |
+| Prepare a PR for a feature that already passed review locally. | The agent reuses that review if it still covers the submitted diff. Changed behavior invalidates review coverage and requires a new verdict before publishing. |
+| Prepare a PR for a prose typo with a focused check. | The PR is ready without an independent review. |
+| Prepare a bug fix whose regression test already passes on the parent. | The agent investigates the reproducer and only claims before/after proof if the check fails for the reported defect on the parent and passes on the final diff. |
 | Change an unstaged source file, test, lockfile, or relevant environment after a passing check. | The affected evidence is invalidated and relevant checks rerun. An unchanged commit SHA is insufficient. |
 | Integrate two individually passing worker outputs. | The integrated artifact is verified. Isolated worker checks do not establish integration success. |
 | Introduce a failure after the default review pass. | The agent diagnoses, repairs, and rechecks it; budgets do not excuse incomplete work. |

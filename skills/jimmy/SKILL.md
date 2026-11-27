@@ -18,7 +18,9 @@ The lead inspects, implements one solution, verifies, and reviews the diff. For 
 
 Use [architect](../architect/SKILL.md) for unclear ownership or consequential interface choices. Compare short sketches before implementing once. Use [swarm](../swarm/SKILL.md) or [arena](../arena/SKILL.md) only for their escalation triggers or an explicit request. Apply the task-wide budgets in efficiency across these workflows.
 
-Read and apply the [review policy](../../docs/review.md) during planning and again before completion; budgets never waive it. When it requires independent review, open [interrogate](../interrogate/SKILL.md) and follow it; do not wait for implicit skill invocation. Before changing a retry, identity, ownership, permission, or cancellation guard, derive the [behavioral contract](../../docs/verification.md#behavioral-contract) and its paired cases.
+Read the [review policy](../../docs/review.md) during planning and satisfy its [delivery requirements](../../docs/review.md#delivery) before reporting implementation complete or pushing, including local-only work. When independent review is required, open [interrogate](../interrogate/SKILL.md) and follow it directly. Before changing a retry, identity, ownership, permission, or cancellation guard, derive the [behavioral contract](../../docs/verification.md#behavioral-contract) and its paired cases.
+
+When PR delivery is in scope, follow [Opening a PR](../jimmy-mode/playbooks/opening-a-pr.md) before publishing.
 
 ## Principles
 

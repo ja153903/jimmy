@@ -27,7 +27,7 @@ Plan verification during planning, not after implementation.
 
 | Situation | Required action |
 | --- | --- |
-| Any behavioral change | Identify the affected user journey, observable result, existing checks, and relevant project verification skills. |
+| Any behavioral change | Trace the real entry point, affected callers, and existing data. Identify what must keep working and verify the most plausible regression through that entry point. Reuse existing checks and project verification skills when they cover it. |
 | Affected journey lacks a repeatable real-app check | Use [create-verification-skill](../skills/create-verification-skill/SKILL.md) to establish focused coverage, including in an existing project. |
 | Journey already has verification instructions | Update and exercise the affected entries with the implementation. |
 | Ordering, retries, ownership, or shared state changes | State the invariant, relevant events, user harm, and which event orderings the chosen checks cover. |
