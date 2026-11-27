@@ -9,6 +9,7 @@ Read [efficiency](../../docs/efficiency.md) once per workflow context. Use the c
 
 The lead inspects, implements one solution, verifies, and reviews the diff. For a reversible edit with clear ownership, work directly and run a focused check. For substantive work, read one matching playbook:
 
+- [PR review](../pr-review/SKILL.md) for a requested PR, branch, or diff review.
 - [Investigation](../jimmy-mode/playbooks/investigation.md) for a read-only answer.
 - [Bug fix](../jimmy-mode/playbooks/bug-fix.md) for a defect.
 - [Feature](../jimmy-mode/playbooks/feature.md) for changed behavior.
