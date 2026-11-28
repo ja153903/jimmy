@@ -4,7 +4,7 @@ This is the authoritative review policy. Other skills and playbooks link here in
 
 ## Lead review
 
-The lead reviews every completed diff against the user's contract and the repository's required checks.
+The lead reviews every completed diff against the user's contract and the repository's required checks. Use [PR review](../skills/pr-review/SKILL.md) for requested reviews and the lead's final implementation review. It supplies inspection and reporting guidance; this policy remains authoritative for independent review and delivery.
 
 ## Independent review triggers
 

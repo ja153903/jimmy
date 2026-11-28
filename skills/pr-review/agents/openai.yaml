@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR review"
+  short_description: "Review behavior, composition, and verification gaps"
+  default_prompt: "Use $pr-review to review this diff and report actionable findings."
