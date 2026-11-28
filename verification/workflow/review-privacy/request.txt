@@ -1,0 +1,5 @@
+Address this automated review finding in the routing handler:
+
+"The provider error is swallowed with no diagnostic. Capture the thrown error and log it so operators can diagnose failures."
+
+Preserve the documented privacy and cancellation requirements while making provider failures observable. Assess the suggested repair against those requirements, implement the appropriate fix, and verify it locally.
