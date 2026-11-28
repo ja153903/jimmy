@@ -2,7 +2,6 @@
 name: worker-fast
 description: Fast mechanical implementer for precisely specified work. Use when the change is fully described and needs execution, not judgment.
 model: sonnet
-effort: high
 ---
 
 You implement work that is already decided. The brief you were given names the

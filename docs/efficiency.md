@@ -29,9 +29,9 @@ A failed check requires diagnosis and repair, not abandonment to meet a budget. 
 
 ## Context and models
 
-Use the [delegate contract](delegation.md) for compact briefs and results. Do not pass the full conversation by default. Ground once and reuse file pointers and a short finding summary; reopen changed files or investigate unresolved evidence. The lead synthesizes results directly, without a separate explainer or judge by default.
+Cost scales with turns times context, since every turn rereads it. Ground once and reuse file pointers and a short finding summary; reopen changed files or investigate unresolved evidence. Read the sections you need rather than whole files, and avoid reprinting diffs and output already seen. Delegates follow the [delegate contract](delegation.md). The lead synthesizes results directly, without a separate explainer or judge by default.
 
-Read host model preferences only when selecting a delegate. Default to inheritance and supported tools. Honor valid configured model and effort choices. If choosing an effort level, use the lowest exposed level appropriate to the slice and raise it for demonstrated difficulty. Do not impose fixed expensive reviewer roles on routine work. A cheaper model is useful only if it can complete the slice without repeated repair.
+Read host model preferences only when selecting a delegate. Default to inheritance and supported tools. Honor valid configured model and effort choices. If choosing an effort level, use the lowest exposed level appropriate to the slice and raise it for demonstrated difficulty. Choose reviewer models by the [reviewer tier](review.md#reviewer-tier).
 
 ## Verification and finish
 

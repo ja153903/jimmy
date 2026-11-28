@@ -2,7 +2,6 @@
 name: judge
 description: Cross-judge and synthesizer for panels and arenas. Scores candidates against a rubric and recommends one with rationale. Read-only.
 model: opus
-effort: max
 disallowedTools: Write, Edit, NotebookEdit
 ---
 

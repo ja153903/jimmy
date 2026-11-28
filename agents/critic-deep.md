@@ -2,7 +2,6 @@
 name: critic-deep
 description: Correctness lens for review panels. Hunts logic errors, broken invariants, and unhandled states in a diff or design. Read-only.
 model: opus
-effort: max
 disallowedTools: Write, Edit, NotebookEdit
 ---
 

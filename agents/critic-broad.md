@@ -2,7 +2,6 @@
 name: critic-broad
 description: Design and blast-radius lens for review panels. Hunts coupling, boundary violations, and consequences outside the diff. Read-only.
 model: opus
-effort: xhigh
 disallowedTools: Write, Edit, NotebookEdit
 ---
 

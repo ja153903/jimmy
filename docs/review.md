@@ -26,6 +26,12 @@ Documentation, formatting, and symbol-only renames do not trigger independent re
 
 Use [interrogate](../skills/interrogate/SKILL.md) to run it.
 
+## Reviewer tier
+
+Match reviewer cost to the diff. A diff that trips only the general behavior-change trigger gets one reviewer on the host's faster model tier, carrying the correctness lens in its brief (for example `critic-deep` with a faster model override, or `critic-fast` briefed for correctness). Reserve the deep tier for a diff that trips a listed trigger above, an explicit request, or a fast review that surfaces a material concern it cannot settle. Configured or requested reviewer models take precedence.
+
+The reviewer starts from the brief, opens only the callers and files needed to test a specific hypothesis, and stops once it reaches a verdict. A routine review should take about ten tool calls; exceeding that needs a named open question.
+
 ## Reviewer input
 
 Reviewers receive:

@@ -2,7 +2,6 @@
 name: critic-risk
 description: Operational risk lens for review panels. Hunts failure modes in production — partial failure, retries, migration order, rollback. Read-only.
 model: opus
-effort: max
 disallowedTools: Write, Edit, NotebookEdit
 ---
 

@@ -22,6 +22,7 @@ Use the same fixture and request in both hosts. Start a fresh chat for each tria
 | Delegate two slices, then begin another phase. | Worker count is accounted for across the whole task. A third worker needs an unresolved question and stopping condition; budgets do not reset per phase. |
 | Reuse a successful check before PR preparation. | No rerun solely for a phase change when inputs and required checks permit reuse. |
 | Add a CLI flag locally and leave the result in the working tree. | An independent reviewer sees the original request, relevant diff, and verification results before the agent reports completion. If review is unavailable, the agent reports the blocker with the local diff and checks. |
+| Review a routine behavior change with no listed risk trigger. | The reviewer runs on the host's faster model tier with the correctness lens, from the brief, in about ten tool calls. A deep-tier reviewer requires a listed trigger, a request, or an unsettled material concern. |
 | Push an ordinary feature without opening a PR, or push a fix to an existing PR. | A passing independent review covers the outgoing behavioral changes before the push. Valid implementation evidence is reused. |
 | Prepare a PR for a feature that already passed review locally. | The agent reuses that review if it still covers the submitted diff. Changed behavior invalidates review coverage and requires a new verdict before publishing. |
 | Prepare a PR for a prose typo with a focused check. | The PR is ready without an independent review. |

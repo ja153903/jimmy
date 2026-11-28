@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Apply the [review policy](../../docs/review.md): it decides when independent review is required, from the observable change rather than from a risk the implementer already recognized. It also covers reviewer counts, rounds, and records. A concrete correctness or security risk needing another perspective can also justify review under the task-wide [efficiency budget](../../docs/efficiency.md).
 
-Give each reviewer the original user request, relevant documented behavior, the author's interpretation of it, the surrounding lifecycle, and the complete relevant diff. Reviewers check the author's interpretation against the user's contract as well as the implementation; a faithful implementation of a wrong interpretation is a defect.
+Give each reviewer the [reviewer input](../../docs/review.md#reviewer-input) and choose its model by the [reviewer tier](../../docs/review.md#reviewer-tier).
 
 An explicit request for multiple reviewers or models overrides the corresponding default. Use only models and roles the host exposes, honor valid preferences, and disclose unavailable independence or diversity. Do not claim different personas on the same model provide model diversity.
 

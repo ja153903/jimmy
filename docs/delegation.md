@@ -5,8 +5,9 @@ Read this only when delegating. Use the host's exposed agent tool and schema. Pr
 The lead supplies:
 
 - Goal and acceptance criteria, including the specific unresolved question.
-- Exclusive write ownership or a read-only scope, checkout path, relevant files and symbols, and a short summary of established facts.
+- Exclusive write ownership or a read-only scope, checkout path, relevant files and symbols, and a short summary of established facts. Summarize the parts of large shared documents (specs, syllabi, guides) the slice depends on instead of telling the delegate to read them whole.
 - Constraints and decisions already made, exact checks to run, and the task's remaining agent and review budget.
+- The cheapest role that can finish the slice without repeated repair: the fast worker for fully specified edits, the deep worker only where the slice needs judgment.
 - No nested delegation by default. Read relevant leaf guidance only; do not restart Jimmy's routing or the parent's playbook.
 
 For code writers, include the exact scoped instruction paths, package boundaries, required check commands and working directories from the repository contract. Have each writer follow [Jimmy worker](worker.md), including resolving the [repository contract](repository-fit.md) again for its exact targets.

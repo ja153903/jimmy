@@ -2,7 +2,6 @@
 name: critic-fast
 description: Mechanical lens for review panels. Hunts dead code, duplication, naming drift, and missing tests. Read-only.
 model: sonnet
-effort: high
 disallowedTools: Write, Edit, NotebookEdit
 ---
 
